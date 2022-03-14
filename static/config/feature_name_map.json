@@ -1,0 +1,28 @@
+{
+    "go_f": "GO Term (MF)", 
+    "go_p": "GO Term (BP)", 
+    "go_c": "GO Term (CC)", 
+    "go_slim_f": "GO Slim Term (MF)", 
+    "go_slim_p": "GO Slim Term (BP)", 
+    "go_slim_c": "GO Slim Term (CC)", 
+    "complex": "Protein Complex",
+    "disease": "DO Term", 
+    "phenotype": "Mutant Phenotype",
+    "pathway": "Biochemical Pathway",
+    "protein_domain": "Protein Domain",
+    "physical_interaction":"Physical Interactor",
+    "genetic_interaction": "Genetic Interactor",
+    "regulator":"Transcriptional Regulator's Targets",
+
+    "gene_group":"Gene Groups",
+
+    "gene_length":"Gene Length",
+    "half_life":"Half-life",
+    "gene_expression_nc":"Gene Expression (Normal Condition)",
+    "codon":"Coding Region Translation Property",
+    "protein_physical":"Protein Physical Property",
+    "plasticity":"Transcriptional Plasticity",
+    "isoform":"mRNA Isoform Number",
+
+    "custom":"Customized Feature"
+}

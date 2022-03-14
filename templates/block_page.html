@@ -1,0 +1,127 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- Datatable-->
+  <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+
+
+</head>
+<body>
+  
+<div class="container-fluid">    
+<!-- <div class="container-fluid text-center">   -->
+  <div class="row content">
+    <div class="col-sm-11 mx-auto"> 
+      <div id = "loading_bar_0" class="text-center" style="width:100%;">         
+        <img src="{% static 'img/gray.gif' %}" style="width:50%; margin:auto;">
+      </div>
+      <div id="block_content" class="data-content" style="display:none;">
+        <p></p>
+        <div class="card border-dark" id = "block_1">
+          
+          <div class="card-header border-dark" style="background-color:#D5D8DC;">
+          <h4 id="modal_title"></h4>
+          </div>
+          <div class="card-body" style="background-color:#EAECEE;">
+            
+            <div class="card">
+              <div class="card-header text-left">
+                <h4 class="d-inline"><b><i class="fas fa-user-cog"></i>  User's Specification</b></h4>
+              </div>
+              <div class="card-body p-3">
+                <table class="table table-bordered">
+                  <tr>
+                    <td style="background-color:#E9ECEF;"><b>Analyzed Term</b></td>
+                    <td id="block_term"></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color:#E9ECEF;"><b>Analyzed List</b></td>
+                    <td id="block_list"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1" style="background-color:#E9ECEF;"><b># of genes in the list</b></td>
+                    <td id="block_input_gene_no"></td>
+                  </tr>          
+                  <tr>
+                    <td style="background-color:#E9ECEF;"><b>Multiple hypothese testing</b></td>
+                    <td id="block_corr"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <p></p>
+            <div class="card" id="card_pvalue">
+              <div class="card-header">
+                <h4 id="pvalue_block_title"></h4>
+              </div>
+  
+              <div class="card-body">
+  
+                <div id="feature_description"></div> <!-- Put numbers -->
+                <div id="lipid_table_content"></div> <!-- Put numbers -->
+              </div>
+            </div>
+            <p></p>
+            <!-- <div class="card" id="card_gene">
+              <div class="card-header">
+                <h4 id = "block_2_title"></h4>
+              </div>
+              <div class="card-body">
+                <div id="btn_d2" class="text-center"></div>
+                <div id="intersected_genes"></div> 
+              </div>
+            </div>
+            <p></p> -->
+  
+            <div class="card" id="card_data">
+              <div class="card-header">
+                <h4 id = "evidence_data"></h4>
+              </div>
+              <div class="card-body" style="overflow-x:auto;">
+                <div id="btn_d" class="text-center"></div>
+                <div id="block_2_table"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+<script type="text/javascript" charset="utf8" src="{% static 'js/block_detail.js' %}"></script> 
+<script>
+  var data ={{ data | safe }};
+  var name_map, quant_feature;
+  $(document).ready(function() {
+    
+    $.getJSON("/YMLA/static/config/feature_name_map.json", function(d){
+      name_map = d;
+      $.getJSON("/YMLA/static/config/quant_feature.json", function(d){
+        quant_feature = d;
+        block_detail(data,name_map, quant_feature);
+        $('#loading_bar_0').hide();
+      })
+      
+    })
+});
+</script>
+</html>
+{% endblock %}

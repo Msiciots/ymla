@@ -1,0 +1,687 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- Datatable-->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <!-- <script src="https://code.highcharts.com/modules/networkgraph.js"></script> -->
+
+</head>
+<body>
+  
+<div class="container-fluid">    
+<!-- <div class="container-fluid text-center">   -->
+  <div class="row content">
+    <div class="col-sm-11 mx-auto"> 
+      <div class="data-content">
+        <p></p>
+        <div class="card border-dark" id = "block_1">
+          
+          <div class="card-header border-dark" style="background-color:#D5D8DC;">
+          <h4 id="block_1_title"><i class="fas fa-chart-bar"></i></h4>
+          </div>
+          <div class="card-body" style="background-color:#EAECEE;">
+            <div class="card">
+              <div class="card-header text-left">
+                <h4 class="d-inline"><b><i class="fas fa-user-cog"></i>  User's Specification</b></h4>
+              </div>
+              <div class="card-body p-3">
+                <table class="table table-bordered">
+                  <tr>
+                    <td style="background-color:#E9ECEF;"><b>Analyzed Feature</b></td>
+                    <td id="feature"></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color:#E9ECEF;"><b>Analyzed List</b></td>
+                    <td id="list"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1" style="background-color:#E9ECEF;"><b># of genes in the list</b></td>
+                    <td id="input_gene_no"></td>
+                  </tr>          
+                  <tr>
+                    <td style="background-color:#E9ECEF;"><b>Multiple hypothese testing</b></td>
+                    <td id="corr"></td>
+                  </tr>
+                  <tr style="display: none;" id="quant_row1">
+                    <td style="background-color:#E9ECEF;"><b><i>Feature Name</i></b></td>
+                    <td id="quant_terms"></td>
+                  </tr>
+                  <tr style="display: none;" id="quant_row2">
+                    <td style="background-color:#E9ECEF;"><b><i>Feature Name</i> (B <spin name="buttom_percent"></spin>)</b></td>
+                    <td>A list containing genes whose feature values belong to the <spin style="color: blue;">BOTTOM</spin> <spin style="color:red;" name="buttom_percent"></spin> of the feature values in the genome.</td>
+                  </tr>
+                  <tr style="display: none;" id="quant_row3">
+                    <td style="background-color:#E9ECEF;"><b><i>Feature Name</i> (T <spin name="top_percent"></spin>)</b></td>
+                    <td>A list containing genes whose feature values belong to the <spin style="color: blue;">TOP</spin> <spin style="color:red;" name="top_percent"></spin> of the feature values in the genome.</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <p></p>
+            <div class="card" id = "block_2_2">
+              <div class="card-header">
+              <h4 id="block_2_2_title"><b><i class="fas fa-chart-bar"></i>  Graphic View</b></h4>
+              </div>
+              <div class="card-body">
+                  <div  id="container"></div>
+              </div>
+            </div>
+            <p></p>
+            <div class="card" id = "block_2_1">
+              <div class="card-header">
+              <h4 id="block_2_1_title"><b><i class="fa fa-table" aria-hidden="true"></i>  Table View</b></h4>
+              </div>
+              <div class="card-body">
+                <b><i>A</i></b>: <spin id="A"></spin><br>
+                <b><i>B</i></b>: <spin id="B"></spin><br>
+                <b><i>C</i></b>: <spin id="C"></spin><br>
+                <b><i>D</i></b>: <spin id="D"></spin><br>
+                </p><p><b>Fold Enrichment</b>: <span class="math inline">\(\frac{Observed \ \ Ratio}{Expected\ \ Ratio}\)</span>
+                <div  id="term_table"></div>
+              </div>
+            </div>
+            <!-- <p></p>
+            <div class="card" >
+              <div class="card-header">
+              <h4 ><b><i class="fas fa-project-diagram"></i>  Network View</b></h4>
+              </div>
+              <div class="card-body">
+                <li>Select the enriched terms (in Table View) and click Refresh to update the Network View.</li>
+                <p></p>
+                <button id = "refresh" class="btn btn-info"><i class="fas fa-redo-alt"></i> Refresh</button>
+                <div id="network"></div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      
+      
+<!-- 模态框（Modal） Block detail-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal_title"></h4>
+    
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       </div>
+
+      <div class="modal-body">
+        <div id = "loading_bar_0" class="text-center" style="width:100%;">         
+          <img src="{% static 'img/gray.gif' %}" style="width:50%; margin:auto;">
+        </div>
+        <div id="block_content" class="data-content" style="display:none;">
+
+          <div class="card">
+            <div class="card-header text-left">
+              <h4 class="d-inline"><b><i class="fas fa-user-cog"></i>  User's Specification</b></h4>
+            </div>
+            <div class="card-body p-3">
+              <table class="table table-bordered">
+                <tr>
+                  <td style="background-color:#E9ECEF;"><b>Analyzed Term</b></td>
+                  <td id="block_term"></td>
+                </tr>
+                <tr>
+                  <td style="background-color:#E9ECEF;"><b>Analyzed List</b></td>
+                  <td id="block_list"></td>
+                </tr>
+                <tr>
+                  <td colspan="1" style="background-color:#E9ECEF;"><b># of genes in the list</b></td>
+                  <td id="block_input_gene_no"></td>
+                </tr>          
+                <tr>
+                  <td style="background-color:#E9ECEF;"><b>Multiple hypothese testing</b></td>
+                  <td id="block_corr"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <p></p>
+          <div class="card" id="card_pvalue">
+            <div class="card-header">
+              <h4 id="pvalue_block_title"></h4>
+            </div>
+
+            <div class="card-body">
+
+              <div id="feature_description"></div> <!-- Put numbers -->
+              <div id="lipid_table_content"></div> <!-- Put numbers -->
+            </div>
+          </div>
+          <p></p>
+          <!-- <div class="card" id="card_gene">
+            <div class="card-header">
+              <h4 id = "block_2_title"></h4>
+            </div>
+            <div class="card-body">
+              <div id="btn_d2" class="text-center"></div>
+              <div id="intersected_genes"></div> 
+            </div>
+          </div>
+          <p></p> -->
+
+          <div class="card" id="card_data">
+            <div class="card-header">
+              <h4 id = "evidence_data"></h4>
+            </div>
+            <div class="card-body" style="overflow-x:auto;">
+              <div class="row">
+                <div id="btn_d" class="d-flex flex-row-reverse col-sm"></div>
+                <div id="btn_gene_names_only" class="text-left col-sm"></div>
+              </div>
+              <div id="block_2_table"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<!-- 模态框（Modal） unknown detail-->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="unknown_title"></h4>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="data-content">
+          <div id="btn_d2" class="text-center"></div>
+          <div id="unknown_table"></div>  <!-- put unknown list-->
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+
+</body>
+<script type="text/javascript" charset="utf8" src="{% static 'js/block_detail.js' %}"></script> 
+<script>
+  $(document).ajaxStart(function ()
+  {
+      $('body').addClass('wait');
+
+  }).ajaxComplete(function () {
+
+      $('body').removeClass('wait');
+
+  });
+
+  var data ={{ data | safe }};
+  $(document).ready(function() {
+    
+    var name_map, quant_feature;
+    $.getJSON("/YMLA/static/config/feature_name_map.json", function(d1){
+        // name_map = d;
+
+      $.getJSON("/YMLA/static/config/quant_feature.json", function(d2){
+        name_map = d1;
+        quant_feature = d2;
+    
+        $('#block_1_title') .html('<b><i class="fas fa-file-alt"></i> Enrichment Analysis Result</b>');
+        $("#feature").html(`${name_map[data['feature']]}`);
+        $("#list").html(`${data['click_column_name']}`);
+        $("#input_gene_no").html(data['input_no']);
+        let str_corr = "No correction";
+        if (data['corr'] == 'FDR')
+          str_corr = "FDR correction"
+        else if (data['corr'] == 'Bonferroni')
+          str_corr = "Bonferroni correction"
+
+        $("#corr").html(`
+          ${str_corr}, -log<sub>10</sub>(Corrected p-value) cutoff = ${data['cut-off']}
+        `);
+
+        let title = "Enriched Term";
+        $("#A").html(`# of input genes`);
+        $("#C").html(`# of genes in the genome (6611 ORFs)`);
+        if (data['feature']=="gene_group"){
+          $("#B").html(`# of input genes that <spin style="color:red">belong to the enriched gene group</spin>`)
+          $("#D").html(`# of genes in the genome that <spin style="color:red">belong to the enriched gene group</spin>`);
+
+          title = "Enriched Gene Group";
+        }
+        else if (data['feature'] in quant_feature ){
+          $("#A").html(`# of input genes that can be analyzed (i.e. that have this feature data)`);
+          $("#B").html(`# of input genes that <spin style="color:red">are associated with the enriched term</spin>`);
+          $("#C").html(`# of genes in the genome that can be analyzed (i.e. that have this feature data)`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">are associated with the enriched term</spin>`);
+
+          $("#quant_row1").show();
+          $("#quant_row2").show();
+          $("#quant_row3").show();
+          $("#quant_terms").html(data['quant_terms']);
+          $("*[name='buttom_percent']").html(data['bottom_percent']);
+          $("*[name='top_percent']").html(data['top_percent']);
+      
+        }
+        else if (data['feature'] == "complex"){
+          $("#B").html(`# of input genes that <spin style="color:red">belong to the enriched protein complex</spin>`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">belong to the enriched protein complex</spin>`);
+          title = "Enriched Protein Complex";
+        }
+        else if (data['feature'] == "phenotype"){
+          $("#B").html(`# of input genes that <spin style="color:red">have the enriched mutant phenotype</spin>`)
+          $("#D").html(`# of genes in the genome that <spin style="color:red">have the enriched mutant phenotype</spin>`);
+          title = "Enriched Mutant Phenotype";
+        }
+        else if (data['feature'] == "protein_domain"){
+          $("#B").html(`# of input genes that <spin style="color:red">have the enriched protein domain</spin>`)
+          $("#D").html(`# of genes in the genome that <spin style="color:red">have the enriched protein domain</spin>`);
+          title = "Enriched Protein Domain";
+        }
+        else if (data['feature'] == "pathway"){
+          $("#B").html(`# of input genes that <spin style="color:red">are associated with the enriched ${name_map[data['feature']]}</spin>`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">are associated with the enriched ${name_map[data['feature']]}</spin>`);
+          title = "Enriched Pathway";
+        }
+        else if (data['feature'] == "physical_interaction"){
+          $("#B").html(`# of input genes that <spin style="color:red">have the physical interaction with the enriched interactor</spin>`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">have the physical interaction with the enriched interactor</spin>`);
+          title = "Enriched Interactor";
+        }
+        else if (data['feature'] == "genetic_interaction"){
+          $("#B").html(`# of input genes that <spin style="color:red">have the genetic interaction with the enriched interactor</spin>`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">have the genetic interaction with the enriched interactor</spin>`);
+          title = "Enriched Interactor";
+        }
+        else if (data['feature'] == "regulator"){
+          $("#B").html(`# of input genes that <spin style="color:red">are the enriched regulator's targets</spin>`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">are the enriched regulator's targets</spin>`);
+          title = "Enriched Regulator";
+        }
+        else{
+          $("#B").html(`# of input genes that <spin style="color:red">are associated with the enriched ${name_map[data['feature']]} term</spin>`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">are associated with the enriched ${name_map[data['feature']]} term</spin>`);
+        }
+
+        // let table_col = ""
+        // data['col_name'].forEach(element => table_col += '<th>'+element+'</th>');
+
+        $('#term_table').empty()
+        $('#term_table')
+          .html(
+            '<table class=\'table table-bordered table-hover\' id=\'term_table_content\'>' +
+            '<thead>' +
+            '<tr bgcolor=\'#EDEDED\'>' +
+            '<th >'+title+' </th>' +
+            '<th >-log<sub>10</sub>(Corrected p-value)</th>' +
+            '<th >Fold Enrichment</th>' +
+            '<th >Observed Ratio (<b><i>B/A</i></b>)</th>' +
+            '<th >Expected Ratio (<b><i>D/C</i></b>)</th>' +     
+            '</tr>' +
+            '</thead >' +
+            '<tbody id=\'term_row\'>' +
+            '</tbody>' +
+            '</table>');
+        let c = "checked"
+        $.each(JSON.parse(data['table_data']), function(key, val) {
+          $('#term_row')
+            .append(
+              '<tr style=\'background-color:#FFD2D2\'>' +
+              // '<tr style=\'background-color:#FFFFBF\'>' +
+              // '<td style=\'text-align:center;\'><input type="checkbox" name="feature" value="'+val['ID']+'" '+c+'></td>' +
+              '<td style=\'text-align:left;\'>' + val['term'] +
+              '</td>' +
+              '<td>' +
+              parseFloat(val['P-value']) +
+              '</td>' +
+              '<td style=\'text-align:left;\'>' + val['Fold_change'] +
+              '</td>' +
+              '<td style=\'text-align:left;\'>' + '<a onclick=\"return false;\" href=\'#\' id=' +
+              String(data['click_column_index']) + '_' +
+              String(val['ID']) + '>' + val['insection_no'] +
+              '</a>'  +' / ' + val['input_no'] + ' ( ' + val['Observed_ratio'] + '% )'+
+              '</td>' +
+              '<td style=\'text-align:left;\'>'+ val['term_no'] +' / '+val['data_no']+ val['Expected_ratio'] +
+              '</td>' +
+              '</tr>'); // row append
+
+         
+          let pvalue_btn = document.getElementById(
+              String(data['click_column_index']) + '_' +
+              String(val['ID']));
+          pvalue_btn.addEventListener('click', function() {
+            $('#modal_title').html("");
+            $('#loading_bar_0').show();
+            
+            $('#block_content').hide();
+            // $('#card_pvalue').hide();
+            // $('#card_gene').hide();
+            // $('#card_data').hide(); 
+            $('#myModal').modal('show');
+            // $('#myModal').hide();
+            // $('#loading_bar_0').show();
+            // $([document.documentElement, document.body]).animate({
+            //     scrollTop: $("#loading_bar_0").offset().top
+            // });    
+            $.ajax({
+              url: '/YMLA/show_block_detail_ajax',
+              type: 'POST',
+              dataType: 'json',
+              data: {
+                'click_block_id': String(data['click_column_index']) +
+                    '_' + String(val['ID']),
+                'feature': data['feature'],
+                'socket_key':data['socket_key'],
+              },
+              success: function(data) {
+                block_detail(data,name_map, quant_feature)
+              }
+            })
+          });
+        })  // each row
+
+        let datatable =$('#term_table_content').DataTable({
+          "order": [[ 1, "desc" ],[ 2, "desc" ]],
+          'bDestroy': true,
+          searching: false, 
+          paging: false, 
+          info: false,
+          dom: 'Bflrtip',
+          buttons: [
+          ],
+        });
+
+        $('[id^=data_]').click(function(event) {
+          let id = event.target.id;
+          $.ajax({
+            url: '/YMLA/show_quant_data',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              'input_index': data['click_column_index'],
+              'feature_index':id.substring(5,id.indexOf("_",6)),
+              'feature': data['feature'],
+              'no_type': id.substring(id.indexOf("_",6)+1),
+              'socket_key':data['socket_key'],
+            },
+            success: function(data) {
+              $('#myModal2').modal('show');
+              $('#unknown_title').html(`${data['title']}`);
+              let table_col = ""
+              // data['raw_data_col'].forEach(element => table_col += '<th>'+element+'</th>')
+              $('#unknown_table').html(data['table_data']);
+
+              // $('#unknown_table')
+              // .html(
+              //     '<table class=\'table table-bordered table-hover\' id="unknown_datatable">' +
+              //     '<thead>' +
+              //     '<tr bgcolor=\'#EDEDED\'>' +
+              //     // "<th >Characteristic</th>"+
+              //     //'<th >Domain name</th>' +
+              //     //'<th >Domain description</th>' +
+              //     //'<th >Source</th>' +
+              //     //'<th >InterPro Entry</th>' +
+              //     table_col+
+              //     // '<th style=\'min-width:120px;\'>Systematic Name</th>' +
+              //     // '<th style=\'min-width:120px;\'>Standard Name</th>' +
+              //     // '<th style=\'min-width:120px;\'>'+data['feature']+'</th>' +
+              //     '</tr>' +
+              //     '</thead >' +
+              //     '<tbody id=\'unknown_list_row\'>' +
+              //     '</tbody>' +
+              //     '</table>');
+              //     $.each(JSON.parse(data['input_data']), function(key, val) {
+              //       let row_content = ""
+              //       for(let i =0 ;i<data['raw_data_col'].length;i++){
+              //         let k = data['raw_data_col'][i];
+              //         row_content += '<td>'+val[k]+'</td>'
+              //       } 
+              //       $('#unknown_list_row')
+              //           .append(
+              //               '<tr >' +
+              //               row_content+ 
+              //               '</tr>');  // append
+              //     })
+              let datatable =$('#unknown_datatable').DataTable({
+                'order': [],
+                // "bSort":false,
+                // "columnDefs": [
+                //    	{ "orderable": false, "targets": [0,1,2]}
+                //  	],
+                'bDestroy': true,
+                dom: 'Bflrtip',
+                // dom: 'B<"clear">lfrtip',
+                buttons: [
+                  {
+                  extend: 'csvHtml5',
+                  title: data['title'].replace(/<[^>]*>/g, ''),
+                  text: '<i class="fa fa-download"></i> Download',
+                  className:'btn btn-secondary',
+                }],
+              });
+              $('#btn_d2').empty();
+              datatable.buttons().container()
+                    .appendTo( '#btn_d2' );
+
+              // $.each(JSON.parse(data['input_filter']), function(key, val) {
+              //   console.log(key)
+              //   console.log(val)
+              //   $('#unknown_list_row')
+              //       .append(
+              //           // '<tr style=\'background-color:#FFFFBF\'>' +
+              //           '<tr>' +
+              //           '<td style=\'text-align:left;\'>' + key +
+              //           '</td>' +
+              //           '<td style=\'text-align:left;\'>' + val +
+              //           '</td>' +
+              //           '</tr>');  // row append
+              //   })
+            }
+          })
+
+          
+        });
+
+        
+        // $('#term_table_content').DataTable().destroy();
+        // $('#term_table_content').DataTable({
+        //   //'order': [],
+        //   // "order": [[ data['col_name'].length, "desc" ]],
+        //   // "bSort":false,
+        //     //"columnDefs": [
+        //           //{ "orderable": true, "targets": -1}
+        //         //],
+        //   'bDestroy': true,
+        //   dom: 'Bflrtip',
+        //   buttons: [{
+        //     extend: 'excelHtml5',
+        //     title: 'Column ' + data['click_column_name'] +
+        //         ' Domain Enrichment Analysis',
+        //     text: 'Download',
+        //   }],
+        // })
+        var name = {};
+        s = JSON.parse(data['volcano_data'])
+
+        s.forEach(element => name[element[0]] = element[2]);
+        
+          Highcharts.chart('container', {
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Volcano Plot'
+            },
+            // subtitle: {
+            //     text: 'Source: Heinz  2003'
+            // },
+            xAxis: {
+                title: {
+                    enabled: true,
+                    text: '<b>Fold Enrichment</b>'
+                },
+                startOnTick: true,
+                endOnTick: true,
+                showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                  useHTML: true,
+                  text: '<b>-log<sub>10</sub> (Corrected P-value)</b>'
+                },
+                plotLines: [{
+                      value: data['cut-off'],
+                      color: 'red',
+                      dashStyle: 'shortdash',
+                      width: 2,
+                      label: {
+                          text: 'Cutoff'
+                      }
+                  }]
+            },
+            legend:{ enabled:false },
+            plotOptions: {
+                scatter: {
+                    marker: {
+                        radius: 5,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                }
+            },
+            tooltip: {
+              enabled: true,
+              shared : true,
+              useHTML: true,
+              formatter: function(){
+                var chart = this.series.chart,
+                  hoveredPoint = this,
+                  result = [];
+
+                chart.series.forEach(function(serie) {
+                  serie.data.forEach(function(point) {
+                    if (point.x === hoveredPoint.x && point.y === hoveredPoint.y) {
+                      result.push(point)
+                    }
+                  })
+                })
+                  
+
+                var str="";
+                if (result.length > 1) {
+                  result.forEach(element => str = str.concat('<span style="color:orange;">'+element['name'] + '</span><br>'));
+                  str = str.concat('-log<sub>10</sub>(Corrected P-value): ' +this.y + '<br>' +'Fold Enrichment: '+this.x+'<br>')
+                  return str;
+                }else{
+                  return '<span style="color:orange;">'+this.point.name + '</span><br>' + '-log<sub>10</sub>(Corrected P-value): ' +this.y + '<br>' +'Fold Enrichment: '+this.x;        
+                                      
+                }
+              }
+            },
+            series: [{
+                name: data['feature'],
+                color: 'rgba(223, 83, 83, .5)',
+                data: JSON.parse(data['volcano_data']),
+              }]
+        });
+      });
+    })
+  }); // document
+</script>
+<script>
+
+  // function ConvertToCSV(objArray) {
+  //             var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+  //             var str = '';
+  
+  //             for (var i = 0; i < array.length; i++) {
+  //                 var line = '';
+  //                 for (var index in array[i]) {
+  //                     if (line != '') line += ','
+  
+  //                     line += array[i][index];
+  //                 }
+  
+  //                 str += line + '\r\n';
+  //             }
+  
+  //             return str;
+  //         }
+  // function JSON2CSV(objArray) {
+  //     var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+  //     var str = '';
+  //     var line = '';
+  
+  //     if ($("#labels").is(':checked')) {
+  //         var head = array[0];
+  //         if ($("#quote").is(':checked')) {
+  //             for (var index in array[0]) {
+  //                 var value = index + "";
+  //                 line += '"' + value.replace(/"/g, '""') + '",';
+  //             }
+  //         } else {
+  //             for (var index in array[0]) {
+  //                 line += index + ',';
+  //             }
+  //         }
+  
+  //         line = line.slice(0, -1);
+  //         str += line + '\r\n';
+  //     }
+  
+  //     for (var i = 0; i < array.length; i++) {
+  //         var line = '';
+  
+  //         if ($("#quote").is(':checked')) {
+  //             for (var index in array[i]) {
+  //                 var value = array[i][index] + "";
+  //                 line += '"' + value.replace(/"/g, '""') + '",';
+  //             }
+  //         } else {
+  //             for (var index in array[i]) {
+  //                 line += array[i][index] + ',';
+  //             }
+  //         }
+  
+  //         line = line.slice(0, -1);
+  //         str += line + '\r\n';
+  //     }
+  //     return str;
+  // }
+</script>
+ 
+</html>
+{% endblock %}

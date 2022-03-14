@@ -1,0 +1,204 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 100%}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      {% comment %}background-color: #f1f1f1;{% endcomment %}
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    {% comment %}footer {{% endcomment %}
+      {% comment %}background-color: #555;{% endcomment %}
+      {% comment %}color: white;{% endcomment %}
+      {% comment %}padding: 15px;{% endcomment %}
+    {% comment %}}{% endcomment %}
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    {% comment %}<div class="col-sm-8 text-left"> {% endcomment %}
+    <div class="col-sm-8 mx-auto"> 
+      <h3>Test</h3>
+      <table class="table table-hover">
+  <thead>
+    <tr class="table-secondary">
+      <th scope="col">Feature</th>
+      <th scope="col">Data collated from feature</th>
+      <th scope="col">Data cleaned from SGD</th>
+      <th scope="col">Source</th>
+      <th scope="col">Source Last Modified</th>
+      {% comment %}<th scope="col"><a href="http://sgd-archive.yeastgenome.org/curation/literature/">SGD Source</a> Last Modified</th>{% endcomment %}
+    </tr>
+  </thead>
+  <tbody>
+      <tr> 
+      <th scope="row">Yeast Gene</th>
+      <td><a href="{% static 'data/gene_7194.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>gene_7194.csv</a>
+</td>
+      <td><a href="{% static 'data/yeast_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>yeast_data.csv</a></td>
+      <td><a href="https://yeastmine.yeastgenome.org/yeastmine/template.do?name=FeatureType_SequenceFeature&scope=all">YeastMine Feature</a></td>
+      <td> 2021-08-18</td>
+    </tr>
+    <tr >
+      <th scope="row">Protein Domain</th>
+      <td><a href="{% static 'data/protein_domain/protein_domain_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>protein_domain_map_id.csv</a>
+</td>
+      <td><a href="{% static 'data/protein_domain/protein_domain_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>protein_domain_data.csv</a></td>
+      <td><a href="http://sgd-archive.yeastgenome.org/curation/calculated_protein_info/domains/archive/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/calculated_protein_info/domains/archive/domains_20210422.tab.gz">domains_20210422.tab.gz</a></td>
+      <td>2021-04-23</td>
+    </tr>
+    <tr>
+      <th scope="row">Phenotype</th>
+      <td><a href="{% static 'data/phenotype/phenotype_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>phenotype_map_id.csv</a>
+</td>
+      <td><a href="{% static 'data/phenotype/phenotype_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>phenotype_data.csv</a></td>
+      <td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/phenotype_data.tab">phenotype_data.tab</a></td>
+      <td>2019-10-25</td>
+    </tr>
+    <tr >
+      <th scope="row">Regulator</th>
+      <td><a href="{% static 'data/regulator/regulator_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>regulator_map_id.csv</a>
+</td>
+      <td><a href="{% static 'data/regulator/regulator_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>regulator_data.csv</a></td>
+      <td><a href="https://yeastmine.yeastgenome.org/yeastmine/results.do?trail=%257Cquery">All_Regulator</a>, <a href="https://yeastmine.yeastgenome.org/yeastmine/template.do?name=GeneFactor_GeneTarget&scope=all">Regulator_to_Target</a></td>
+      <td>2021-08-26</td>
+    </tr>
+    <tr >
+      <th scope="row">Go Protein Complex Slim</th>
+      <td><a href="{% static 'data/complex/complex_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>complex_map_id.csv</a>
+</td>
+      <td><a href="{% static 'data/complex/complex_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>complex_data.csv</a></td>
+      <td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/go_protein_complex_slim.tab">go_protein_complex_slim.tab</a></td>
+      <td>2019-10-25</td>
+    </tr>
+    <tr >
+      <th scope="row">Interaction</th>
+      <td><a href="{% static 'data/physical_interaction/physical_interaction_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>physical_interaction_map_id.csv</a><br><a href="{% static 'data/genetic_interaction/genetic_interaction_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>genetic_interaction_map_id.csv</a>
+</td>
+<td><a href="{% static 'data/physical_interaction/physical_interaction_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>physical_interaction_data.csv</a><br><a href="{% static 'data/genetic_interaction/genetic_interaction_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>genetic_interaction_data.csv</a></td>
+      <td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/interaction_data.tab">interaction_data.tab</a></td>
+      <td>2019-10-25</td>
+    </tr>
+    <tr >
+      {% comment %}<th scope="row">Genetic Interaction</th>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/genetic_interaction/genetic_interaction_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>genetic_interaction_map_id.csv</a>{% endcomment %}
+{% comment %}</td>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/genetic_interaction/genetic_interaction_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>genetic_interaction_data.csv</a></td>{% endcomment %}
+      {% comment %}<td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/interaction_data.tab">interaction_data.tab</a></td>{% endcomment %}
+      {% comment %}<td>2019-10-25</td>{% endcomment %}
+    </tr>
+    <tr >
+      <th scope="row">Biochemical Pathways</th>
+      <td><a href="{% static 'data/pathway/pathway_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>pathway_map_id.csv</a>
+</td>
+      <td><a href="{% static 'data/pathway/pathway_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>pathway_data.csv</a></td>
+      <td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/interaction_data.tab">biochemical_pathways.tab</a></td>
+      <td>2019-10-25</td>
+    </tr>
+    <tr >
+      <th scope="row">disease</th>
+      <td><a href="{% static 'data/disease/disease_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>disease_map_id.csv</a>
+</td>
+      <td><a href="{% static 'data/disease/disease_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>disease_data.csv</a></td>
+      <td><a href="https://yeastmine.yeastgenome.org/yeastmine/template.do?name=Gene_DOTerm&scope=all">Gene to DO Terms</a></td>
+      <td>2021-09-09</td>
+    </tr>
+    <tr >
+      <th scope="row">Go Slim Mapping</th>
+      <td ><a href="{% static 'data/go_slim_c/go_slim_c_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_c_map_id.csv</a><br><a href="{% static 'data/go_slim_f/go_slim_f_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_f_map_id.csv</a><br><a href="{% static 'data/go_slim_p/go_slim_p_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_p_map_id.csv</a>
+</td>
+<td ><a href="{% static 'data/go_slim_c/go_slim_c_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_c_data.csv</a><br><a href="{% static 'data/go_slim_f/go_slim_f_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_f_data.csv</a><br><a href="{% static 'data/go_slim_p/go_slim_p_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_p_data.csv</a></td>
+<td ><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/go_slim_mapping.tab">go_slim_mapping.tab</a></td>
+      <td >2019-10-25</td>
+    </tr>
+    <tr >
+      {% comment %}<th scope="row">Go Slim Aspect: C</th>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/go_slim_c/go_slim_c_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_c_map_id.csv</a>{% endcomment %}
+{% comment %}</td>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/go_slim_c/go_slim_c_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_c_data.csv</a></td>{% endcomment %}
+      {% comment %}<td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/go_slim_mapping.tab">go_slim_mapping.tab</a></td>{% endcomment %}
+      {% comment %}<td>2019-10-25</td>{% endcomment %}
+    {% comment %}</tr>{% endcomment %}
+    {% comment %}<tr >{% endcomment %}
+      {% comment %}<th scope="row">Go Slim Aspect: F</th>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/go_slim_f/go_slim_f_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_f_map_id.csv</a>{% endcomment %}
+{% comment %}</td>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/go_slim_f/go_slim_f_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_f_data.csv</a></td>{% endcomment %}
+      {% comment %}<td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/go_slim_mapping.tab">go_slim_mapping.tab</a></td>{% endcomment %}
+      {% comment %}<td>2019-10-25</td>{% endcomment %}
+    {% comment %}</tr>{% endcomment %}
+    {% comment %}<tr >{% endcomment %}
+      {% comment %}<th scope="row">Go Slim Aspect: P</th>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/go_slim_p/go_slim_p_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_p_map_id.csv</a>{% endcomment %}
+{% comment %}</td>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/go_slim_p/go_slim_p_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>go_slim_p_data.csv</a></td>{% endcomment %}
+      {% comment %}<td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/go_slim_mapping.tab">go_slim_mapping.tab</a></td>{% endcomment %}
+      {% comment %}<td>2019-10-25</td>{% endcomment %}
+    {% comment %}</tr>{% endcomment %}
+    <tr >
+      <th scope="row">Gene Association</th>
+      <td ><a href="{% static 'data/association_c/association_c_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_c_map_id.csv</a><br><a href="{% static 'data/association_f/association_f_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_f_map_id.csv</a><br><a href="{% static 'data/association_p/association_p_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_p_map_id.csv</a>
+</td>
+<td ><a href="{% static 'data/association_c/association_c_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_c_data.csv</a><br><a href="{% static 'data/association_f/association_f_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_f_data.csv</a><br><a href="{% static 'data/association_p/association_p_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_p_data.csv</a></td>
+      <td ><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/gene_association.sgd.gaf.gz">gene_association.sgd.gaf.gz</a></td>
+      <td >2021-10-12</td>
+    </tr>
+    <tr >
+      {% comment %}<th scope="row">Go Association Aspect: F</th>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/association_f/association_f_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_f_map_id.csv</a>{% endcomment %}
+{% comment %}</td>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/association_f/association_f_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_f_data.csv</a></td>{% endcomment %}
+      {% comment %}<td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/gene_association.sgd.gaf.gz">gene_association.sgd.gaf.gz</a></td>{% endcomment %}
+      {% comment %}<td>2021-10-12</td>{% endcomment %}
+    {% comment %}</tr>{% endcomment %}
+    {% comment %}<tr >{% endcomment %}
+      {% comment %}<th scope="row">Go Association Aspect: P</th>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/association_p/association_p_map_id.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_p_map_id.csv</a>{% endcomment %}
+{% comment %}</td>{% endcomment %}
+      {% comment %}<td><a href="{% static 'data/association_p/association_p_data.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>association_p_data.csv</a></td>{% endcomment %}
+      {% comment %}<td><a href="http://sgd-archive.yeastgenome.org/curation/literature/">sgd-archive</a>-><a href="http://sgd-archive.yeastgenome.org/curation/literature/gene_association.sgd.gaf.gz">gene_association.sgd.gaf.gz</a></td>{% endcomment %}
+      {% comment %}<td>2021-10-12</td>{% endcomment %}
+    {% comment %}</tr>{% endcomment %}
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

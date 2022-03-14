@@ -1,0 +1,352 @@
+disease,count,Systematic Name
+Aicardi-Goutieres syndrome,1,['YLR154C']
+Alpers-Huttenlocher syndrome,1,['YOR330C']
+Alzheimer's disease,7,"['YDL042C', 'YDR430C', 'YGL048C', 'YHR007C', 'YHR008C', 'YML124C', 'YPL204W']"
+Baller-Gerold syndrome,1,['YDR291W']
+Bardet-Biedl syndrome 10,1,['YJR064W']
+Barth syndrome,1,['YPR140W']
+Behr syndrome,1,['YOR211C']
+Bloom syndrome,2,"['YHR164C', 'YMR190C']"
+Bowen-Conradi syndrome,1,['YLR186W']
+Burn-McKeown syndrome,1,['YPR082C']
+Charcot-Marie-Tooth disease,3,"['Q0085', 'YJR110W', 'YOR335C']"
+Charcot-Marie-Tooth disease type 2A2B,1,['YBR179C']
+Charcot-Marie-Tooth disease type 2D,1,['YBR121C']
+Charcot-Marie-Tooth disease type 4J,1,['YNL325C']
+"Charcot-Marie-Tooth disease, axonal type 2W",1,['YPR033C']
+Cockayne syndrome,2,"['YER171W', 'YGR258C']"
+Cornelia de Lange syndrome,1,['YDL003W']
+Costello syndrome,1,['YOR101W']
+Diamond-Blackfan anemia,1,['YPL143W']
+Down syndrome,1,['YPL177C']
+Dyggve-Melchior-Clausen disease,1,['YFL005W']
+Ewing sarcoma,2,"['YNL293W', 'YOL112W']"
+Fanconi anemia,1,['YPL022W']
+Friedreich ataxia,1,['YDL120W']
+Gamstorp-Wohlfart syndrome,1,['YDL125C']
+Griscelli syndrome type 1,1,['YAL029C']
+Hailey-Hailey disease,2,"['YGL006W', 'YGL167C']"
+Huntington's disease,4,"['YDR129C', 'YDR519W', 'YMR161W', 'YOL049W']"
+Kufor-Rakeb syndrome,1,['YOR291W']
+Leber congenital amaurosis,1,['YOR246C']
+Leber hereditary optic neuropathy,1,['YML120C']
+Leigh disease,4,"['Q0085', 'YDR470C', 'YJL046W', 'YKL148C']"
+Liddle syndrome,1,['YER125W']
+Loeys-Dietz syndrome,1,['YLR350W']
+Lynch syndrome,1,['YOL090W']
+MEHMO syndrome,1,['YER025W']
+MELAS syndrome,1,['YGL136C']
+MERRF syndrome,1,['YDL033C']
+Marinesco-Sjogren syndrome,1,['YOL031C']
+McCune Albright syndrome,1,['YHR005C']
+Meier-Gorlin syndrome,5,"['YHR118C', 'YLR103C', 'YLR274W', 'YML065W', 'YPR162C']"
+Menkes disease,2,"['YDR270W', 'YPR124W']"
+Moyamoya disease,1,['YFL039C']
+NARP syndrome,1,['Q0085']
+Niemann-Pick disease,2,"['YDL046W', 'YPL006W']"
+Ogden syndrome,1,['YHR013C']
+Parkinson's disease,7,"['YDL042C', 'YDR533C', 'YGR162W', 'YHR008C', 'YJL154C', 'YJR045C', 'YNL169C']"
+Perrault syndrome,1,['YLR382C']
+Pick's disease,1,['YFL037W']
+Riley-Day syndrome,1,['YLR384C']
+Roberts syndrome,1,['YDL003W']
+Rothmund-Thomson syndrome,1,['YDR291W']
+Seckel syndrome,1,['YDR165W']
+Shwachman-Diamond syndrome,1,['YLR022C']
+Sjogren-Larsson syndrome,3,"['YMR110C', 'YMR246W', 'YOR317W']"
+Smith-McCort dysplasia,1,['YFL005W']
+T-cell acute lymphoblastic leukemia,1,['YLR075W']
+Treacher Collins syndrome,2,"['YNL113W', 'YPR110C']"
+Walker-Warburg syndrome,1,['YJR143C']
+Werner syndrome,2,"['YHR164C', 'YMR190C']"
+West syndrome,1,['YLR289W']
+Wilson disease,1,['YDR270W']
+Wiskott-Aldrich syndrome,1,['YOR181W']
+Wolff-Parkinson-White syndrome,1,['YGL115W']
+X-linked myopathy with excessive autophagy,1,['YGR105W']
+X-linked spondyloepiphyseal dysplasia tarda,1,['YBR254C']
+abdominal obesity-metabolic syndrome,1,['YNL112W']
+acute leukemia,1,['YPL177C']
+acute lymphoblastic leukemia,1,['YPL177C']
+acute myeloid leukemia,3,"['YGL092W', 'YHR165C', 'YNL088W']"
+acute promyelocytic leukemia,2,"['YIL031W', 'YPL177C']"
+adenocarcinoma,1,['YCR075C']
+adrenoleukodystrophy,2,"['YKL188C', 'YPL147W']"
+advanced sleep phase syndrome,1,['YPL204W']
+alpha 1-antitrypsin deficiency,1,['YOL013C']
+amino acid metabolic disorder,1,['YIL078W']
+amyotrophic lateral sclerosis,5,"['YGL048C', 'YJR104C', 'YMR038C', 'YOR122C', 'YOR291W']"
+amyotrophic lateral sclerosis type 4,1,['YLR430W']
+asthma,1,['YLR350W']
+ataxia telangiectasia,2,"['YBL088C', 'YBR136W']"
+ataxia with oculomotor apraxia type 2,1,['YLR430W']
+auditory system disease,1,['YDR376W']
+autism spectrum disorder,5,"['YDL040C', 'YMR212C', 'YNR026C', 'YOL139C', 'YPL126W']"
+autistic disorder,1,['YLR075W']
+autosomal dominant cerebellar ataxia,1,['Q0085']
+autosomal dominant limb-girdle muscular dystrophy type 1,1,['YNL007C']
+autosomal dominant limb-girdle muscular dystrophy type 3,1,['YOL123W']
+autosomal dominant macrothrombocytopenia TUBB1-related,1,['YFL037W']
+autosomal dominant nonsyndromic deafness 20,1,['YFL039C']
+autosomal dominant polycystic kidney disease,1,['YGR029W']
+autosomal dominant progressive external ophthalmoplegia with mitochondrial DNA deletions 2,1,['YBL030C']
+autosomal recessive centronuclear myopathy,1,['YGR029W']
+autosomal recessive cerebellar ataxia,1,['YGR024C']
+autosomal recessive nonsyndromic deafness 32,1,['YFR028C']
+autosomal recessive spinocerebellar ataxia 20,1,['YML104C']
+autosomal recessive spinocerebellar ataxia 25,1,['YPL149W']
+axonal neuropathy,1,['YOR335C']
+azoospermia,1,['YDR054C']
+bipolar disorder,1,['YDL028C']
+bone disease,1,['YDR481C']
+brachydactyly type A2,1,['YDL108W']
+brain disease,1,['YPL204W']
+brain ischemia,1,['YFL037W']
+breast cancer,11,"['Q0085', 'YBR135W', 'YDL108W', 'YEL061C', 'YGL238W', 'YGR270W', 'YKL053C-A', 'YML124C', 'YOL090W', 'YPL120W', 'YPL153C']"
+calcinosis,1,['YDR481C']
+cancer,78,"['YBL020W', 'YBR002C', 'YBR029C', 'YBR109C', 'YBR159W', 'YBR160W', 'YBR252W', 'YCR012W', 'YCR092C', 'YDL045C', 'YDL064W', 'YDL120W', 'YDL147W', 'YDL164C', 'YDL205C', 'YDR050C', 'YDR086C', 'YDR097C', 'YDR208W', 'YDR236C', 'YDR404C', 'YDR454C', 'YDR510W', 'YEL026W', 'YEL058W', 'YEL062W', 'YER094C', 'YER112W', 'YER133W', 'YER136W', 'YFL017C', 'YGL001C', 'YGL030W', 'YGL048C', 'YGR024C', 'YGR075C', 'YGR175C', 'YGR185C', 'YGR277C', 'YGR280C', 'YHL023C', 'YHR008C', 'YHR043C', 'YIL083C', 'YIL144W', 'YJL097W', 'YJR006W', 'YJR043C', 'YJR138W', 'YKL013C', 'YKL024C', 'YKL033W', 'YKL035W', 'YKL049C', 'YKL113C', 'YKL145W', 'YKL189W', 'YML061C', 'YML069W', 'YML077W', 'YMR208W', 'YMR308C', 'YMR314W', 'YNL061W', 'YNL088W', 'YNL112W', 'YNL293W', 'YOL090W', 'YOL133W', 'YOR143C', 'YOR149C', 'YOR176W', 'YOR236W', 'YPL117C', 'YPL177C', 'YPL204W', 'YPR082C', 'YPR113W']"
+carcinoma,2,"['YCR075C', 'YDR481C']"
+cardiomyopathy,2,"['YKL148C', 'YMR244C-A']"
+central nervous system disease,1,['YLR304C']
+centronuclear myopathy X-linked,1,['YJR110W']
+cerebellar ataxia,1,['YOR335C']
+"cerebellar ataxia, mental retardation and dysequlibrium syndrome",1,['YFL037W']
+cerebellofaciodental syndrome,1,['YGR246C']
+cerebrovascular disease,1,['YAL029C']
+childhood onset epileptic encephalopathy,1,['YLR348C']
+choriocarcinoma,1,['YDR481C']
+chronic myeloid leukemia,1,['YPL177C']
+chronic progressive external ophthalmoplegia,1,['YOR330C']
+chylomicron retention disease,1,['YPL218W']
+citrullinemia,1,['YPR021C']
+cleft palate,1,['YGR048W']
+cleidocranial dysplasia,1,['YDR481C']
+coenzyme Q10 deficiency disease,5,"['YDR204W', 'YGL119W', 'YLR201C', 'YML110C', 'YNR041C']"
+colon cancer,1,['YCR075C']
+colorectal adenocarcinoma,1,['YPR024W']
+colorectal cancer,11,"['YCR075C', 'YDL102W', 'YEL061C', 'YER095W', 'YFL038C', 'YGR246C', 'YMR167W', 'YNL098C', 'YNL262W', 'YOR056C', 'YOR101W']"
+colorectal carcinoma,2,"['YDR097C', 'YFR028C']"
+common bile duct disease,1,['YPR021C']
+complex cortical dysplasia with other brain malformations 1,1,['YFL037W']
+complex cortical dysplasia with other brain malformations 4,1,['YLR212C']
+complex cortical dysplasia with other brain malformations 7,1,['YFL037W']
+congenital disorder of glycosylation,3,"['YBL082C', 'YBR110W', 'YDL193W']"
+congenital disorder of glycosylation Id,1,['YBL082C']
+congenital disorder of glycosylation Ik,1,['YBR110W']
+congenital disorder of glycosylation type I,9,"['YBL020W', 'YBR110W', 'YIL049W', 'YMR013C', 'YNL219C', 'YNR030W', 'YOR002W', 'YOR067C', 'YPL227C']"
+congenital disorder of glycosylation type II,1,['YBR187W']
+congenital disorder of glycosylation type IIj,1,['YCR075C']
+congenital disorder of glycosylation type IIo,1,['YHR060W']
+congenital disorder of glycosylation type IIp,1,['YKL119C']
+congenital fibrosis of the extraocular muscles,1,['YFL037W']
+congenital generalized lipodystrophy,1,['YLR404W']
+congenital heart disease,2,"['YDL040C', 'YDR054C']"
+congenital nonspherocytic hemolytic anemia,1,['YNL241C']
+cranioectodermal dysplasia,1,['YNR026C']
+cryptorchidism,1,['YDR481C']
+cystic fibrosis,2,"['YGR281W', 'YHR204W']"
+cystinosis,2,"['YCR075C', 'YFL029C']"
+cytochrome-c oxidase deficiency disease,3,"['YHR070W', 'YMR244C-A', 'YPL172C']"
+deafness-dystonia-optic neuronopathy syndrome,2,"['YGR181W', 'YJR135W-A']"
+dermatomyositis,1,['YOR335C']
+developmental and epileptic encephalopathy 38,1,['YLR242C']
+developmental and epileptic encephalopathy 51,1,['YKL085W']
+developmental cardiac valvular defect,1,['YKR031C']
+diabetes insipidus,1,['YBL068W']
+diabetes mellitus,1,['YDL042C']
+dilated cardiomyopathy,3,"['YBR118W', 'YIL083C', 'YMR267W']"
+disease of metabolism,3,"['YDR374C', 'YFL018C', 'YHR037W']"
+dominant optic atrophy plus syndrome,1,['YOR211C']
+dystonia,1,['YGR267C']
+early infantile epileptic encephalopathy,2,"['YNL037C', 'YOR136W']"
+embryonal carcinoma,1,['YDR481C']
+encephalitis,1,['YFL029C']
+encephalopathy due to defective mitochondrial and peroxisomal fission 1,1,['YLL001W']
+endometrial cancer,3,"['YDL102W', 'YNL262W', 'YPR019W']"
+epilepsy,1,['YBR118W']
+erythrokeratodermia variabilis et progressiva 4,1,['YBR265W']
+essential hypertension,1,['YDL108W']
+facial paralysis,1,['YFL037W']
+familial adenomatous polyposis,1,['YPL204W']
+familial hyperinsulinemic hypoglycemia 7,1,['YCR075C']
+fatty liver disease,1,['YHL003C']
+follicular lymphoma,1,['YGR163W']
+fundus dystrophy,1,['YBL068W']
+galactosemia,2,"['YBR018C', 'YBR019C']"
+gastrointestinal stromal tumor,1,['YKL148C']
+gastrointestinal system cancer,1,['YLR032W']
+germ cell cancer,1,['YDR481C']
+germinoma,1,['YDR481C']
+glucose metabolism disease,1,['YOL093W']
+glycine encephalopathy,1,['YLR239C']
+glycogen storage disease,2,"['YGR240C', 'YMR205C']"
+glycogen storage disease IV,1,['YEL011W']
+gonadoblastoma,1,['YDR481C']
+gynecomastia,1,['YBR159W']
+gyrate atrophy,1,['YLR438W']
+hepatocellular carcinoma,1,['YHL003C']
+hereditary ataxia,1,['YDR430C']
+hereditary nonpolyposis colorectal cancer type 7,1,['YPL164C']
+hereditary spastic paraplegia,4,"['YDR394W', 'YER017C', 'YMR089C', 'YOR291W']"
+hereditary spastic paraplegia 28,1,['YOR022C']
+hereditary spastic paraplegia 54,1,['YOR022C']
+high grade glioma,2,"['YDL066W', 'YLR174W']"
+homocystinuria,1,['YGR155W']
+hypercalcemia,1,['YHR070W']
+hyperglycemia,1,['YJR048W']
+hyperhomocysteinemia,1,['YER043C']
+hypertrophic cardiomyopathy,3,"['YDR178W', 'YHR070W', 'YMR092C']"
+hypoglycemia,2,"['YCR075C', 'YDL108W']"
+hypomyelinating leukodystrophy 12,1,['YMR231W']
+hypophosphatasia,1,['YDR481C']
+ichthyosis,1,['YLR099C']
+inclusion body myopathy with Paget disease of bone and frontotemporal dementia,2,"['YDL126C', 'YGL048C']"
+infantile cerebral and cerebellar atrophy with postnatal progressive microcephaly,1,['YER022W']
+infantile hypertrophic cardiomyopathy,1,['YKR079C']
+infantile hypophosphatasia,1,['YDR481C']
+inflammatory bowel disease,1,['YDR049W']
+intellectual disability,4,"['YDL040C', 'YFL029C', 'YNR026C', 'YOR243C']"
+intrahepatic cholestasis,1,['YPR021C']
+iron metabolism disease,1,['YDL120W']
+ischemia,1,['YCR075C']
+keratosis follicularis spinulosa decalvans,1,['YFL017C']
+lactic acidosis,2,"['YDR493W', 'YHR070W']"
+leiomyomatosis,1,['YPL262W']
+lethal congenital contracture syndrome 1,1,['YDL207W']
+lethal congenital glycogen storage disease of heart,1,['YGL115W']
+leukemia,2,"['YML124C', 'YPL177C']"
+leukodystrophy,6,"['YBR183W', 'YER025W', 'YJR007W', 'YKL148C', 'YPL087W', 'YPL237W']"
+leukoencephalopathy with vanishing white matter,4,"['YDR211W', 'YGR083C', 'YKR026C', 'YLR291C']"
+lipid metabolism disorder,3,"['YKR009C', 'YMR165C', 'YOR100C']"
+lipid storage disease,1,['YLR242C']
+lissencephaly,3,"['YML124C', 'YPL031C', 'YPL126W']"
+liver cancer,1,['YBR135W']
+liver cirrhosis,1,['YDR324C']
+lung cancer,3,"['YBR135W', 'YEL061C', 'YOR274W']"
+lung carcinoma,1,['YML124C']
+lung non-small cell carcinoma,1,['YFL037W']
+male infertility,1,['YKL049C']
+malignant astrocytoma,1,['YFL037W']
+megaloblastic anemia,1,['YLR237W']
+melanoma,4,"['YAL029C', 'YCR075C', 'YGL116W', 'YML077W']"
+meningioma,1,['YDR481C']
+mevalonic aciduria,1,['YMR208W']
+microcephaly,1,['YOR243C']
+microphthalmia,1,['YAL039C']
+microvillus inclusion disease,1,['YAL029C']
+mitochondrial DNA depletion syndrome,1,['YLR348C']
+mitochondrial DNA depletion syndrome 14,1,['YOR211C']
+mitochondrial DNA depletion syndrome 3,1,['YLR251W']
+mitochondrial complex I deficiency,4,"['YHR070W', 'YKL195W', 'YKR079C', 'YLR348C']"
+mitochondrial complex II deficiency,4,"['YDR178W', 'YDR379C-A', 'YDR511W', 'YKL148C']"
+mitochondrial complex III deficiency,2,"['YDR493W', 'YHR070W']"
+mitochondrial complex III deficiency nuclear type 1,1,['YDR375C']
+mitochondrial complex III deficiency nuclear type 8,1,['YDR493W']
+mitochondrial complex V (ATP synthase) deficiency nuclear type 3,1,['YPL271W']
+"mitochondrial complex V (ATP synthase) deficiency, nuclear type 1",1,['YJL180C']
+mitochondrial encephalomyopathy,2,"['YGR094W', 'YLL041C']"
+mitochondrial metabolism disease,8,"['YER053C', 'YGL080W', 'YGR094W', 'YKL055C', 'YLR251W', 'YLR382C', 'YPL040C', 'YPR024W']"
+mitochondrial myopathy,3,"['YHR070W', 'YOR226C', 'YPL135W']"
+multiple acyl-CoA dehydrogenase deficiency,1,['YIL134W']
+multiple mitochondrial dysfunctions syndrome 6,1,['YLR163C']
+multiple system atrophy,1,['YNR041C']
+myelodysplastic syndrome,2,"['YHR165C', 'YMR288W']"
+myeloid leukemia,1,['YPL177C']
+myocarditis,1,['YMR267W']
+myoglobinuria,1,['YMR165C']
+myopathy,1,['YGL048C']
+myotonic dystrophy type 2,1,['YNL255C']
+nemaline myopathy 7,1,['YCR075C']
+nephrotic syndrome,1,['YGR255C']
+nephrotic syndrome type 9,1,['YGL119W']
+neurilemmomatosis,1,['YGR255C']
+neurodegenerative disease,4,"['YKL148C', 'YLR304C', 'YOR042W', 'YPL204W']"
+neurofibromatosis,2,"['YBR140C', 'YOL081W']"
+neurofibromatosis 1,2,"['YBR140C', 'YOL081W']"
+neuronal ceroid lipofuscinosis,1,['YOR291W']
+neuronal ceroid lipofuscinosis 3,2,"['YJL059W', 'YLR022C']"
+neutral lipid storage disease,1,['YLR099C']
+non-syndromic X-linked intellectual disability,2,"['YBR061C', 'YMR259C']"
+non-syndromic intellectual disability,1,['YDL015C']
+nonsyndromic deafness,1,['YGL236C']
+oligohydramnios,1,['YDL148C']
+oligospermia,1,['YKL049C']
+optic atrophy,1,['YDR376W']
+optic atrophy 1,1,['YOR211C']
+optic nerve disease,1,['YLR304C']
+ornithine translocase deficiency,1,['YOR130C']
+osteoblastoma,1,['YML124C']
+osteochondrodysplasia,1,['YJL104W']
+osteomalacia,1,['YDR481C']
+osteosarcoma,1,['YDR481C']
+ovarian cancer,2,"['YFL037W', 'YOL090W']"
+ovary epithelial cancer,1,['YNL138W']
+pancreatic cancer,1,['YBR279W']
+paraganglioma,6,"['YDR178W', 'YDR511W', 'YKL148C', 'YLL041C', 'YLR164W', 'YOL071W']"
+parathyroid carcinoma,1,['Q0085']
+patent ductus arteriosus,1,['YFL039C']
+peripheral nervous system disease,1,['YOR330C']
+peroxisomal biogenesis disorder,2,"['YKL197C', 'YNL329C']"
+peroxisomal disease,1,['YLR191W']
+pheochromocytoma,2,"['YDR511W', 'YKL148C']"
+photosensitive trichothiodystrophy,1,['YER171W']
+pituitary adenoma,1,['YKL148C']
+polycystic kidney disease,1,['YBR159W']
+pontocerebellar hypoplasia,2,"['YML035C', 'YOR250C']"
+pontocerebellar hypoplasia type 1B,1,['YOL142W']
+pontocerebellar hypoplasia type 2E,1,['YJL029C']
+pontocerebellar hypoplasia type 6,1,['YHR091C']
+porphyria cutanea tarda,1,['YDR047W']
+primary biliary cholangitis,1,['YDR481C']
+primary cerebellar degeneration,1,['YDR430C']
+primary coenzyme Q10 deficiency 1,1,['YNR041C']
+primary coenzyme Q10 deficiency 4,1,['YGL119W']
+primary coenzyme Q10 deficiency 6,1,['YGR255C']
+primary congenital glaucoma,1,['YDL108W']
+primary hyperoxaluria,1,['YFL030W']
+primary hypomagnesemia,2,"['YKR038C', 'YOL130W']"
+prion disease,1,['YFR010W']
+progeria,3,"['YJR117W', 'YML061C', 'YOR330C']"
+progressive familial intrahepatic cholestasis,1,['YDR093W']
+progressive myoclonus epilepsy 6,1,['YLR078C']
+prostate cancer,7,"['Q0085', 'YDL042C', 'YEL061C', 'YFL037W', 'YGR270W', 'YHR007C', 'YHR165C']"
+proteinuria,1,['YKR038C']
+pseudohermaphroditism,1,['YBR159W']
+ptosis,1,['YFL037W']
+pulmonary alveolar proteinosis,1,['YGR264C']
+rapadilino syndrome,1,['YDR291W']
+renal carcinoma,1,['YPR161C']
+renal tubular acidosis,3,"['YBR127C', 'YNL142W', 'YOR270C']"
+restless legs syndrome,1,['YPL177C']
+retinitis pigmentosa,5,"['YDR376W', 'YER172C', 'YGR091W', 'YKR086W', 'YPL241C']"
+retinitis pigmentosa 33,1,['YER172C']
+rickets,1,['YDR481C']
+seminoma,1,['YDR481C']
+sideroblastic anemia,2,"['YDL119C', 'YER168C']"
+sleeping sickness,1,['YGL142C']
+spinal muscular atrophy,1,['YDR270W']
+spinocerebellar ataxia type 1 with axonal neuropathy,1,['YBR223C']
+spinocerebellar ataxia type 28,2,"['YER017C', 'YMR089C']"
+spinocerebellar ataxia type 7,1,['YGL066W']
+spondyloepiphyseal dysplasia congenita,2,"['YBR254C', 'YLR075W']"
+steroid inherited metabolic disorder,1,['YLR100W']
+subcortical band heterotopia,1,['YPL126W']
+substance dependence,1,['YPL177C']
+syndromic X-linked intellectual disability Najm type,2,"['YLR075W', 'YPL204W']"
+thoracic aortic aneurysm,1,['YFL039C']
+thrombocytopenia,1,['YJR048W']
+thyroid gland Hurthle cell carcinoma,1,['YIL022W']
+thyroid gland cancer,1,['Q0085']
+thyroid gland papillary carcinoma,1,['YOR294W']
+trichohepatoenteric syndrome 1,1,['YPR189W']
+triosephosphate isomerase deficiency,1,['YDR050C']
+triple-receptor negative breast cancer,1,['YGL180W']
+type 2 diabetes mellitus,3,"['YDL108W', 'YHL003C', 'YJR117W']"
+ulcerative colitis,1,['YPR165W']
+urinary bladder cancer,1,['YOR101W']
+uterine cancer,1,['YEL061C']
+uveal melanoma,1,['YMR260C']
+vascular disease,1,['YFR028C']
+vitiligo,1,['YER156C']
+xeroderma pigmentosum,3,"['YDR419W', 'YER171W', 'YGR258C']"
+xeroderma pigmentosum group A,1,['YMR201C']

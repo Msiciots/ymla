@@ -1,0 +1,9 @@
+{
+    "gene_length": ["CDS Length","5'UTR Length","3'UTR Length","Protein Length"],
+    "half_life":["mRNA Half-life","Protein Half-life"],
+    "gene_expression_nc":["mRNA Level_D1","mRNA Level_D2","mRNA Level_D3","Protein Abundance_D1","Protein Abundance_D2"],
+    "codon":["Translational Efficiency_D1","Translational Efficiency_D2","Translational Efficiency_D3","Translational Efficiency_D4","Codon Bias","Codon Adaptation Index","Frequency of Optimal Codons","Hydropathicity of Protein","Aromaticity Score"],
+    "protein_physical":["Protein Length","Molecular Weight","Isoelectric Point","Aliphatic Index","Instability Index"],
+    "plasticity":["Transcriptional Plasticity"],
+    "isoform":["mRNA Isoform Number"]
+}

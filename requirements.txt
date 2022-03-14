@@ -1,0 +1,9 @@
+Django
+#Django==3.2.6
+pandas
+numpy
+scipy
+statsmodels
+openpyxl
+#channels
+#channels-redis

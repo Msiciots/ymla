@@ -1,0 +1,702 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <!-- Responsive Web Design -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Heatmap</title>
+
+<!-- make table content text align center -->
+<style>
+table,
+thead,
+tr,
+tbody,
+th,
+td {
+    text-align: center;
+}
+
+.table td {
+   text-align: center;   
+}
+/* body.wait *, body.wait
+{
+    cursor: progress !important;
+} */
+pre.bash {
+  /* background-color: #f5f5f5;
+  color: #333;
+  background-color: #2b3137;
+  color: #fafbfc */
+  background-color: #EDEDED;
+  color: #2b3137;
+  font-size: 26px ; 
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+  width: 100%;
+  display: inline-block;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+/* #slider-div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+  }
+  
+#slider-div>div {
+  margin: 8px;
+}
+
+.slider-label {
+  position: absolute;
+  background-color: #eee;
+  padding: 4px;
+  font-size: 0.75rem;
+} */
+</style>
+</head>
+<body>
+  {% csrf_token %}
+
+    <!-- input list -->
+    <div class="container-fluid" style="margin-top:2%">
+
+        <div class="col-sm-11 mx-auto">
+            <h2><b>Identify Enriched Biological Features in Multiple Yeast Gene Lists</b></h2>
+            <hr class="page-title-under">
+        </div>
+
+        <div class="col-sm-11 mx-auto">
+          <div class="row">
+            <div class="col-sm-5 mx-auto">
+              <div class="card">
+                <div class="card-header text-left">
+                  <h3 style="font-size: 1em;"><b>Step1. </b>Input (multiple) yeast gene list(s) </h3>
+                </div>
+                <div class="card-body"  id="input_data">
+                    Type in multiple gene lists (one gene per line):<br>
+                    <a onclick="return false;" href="#" id="example_gene_lists">Example</a>
+                    <p>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="mb-3 form-group">
+                          <input type="text" class="form-control" name="list_name" id="exampleFormControlInput1" placeholder="List Name">
+                        </div>
+                        <div class="mb-3 form-group">
+                          <label for="exampleFormControlTextarea1" class="form-label">Type Gene List</label>
+                          <textarea class="form-control" id="gene_list" rows="10"></textarea>
+                        </div>
+                        <button class="btn btn-primary" id="add_list">Add List</button>
+                      
+                      </div>
+                      <div class="col-sm-6">
+                       <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm" id="clear_lists"><i class="fas fa-trash-alt"></i> Clear all</button> 
+                       <p></p>
+                        <div id="list_result"> </div>
+                      </div>
+                    </div>
+                    <p></p>
+                    <div class="row">
+                      <div class="col-sm-6">
+                    Or you can upload a .csv file
+                      </div>
+                      <div class="col-sm-6">
+                           <input input type="file" accept=".csv" id="upload_file" /><br>
+                      </div>
+                    <a href="{% static 'download/Translational_efficiency.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>Example file</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-7 mx-auto">
+              <div class="card">
+                <div class="card-header text-left">
+                  <h3 style="font-size: 1em;"><b>Step2. </b>Select biological feature(s) for enrichment analysis</h3>
+                </div>
+          
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <b>Widely Used Features</b>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                      <div class="accordion-body">
+                        <label><input type="checkbox" name="selectAllcom" id="selectAllcom" ><b> Select All </b></label><br>
+                          <p></p>
+
+                          <label style="padding-left:20px;"><b>GO (3 Aspects)</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_go" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p>
+                          <label style="padding-left:40px; font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_f' id='go_f' style="zoom: 1.2;" > Molecular Function (MF)</label>     
+                          
+                          <label style="padding-left:40px;font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_p' id='go_p' style="zoom: 1.2;" > Biological Process (BP)</label>
+
+                          <label style="padding-left:40px;font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_c' id='go_c' style="zoom: 1.2;" > Cellular Component (CC)</label>
+
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='complex' id='complex' style="zoom: 1.2;" > Protein Complex </a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_complex" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>   
+                          
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='disease' id='disease' style="zoom: 1.2;" > DO Term</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_disease" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='phenotype' id='phenotype' style="zoom: 1.2;"> Mutant Phenotype</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_phenotype" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='pathway' id='pathway' style="zoom: 1.2;"> Biochemical Pathway</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_pathway" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='protein_domain' id='protein_domain' style="zoom: 1.2;" > Protein Domain</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_domain" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='physical_interaction' id='physical_interaction' style="zoom: 1.2;" > Physical Interactor</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_physical" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='genetic_interaction' id='genetic_interaction' style="zoom: 1.2;" > Genetic Interactor</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_genetic" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>
+
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='regulator' id='regulator' style="zoom: 1.2;" > Transcriptional Regulator's Targets <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_tf" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
+                          <p></p>
+                          
+                          
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                        <b>Interesting Gene Groups Collected by YMLA</b>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                      <div class="accordion-body">
+                        <!-- <label><input type="checkbox" name="selectAllgp" id="selectAllgp" ><b> Select All </b></label><br> -->
+                        <label><input type="checkbox" name="features_gene" value="gene_group"><b> Gene Groups</b></label>    
+                        <p>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='TF-encoding Genes' id='ncRNA_gene' style="zoom: 1.2;" > 293 TF-encoding Genes </label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 293 TF-encoding Genes</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_tf-encode" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                        <br>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='Genes with Introns' id='ncRNA_gene' style="zoom: 1.2;" > 348 Genes with Introns</label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 285 Genes with Introns</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_intron" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                        <br>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='TATA Box-containing Genes' id='ncRNA_gene' style="zoom: 1.2;" > 1087 TATA Box-containing Genes</label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 1084 TATA Box-containing Genes</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_tata" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                        <br>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='iESR Genes' id='ncRNA_gene' style="zoom: 1.2;" > 283 iESR Genes</label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 278 iESR Genes</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_iesr" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                        <br>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='rESR Genes' id='ncRNA_gene' style="zoom: 1.2;" > 585 rESR Genes</label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 584 rESR Genes</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_resr" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                        <br>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='OPN Genes' id='ncRNA_gene' style="zoom: 1.2;" > 544 OPN Genes</label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 544 OPN Genes</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_opn" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                        <br>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='DPN Genes' id='ncRNA_gene' style="zoom: 1.2;" > 494 DPN Genes</label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 494 DPN Genes</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_dpn" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                        <br>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='Arsenic-Related Genes' id='ncRNA_gene' style="zoom: 1.2;" > 3396 Arsenic-Related Genes</label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 535 Arsenic-related Genes</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_arsenic" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                        <br>
+                        <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='Phosphoinositide-binding Proteins' id='ncRNA_gene' style="zoom: 1.2;" > 679 Phosphoinositide-binding Proteins</label> -->
+                        <label style="padding-left:20px;font-size: 14px">▪ 673 Phosphoinositide-binding Proteins</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_pi" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                        <b>Novel Features Defined by YMLA</b>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                      <div class="accordion-body">
+                        <label><input type="checkbox" name="selectAllnv" id="selectAllnv" style="zoom: 1.2;"><b> Select All </b></label><br>
+                          <p></p>
+
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='gene_length' style="zoom: 1.2;"> <b>Gene Length</b></label>                          <p>
+                          <label style="padding-left:40px;font-size: 14px">▪ 3'UTR Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_3utr" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ 5'UTR Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_5utr" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ CDS Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_cds" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_length" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+              
+                          <p></p>
+
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='half_life'  style="zoom: 1.2;" > <b>Half-life</b></label>                          <p>
+                          <label style="padding-left:40px;font-size: 14px">▪ mRNA Half-life</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_half" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Half-life</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_half" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>
+                          
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='gene_expression_nc'  style="zoom: 1.2;" > <b>Gene Expression (Normal Condition)</b></label>                          <p>
+                          <label style="padding-left:40px;font-size: 14px">▪ mRNA Level (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2, D3">3 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_level" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Abundance (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2">2 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_abun" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <p></p>
+
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='codon' style="zoom: 1.2;" > <b>Coding Region Translation Property</b></label>                          <p>
+                          <label style="padding-left:40px;font-size: 14px">▪ Translational Efficiency (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2, D3, D4">4 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_te" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Codon Bias <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_bias" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
+                          <label style="padding-left:40px;font-size: 14px">▪ Codon Adaptation Index <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_ai" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label> 
+                          <label style="padding-left:40px;font-size: 14px">▪ Frequency of Optimal Codon <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_of" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>    
+                          <label style="padding-left:40px;font-size: 14px">▪ Hydropathicity of Protein <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_hp" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
+                          <label style="padding-left:40px;font-size: 14px">▪ Aromaticity Score <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_as" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='protein_physical' style="zoom: 1.2;" > <b>Protein Physical Property</b></label>                          <p>
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_length" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Molecular Weight</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_molecular" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Isoelectric Point</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_isoelectric" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Aliphatic Index</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_aliphatic" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+              
+                          <label style="padding-left:40px;font-size: 14px">▪ Instability Index</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_instability" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+            
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='plasticity' style="zoom: 1.2;" > <b>Transcriptional Plasticity</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_plasticity" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='isoform' style="zoom: 1.2;" > <b>mRNA Isoform Number</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_isoform" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <!-- <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='test' style="zoom: 1.2;"> <b>Test</b></label>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='test2' style="zoom: 1.2;"> <b>Test2</b></label>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='test3' style="zoom: 1.2;"> <b>Test3</b></label>
+                          <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='verify' style="zoom: 1.2;"> <b>verify</b></label> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header text-left">
+                <div class="col-sm" style="text-align:center;"><button type="button" id ="run_analysis" class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i> &ensp; Run Enrichment Analysis</button></div>  
+            </div>
+            <div class="card-body" id="run_msg" style="display: none;">
+              <pre id="log" class="bash" style="text-align: center;"></pre>
+              <!-- <div class="progress">
+                <div id="bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+              </div> -->
+            </div>
+          </div>
+          
+        </div>
+    </div>
+    <div  id="space" class="col-11 mx-auto" style="display: none;">
+    <hr style="border-width:.5rem; margin-top:25rem;">
+    </div>
+    <!--show result-->
+    <div class="container-fluid" id="search_result" style="display:none;margin-top:2% ;height:100%">
+        <div  class="col-11 mx-auto">
+          <h1><b><i class="fas fa-chart-bar"></i> Enrichment Analysis Results</b></h1>
+          <hr class="page-title-under">
+        </div>
+        <div  class="col-11 mx-auto">
+          <div class="card">
+            <div class="card-header text-left">
+              <h4 class="d-inline"><b><i class="fas fa-user-cog"></i>  User's Specification</b></h4>
+            </div>
+            <div class="card-body p-3">
+              
+              <table class="table table-bordered"> 
+                <tr id="input_gene_list"></tr>
+             
+                <tr id="input_gene_no"></tr>
+                <tr >
+                  <td colspan="100%" align="center" style="background-color:#1e4356;"><font color="white">See the analysis result of a chosen feature</font></td>
+                </tr>
+   
+                <tr id="tr_fc" style="display: none;">
+                  <td colspan="1" style="background-color:#E9ECEF;"><b>Widely Used Features</b></td>
+                  <td colspan="100%" style="border-bottom: 5px">  
+                    <ul class="nav nav-pills mb-3 target" id="pills-tab_fc" role="tablist"></ul>
+                  </td>
+                </tr>
+                <tr id="tr_fgp" style="display: none;">
+                  <td colspan="1" style="background-color:#E9ECEF;"><b>Interesting Gene Groups Collected by YMLA</b></td>
+                  <td colspan="100%" id="f_gp">
+                    <ul class="nav nav-pills mb-3 target" id="pills-tab_fgp" role="tablist"></ul>
+                  </td>
+                </tr>
+                <tr id="tr_fnv" style="display: none;">
+                  <td colspan="1" style="background-color:#E9ECEF;"><b>Novel Features Defined by YMLA</b></td>
+                  <td colspan="100%" id="f_nv">
+                    <ul class="nav nav-pills mb-3 target" id="pills-tab_fnv" role="tablist"></ul>
+                  </td>
+                </tr>
+                <tr id="tr_fcust" style="display: none;">
+                  <td colspan="1" style="background-color:#E9ECEF;"><b> Customized Feature</b></td>
+                  <td colspan="90%">
+                    <div class="accordion" id="accordionPanelsStayOpenExample2">
+                      <div class="accordion-item" style="display: none;" id="custom_accordion_gene_group">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne2">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne2" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne2">
+                            Interesting Gene Groups Collected by YMLA
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne2" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne2">
+                          <div class="accordion-body" id="customized_term_gene_group" style="text-align: left">
+                
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item" style="display: none;" id="custom_accordion_quant">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo2">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo2" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo2">
+                            Novel Features Defined by YMLA
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo2" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo2">
+                          <div class="accordion-body" id="customized_term_quant" style="text-align: left">
+                  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td id="f_cust">
+                    <ul class="nav nav-pills mb-3 target" id="pills-tab_fcust" role="tablist"></ul>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-11 mx-auto">
+          <div class="card" id = "block_0_1" style="margin:0px auto;margin-top:2%;" >
+            <div class="card-header">
+              <b><h4 class="d-inline" id="result_title"></h4></b>
+            </div>  
+            <div class="card-body">
+              <div class="tab-content" id="myTabContent" ></div> 
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+
+<!-- 模态框（Modal） Block detail-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"></h4>
+          
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <div class="modal-body" >
+            <div id="loading_bar_0" class="text-center" style="width:100%;">         
+              <img src="{% static 'img/gray.gif' %}" style="width:50%; margin:auto;">
+            </div>
+              <div class="data-content">
+
+                <div class="card" id="card_pvalue">
+                  <div class="card-header">
+                  <h4 id="pvalue_block_title"></h4>
+                  </div>
+
+                  <div class="card-body">
+                    <div id="lipid_table_content"></div> <!-- Put numbers -->
+                  </div>
+                </div>
+                <p></p>
+                
+                <!-- <div class="card" id="card_gene">
+                  <div class="card-header">
+                    <h4 id = "block_2_title"></h4>
+                  </div>
+
+                  <div class="card-body">
+                    <div id="btn_d2" class="text-center"></div>
+                    <div id="intersected_genes"></div> 
+                  </div>
+                </div>
+                <p></p> -->
+
+                <div class="card" id="card_data">
+                  <div class="card-header">
+                    <h4 id="evidence_data"> </h4>
+                  </div>
+                  <div class="card-body" style="overflow-x:auto;">
+                    <div id="btn_d" class="text-center"></div>
+                    <div id="block_2_table">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+</div> <!-- /.modal -->
+<!--Modal Genetic interaction-->
+<div class="modal fade" id="modal_genetic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"> Genetic Interaction</h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <div class="modal-body">
+            Conten
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!--Modal TF info-->
+<div class="modal fade" id="modal_tf" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"> test</h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <div class="modal-body">
+            Conten
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!-- Modal Codon Bias-->
+<div class="modal fade" id="modal_codon_bias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"><b>Codon Bias</b></h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>Codon Bias Index (CBI) is a measure of directional codon bias, it measures the extent to which a gene uses a subset of optimal codons.</li><br>
+              <li>In a gene with extreme codon bias, CBI will equal 1.0, in a gene with random codon usage CBI will equal 0.0.</li><br>
+              <li>Note that it is possible for the number of optimal codons to be less than expected by random change.</li><br>
+              <li>This results in a negative value for CBI.</li><br>
+              <li>(From <a href="http://codonw.sourceforge.net/Indices.html" target="_blank">Condon</a>)
+              </li>
+            </ul>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!-- Modal Codon Adaptation Index -->
+<div class="modal fade" id="modal_codon_ai" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"><b>Codon Adaptation Index</b></h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>The Codon Adaptation Index (CAI) is the most widespread technique for analyzing codon usage bias.</li><br>
+              <li>CAI measures the deviation of a given protein coding gene sequence with respect to a reference set of genes.</li><br>
+              <li>CAI is used as a quantitative method of predicting the level of expression of a gene based on its codon sequence.</li><br>
+              <li>(From <a href="https://en.wikipedia.org/wiki/Codon_Adaptation_Index" target="_blank">WIKIPEDIA</a>)
+              </li>
+            </ul>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!-- 模态框（Modal） Frequency of Optimal Codon-->
+<div class="modal fade" id="modal_codon_of" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"><b>Frequency of Optimal Codon</b></h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>This index is the ratio of optimal codons to synonymous codons (genetic code dependent).</li><br>
+              <li>(From <a href="http://codonw.sourceforge.net/Indices.html" target="_blank">CondonW</a>)</li>
+            </ul>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!-- 模态框（Modal） Hydropathicity of Protein-->
+<div class="modal fade" id="modal_codon_hp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"><b>Hydropathicity of Protein</b></h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>Hydrophobicity scales are values that define the relative hydrophobicity or hydrophilicity of amino acid residues.</li><br>
+              <li>The more positive the value, the more hydrophobic are the amino acids located in that region of the protein.</li><br>
+              <li>These scales are commonly used to predict the transmembrane alpha-helices of membrane proteins.</li><br>
+              <li>When consecutively measuring amino acids of a protein, changes in value indicate attraction of specific protein regions towards the hydrophobic region inside lipid bilayer.</li><br>
+              <li>(From <a href="https://en.wikipedia.org/wiki/Hydrophobicity_scales" target="_blank">WIKIPEDIA</a>)
+              </li>
+            </ul>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!-- 模态框（Modal） Aromaticity Score-->
+<div class="modal fade" id="modal_codon_as" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"><b>Aromaticity Score</b></h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>The frequency of aromatic amino acids (Phe, Tyr, Trp) in the hypothetical translated gene product. </li><br>
+              <li>The hydropathicity and aromaticity protein scores are indices of amino acid usage. </li><br>
+              
+              <li>(From <a href="http://codonw.sourceforge.net/Indices.html" target="_blank">CondonW</a>)
+              </li>
+            </ul>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!-- Modal Loading bar-->
+<div class="modal fade" id="modal_loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title"></h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <div class="modal-body text-center"> 
+              <img src="{% static 'img/gray.gif' %}" style="width:50%; margin:auto;">
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+</div> <!-- /.modal -->
+
+<!-- Modal for input list check -->
+<div class="modal" id="myModal_4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal_title_2"></h4>
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              
+          </div>
+
+          <div class="modal-body">
+              <div class="data-content">
+                <div class="card " id = "block_4_1">
+                  <div class="card-header">
+					<div class="alert alert-danger" role="alert">
+
+					<div class="d-flex justify-content-center">
+					<h4 id="block_4_1_title">	<img src="{% static 'img/warning.gif' %}" style="width: 50px;" class="img-fluid" alt="Responsive image">
+				  Your input have unmatched IDs</h4>
+					</div>
+				   </div>
+                  </div>
+                  <div class="card-body">
+                    <div id="block_4_1_table">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+          <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+          </div> -->
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+</body>
+<!-- import Tool_Mode -->
+<script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" charset="utf8" src="{% static 'js/block_detail.js' %}"></script>    
+<script type="text/javascript" charset="utf8" src="{% static 'js/render_result.js' %}"></script>    
+<script type="text/javascript" charset="utf8" src="{% static 'js/tool_ajax.js' %}"></script>    
+<script type="text/javascript" charset="utf8" src="{% static 'js/tool_action.js' %}"></script>  
+
+<!-- Heatmap -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/networkgraph.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<!-- Datatable-->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"> -->
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+
+
+
+
+</html>
+{% endblock %}

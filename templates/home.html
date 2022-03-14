@@ -1,0 +1,123 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 100%}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      {% comment %}background-color: #f1f1f1;{% endcomment %}
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    {% comment %}footer {{% endcomment %}
+      {% comment %}background-color: #555;{% endcomment %}
+      {% comment %}color: white;{% endcomment %}
+      {% comment %}padding: 15px;{% endcomment %}
+    {% comment %}}{% endcomment %}
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+  
+<div class="container-fluid">
+  <div class="col-sm-11 mx-auto mt-5 px-0">
+    <div class="card" style="border-color:#424246;border-width: 3px">
+      <div class="card-header pb-0" style="background-color:#424246;"><font color="white"><h2>What is YMLA?</h2></font></div>
+      <div class="card-body">
+        <ul>
+          <li><p>YQFC is a web tool to compare 85 quantitative features between two yeast gene lists.</p></li>
+          <li><p>For each quantitative feature, YQFC provides three statistical tests (<a href="https://en.wikipedia.org/wiki/Student%27s_t-test" target="_blank">t-test</a>, <a href="https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test" target="_blank">U test</a>, and <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">KS test</a>) to test whether this quantitative feature is significantly different between the two yeast gene lists.</p>
+            
+          </li>
+          <li>
+            <p>Both tables and figures (<a href="https://en.wikipedia.org/wiki/Box_plot" target="_blank">box plots</a> and <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function" target="_blank">cumulative distribution function plots</a>) are provided to visualize the testing results.</p>
+            <div class="text-center"><br><img src="{% static 'img/3-1_arch.png' %}" class="img-fluid" alt="Responsive image">
+
+            <!-- <div class="text-center"><img src="/alphabet7431_static/assets/image/loading-25px.gif" style="max-width:90%;"></div> -->
+            <!-- <link href="/alphabet7431_static/assets/img/apple-touch-icon.png" > -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-11 mx-auto mt-5 px-0">
+    <div class="card" style="border-color:#424246;border-width: 3px">
+      <div class="card-header pb-0" style="background-color:#424246;"><font color="white"><h2>Update History</h2></font></div>
+      <div class="card-body">
+        <table class="table table-hover mb-0">
+          
+          <tbody><tr>
+            <td class="text-center" style="width:10%;">2020 Jun.</td>
+            <td style="width:90%;">Release YQFC.</td>
+          </tr>
+          <tr>
+            <td class="text-center">2020 Feb.</td>
+            <td>Construct the web interface of YQFC.</td>
+          </tr>
+          <tr>
+            <td class="text-center">2020 Jan.</td>
+            <td><p>Collect and process 85 quantitative features from <b>seven yeast publications</b> (<a href="https://www.ncbi.nlm.nih.gov/pubmed/9845373" target="_blank">Holstege 1998</a>, 
+              <a href="https://www.ncbi.nlm.nih.gov/pubmed/18451266" target="_blank">Nagalakshmi 2008</a>, 
+              <a href="https://www.ncbi.nlm.nih.gov/pubmed/20958978" target="_blank">Lin 2010</a>, 
+              <a href="https://www.ncbi.nlm.nih.gov/pubmed/23615609" target="_blank">Pelechano 2013</a>, 
+              <a href="https://www.ncbi.nlm.nih.gov/pubmed/25466257" target="_blank">Christiano 2014</a>, 
+              <a href="https://www.ncbi.nlm.nih.gov/pubmed/25950722" target="_blank">Csárdi 2015</a>, 
+              <a href="https://www.ncbi.nlm.nih.gov/pubmed/29361465" target="_blank">Ho 2018</a>) and 
+              <b>six yeast databases</b> (<a href="https://yeastmine.yeastgenome.org/yeastmine/begin.do" target="_blank">YeastMine</a>, 
+              <a href="https://www.inetbio.org/yeastnet/" target="_blank">YeastNet</a>, 
+              <a href="http://cosbi3.ee.ncku.edu.tw/yagm/" target="_blank">YAGM</a>, 
+              <a href="https://www.yeastgenome.org/" target="_blank">SGD</a>, 
+              <a href="https://thebiogrid.org/" target="_blank">BioGRID</a>, 
+              <a href="https://spell.yeastgenome.org/" target="_blank">SPELL</a>).</p>
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="text-center" style="width:10%;">2019 Dec.</td>
+            <td style="width:90%;">Start YQFC project.</td>
+          </tr>
+        </tbody></table>
+      </div>
+      <div class="card-footer" style="background-color:#424246;"> <!-- #00688B -->
+        <font color="white">Last Updated: 07/25/2020.</font>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}
+  

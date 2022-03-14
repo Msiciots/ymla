@@ -1,0 +1,571 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <!-- <script src="https://code.highcharts.com/modules/networkgraph.js"></script> -->
+
+</head>
+<body>
+  
+<div class="container-fluid">    
+  <div class="row content">
+    <div class="col-sm-11 mx-auto"> 
+      <div class="data-content">
+        <p></p>
+        <div class="card border-dark" id = "block_2_1">
+          <div class="card-header border-dark" style="background-color:#D5D8DC;">
+          <h4 id="block_2_1_title"><i class="fas fa-chart-bar"></i></h4>
+          </div>
+          <div class="card-body" style="background-color:#EAECEE;">
+            <div class="card">
+              <div class="card-header text-left">
+                <h4 class="d-inline"><b><i class="fas fa-user-cog"></i>  User's Specification</b></h4>
+              </div>
+              <div class="card-body p-3">
+                
+                <table class="table table-bordered"> 
+                  <tr>
+                    <td style="background-color:#E9ECEF;"><b>Analyzed Term</b></td>
+                    <td id="feature" colspan="100%"></td>
+                  </tr>
+                  <tr id="input_gene_list">
+                  </tr>
+                  <tr id="input_gene_no">
+                  </tr>                 
+                  <tr >
+                    <td style="background-color:#E9ECEF;"><b>Multiple hypothese testing</b></td>
+                    <td id="corr" colspan="100%"></td>
+                  </tr>
+                  <!-- <tr style="display: none;" id="quant_row1">
+                    <td style="background-color:#E9ECEF;"><b id="term_name"></b></td>
+                    <td id="term_des" colspan="100%"></td>
+                  </tr> -->
+                </table>
+              </div>
+            </div>
+            <p></p>
+            <div class="card">
+              <div class="card-header text-left">
+                <h4><b><i class="fas fa-chart-bar"></i>  Graphic View</b></h4>
+              </div>
+              <div class="card-body p-3">
+                <div  id="container"></div>
+              </div>
+            </div> <!-- Graphic view card -->
+
+            <p></p>
+            
+            <div class="card" id = "block_2_1">
+              <div class="card-header">
+              <h4 ><b><i class="fa fa-table" aria-hidden="true"></i>  Table View</b></h4>
+              </div>
+              <div class="card-body">
+                <b>A</b>: <text id="A"></text><br>
+                <b>B</b>: <text id="B"></text><br>
+                <b>C</b>: <text id="C"></text><br>
+                <b>D</b>: <text id="D"></text><br>
+                </p><p><b>Fold Enrichment</b>: <span class="math inline">\(\frac{Observed \ \ Ratio}{Expected\ \ Ratio}\)</span>
+                  <div  id="list_table"></div>
+              </div>
+            </div> <!-- Table view card -->
+            <!-- <p></p>
+            <div class="card" >
+              <div class="card-header">
+              <h4 ><b><i class="fas fa-project-diagram"></i>  Network View</b></h4>
+              </div>
+              <div class="card-body">
+                <li>Select the enriched features (in Table View) and click Refresh to update the feature</li>
+                <p></p>
+                <button id = "refresh" class="btn btn-info"><i class="fas fa-redo-alt"></i> Refresh</button>
+                <div id="network"></div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 模态框（Modal） Block detail-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal_title"></h4>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       </div>
+
+      <div class="modal-body">
+        <div id = "loading_bar_0" class="text-center" style="width:100%;">         
+          <img src="{% static 'img/gray.gif' %}" style="width:50%; margin:auto;">
+        </div>
+        <div id="block_content" class="data-content" style="display:none;">
+
+          <div class="card">
+            <div class="card-header text-left">
+              <h4 class="d-inline"><b><i class="fas fa-user-cog"></i>  User's Specification</b></h4>
+            </div>
+            <div class="card-body p-3">
+              <table class="table table-bordered">
+                <tr>
+                  <td style="background-color:#E9ECEF;"><b>Analyzed Term</b></td>
+                  <td id="block_term"></td>
+                </tr>
+                <tr>
+                  <td style="background-color:#E9ECEF;"><b>Analyzed List</b></td>
+                  <td id="block_list"></td>
+                </tr>
+                <tr>
+                  <td colspan="1" style="background-color:#E9ECEF;"><b># of genes in the list</b></td>
+                  <td id="block_input_gene_no"></td>
+                </tr>          
+                <tr>
+                  <td style="background-color:#E9ECEF;"><b>Multiple hypothese testing</b></td>
+                  <td id="block_corr"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <p></p>
+
+          <div class="card" id="card_pvalue">
+            <div class="card-header"> 
+              <h4 id="pvalue_block_title"></h4>
+            </div>
+            <div class="card-body">
+              <div id="feature_description"></div> <!-- Put numbers -->
+              <div id="lipid_table_content"></div> <!-- Put numbers -->
+            </div>
+          </div>
+          <p></p>
+
+          <div class="card" id="card_data">
+            <div class="card-header">
+              <h4 id = "evidence_data"></h4>
+            </div>
+            <div class="card-body" style="overflow-x:auto;">
+              <div id="btn_d" class="d-flex flex-row-reverse col-sm"></div>
+              <div id="btn_gene_names_only" class="text-left col-sm"></div>
+              <div id="block_2_table"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        {% comment %} <button type="button" class="btn btn-default" data-dismiss="modal">close</button>{% endcomment %}
+      </div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<!-- 模态框（Modal） unknown detail-->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog maodal-lg" role="document" style="max-width:70%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="unknown_title"></h4>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="data-content">
+          <div id="btn_d2" class="text-center"></div>
+          <div id="unknown_table"></div>  
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+</body>
+<script type="text/javascript" charset="utf8" src="{% static 'js/block_detail.js' %}"></script>  
+
+<script>
+    $(document).ajaxStart(function ()
+  {
+      $('body').addClass('wait');
+
+  }).ajaxComplete(function () {
+
+      $('body').removeClass('wait');
+
+  });
+
+  var data ={{ data | safe }};
+  $(document).ready(function() {
+    var name_map, quant_feature;
+    $.getJSON("/YMLA/static/config/feature_name_map.json", function(d){
+        name_map = d;
+      $.getJSON("/YMLA/static/config/quant_feature.json", function(d){
+        quant_feature = d;
+
+        $('#block_2_1_title').html(
+      '<b><i class="fas fa-file-alt"></i> Enrichment Analysis Result</b>')
+        $("#feature").html(`${data['term']} <spin id="term_des2"></spin>`);
+        $('#a').html('# of input genes associated with the term <b>'+data['term']+'</b>');
+        $('#c').html('# of genes (in the genome) associated with the term <b>'+ data['term']+'</b>');
+
+        $('#input_gene_list').empty();
+        $('#input_gene_list').append('<td colspan="1" style="background-color:#E9ECEF;"><b>Name of each input list</b></td>') 
+        $.each(JSON.parse(data['input_list']), function(key, val) {
+            $('#input_gene_list').append('<td colspan="1" >'+val+'</td>') 
+        })
+        $('#input_gene_no').empty();
+        $('#input_gene_no').append('<td colspan="1" style="background-color:#E9ECEF;"><b># of genes in each input list</b></td>') 
+        $.each(JSON.parse(data['input_list_no']), function(key, val) {
+          $('#input_gene_no').append('<td colspan="1" >'+val+'</td>') 
+        })
+        
+        let str_corr = "No correction";
+        if (data['corr'] == 'FDR')
+          str_corr = "FDR correction"
+        else if (data['corr'] == 'Bonferroni')
+          str_corr = "Bonferroni correction"
+
+        $("#corr").html(`
+          ${str_corr}, -log<sub>10</sub>(Corrected p-value) cutoff = ${data['cut-off']}
+        `);
+        
+        $("#A").html(`# of input genes`);
+        $("#C").html(`# of genes in the genome (6611 ORFs)`);
+
+        let term = data['term'];
+        if (data['feature']=="gene_group"){
+          $("#B").html(`# of input genes that <spin style="color:red">belong to the </spin> [<spin style="color:blue;">${data['term']}</spin>]`)
+          $("#D").html(`# of genes in the genome that <spin style="color:red">belong to the </spin> [<spin style="color:blue;">${data['term']}</spin>]`);
+        }
+        else if (data['feature'] in quant_feature ){
+          let term_name = term.substring(0,term.length-8)
+          $("#A").html(`# of input genes that can be analyzed (i.e. that have <spin style="color:blue;">${term_name}</spin> data)`);
+          $("#B").html(`# of input genes that <spin style="color:red">are associated with the term</spin> [<spin style="color:blue;">${term}</spin>]`);
+          $("#C").html(`# of genes in the genome that can be analyzed (i.e. that have <spin style="color:blue;">${term_name}</spin> data)`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red;">are associated with the term</spin> [<spin style="color:blue;">${term}</spin>]`);
+          // $("#quant_row1").show(); 
+          // $('#term_name').html(`${term}`);
+          $('#term_des2').html(`, a list containing genes whose <spin style="color:blue;">${term_name}</spin> belong to the <spin style="color:red;">${data['percent']}</spin> of the <spin style="color:blue;">${term_name}</spin> in the genome.`);
+        }
+        else if (data['feature'] == "complex"){
+          $("#B").html(`# of input genes that <spin style="color:red">belong to the protein complex</spin> [<spin style="color:blue;">${term}</spin>]`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">belong to the protein complex</spin> [<spin style="color:blue;">${term}</spin>]`);
+        }
+        else if (data['feature'] == "phenotype"){
+          $("#B").html(`# of input genes that <spin style="color:red">have the mutant phenotype</spin> [<spin style="color:blue;">${term}</spin>]`)
+          $("#D").html(`# of genes in the genome that <spin style="color:red">have the mutant phenotype</spin> [<spin style="color:blue;">${term}</spin>]`);
+        }
+        else if (data['feature'] == "protein_domain"){
+          $("#B").html(`# of input genes that <spin style="color:red">have the protein domain</spin> [<spin style="color:blue;">${term}</spin>]`)
+          $("#D").html(`# of genes in the genome that <spin style="color:red">have the protein domain</spin> [<spin style="color:blue;">${term}</spin>]`);
+    
+        }
+        else if (data['feature'] == "physical_interaction"){
+          $("#B").html(`# of input genes that <spin style="color:red">have the physical interaction with </spin>[<spin style="color:blue;">${term}</spin>]`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">have the physical interaction with </spin>[<spin style="color:blue;">${term}</spin>]`);
+        }
+        else if (data['feature'] == "genetics_interaction"){
+          $("#B").html(`# of input genes that <spin style="color:red">have the genetic interaction with </spin>[<spin style="color:blue;">${term}</spin>]`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">have the genetic interaction with </spin>[<spin style="color:blue;">${term}</spin>]`);
+        }
+        else if (data['feature'] == "regulator"){
+          $("#B").html(`# of input genes that <spin style="color:red">are the targets of</spin> [<spin style="color:blue;">${term}</spin>]`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">are the targets of</spin> [<spin style="color:blue;">${term}</spin>]`);
+        }
+        else{
+          $("#B").html(`# of input genes that <spin style="color:red">are associated with the ${name_map[data['feature']]} term </spin>[<spin style="color:blue;">${term}</spin>]`);
+          $("#D").html(`# of genes in the genome that <spin style="color:red">are associated with the ${name_map[data['feature']]} term </spin>[<spin style="color:blue;">${term}</spin>]`);
+        }
+
+        $('#list_table').empty()
+        $('#list_table')
+            .html(
+                '<table class=\'table table-bordered table-hover\' id=\'list_table_content\'>' +
+                '<thead>' +
+                '<tr bgcolor=\'#EDEDED\'>' + 
+                '<th >Name of the input list</th>' +
+                '<th >-log<sub>10</sub>(Corrected p-value)</th>' +
+                '<th >Fold Enrichment</th>' +
+                '<th >Observed Ratio (B/A)</th>' +
+                '<th >Expected Ratio (D/C)</th>' +
+                '</tr>' +
+                '</thead >' +
+                '<tbody id=\'block_2_1_row\'>' +
+                '</tbody>' +
+                '</table>');
+        let c = "checked"
+        let input_index = 0
+        $.each(JSON.parse(data['click_row_detail']), function(key, val) {
+          let bgc = '';
+          if (parseFloat(val['p_value']) >= val['cut_off']) {
+            bgc = 'style=\'background-color:#FFD2D2\'';
+          }
+          else{
+            bgc = 'style=\'background-color:#C8C8C8\'';
+          }
+          let obs_id = ''
+          let check = ''
+          if (val['insection_no'] >= 1){
+            obs_id = 'id=\'' + val['input_index'] + '_' + val['Domain ID'] + '\' href=#';
+            check = '<input type="checkbox" name="input_lists" value="'+input_index+'" '+c+'>';
+            c = '';
+          }
+          input_index++;
+          $('#block_2_1_row')
+              .append(
+                  '<tr ' + bgc + '>' +
+                  '<td >' + val['Input list'] + '</td>' +
+                  '<td >' + val['p_value'] + '</td>' +
+                  '</td>' +
+                  '<td style=\'text-align:left;\'>' + val['Fold_change'] +
+                  '</td>' +
+                  '<td ><a onclick="return false;" ' + obs_id + '>' +
+                    val['insection_no'] + '</a>' + ' / ' + val['input_no'] + ' ( ' + val['Observed_ratio'] + '% )'+
+                  '</td>' +
+                  '<td style=\'text-align:left;\'>' + val['term_no'] +' / '+val['data_no']+ val['Expected_ratio'] +
+                  '</td>' +
+                  '</tr>');  // append
+          if (val['insection_no'] >= 1) {
+            let pvalue_btn = document.getElementById(
+                val['input_index'] + '_' + val['Domain ID']);
+            pvalue_btn.addEventListener('click', function() {
+              $('#modal_title').html("");
+              $('#block_content').hide();
+              $('#loading_bar_0').show();
+
+              $('#card_pvalue').hide();
+              $('#card_gene').hide();
+              $('#card_data').hide();
+              $('#myModal').modal('show');
+
+              // $('#loading_bar_0').show();
+              // $('#myModal').hide();
+              $.ajax({
+                url: '/YMLA/show_block_detail_ajax',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                  'click_block_id':
+                      val['input_index'] + '_' + val['Domain ID'],
+                  'feature': data['feature'],
+                  'socket_key':data['socket_key'],
+                },
+                success: function(data) {
+                  block_detail(data,name_map, quant_feature)
+                }
+              })  // ajax of /show_block_detail
+            });   // pvalue click listener
+          }
+        })  // for each row click
+      
+        Highcharts.chart('container', {
+          chart: {
+              type: 'scatter',
+              zoomType: 'xy'
+          },
+          title: {
+              text: 'Volcano Plot'
+          },
+          // subtitle: {
+          //     text: 'Source: Heinz  2003'
+          // },
+          xAxis: {
+              title: {
+                  enabled: true,
+                  text: '<b>Fold Enrichment</b>'
+              },
+              startOnTick: true,
+              endOnTick: true,
+              showLastLabel: true
+          },
+          yAxis: {
+              title: {
+                  useHTML: true,
+                  text: '<b>-log<sub>10</sub> (Corrected P-value)</b>'
+              },
+              plotLines: [{
+                    value: data['cut-off'],
+                    color: 'red',
+                    dashStyle: 'shortdash',
+                    width: 2,
+                    label: {
+                        text: 'Cutoff'
+                    }
+                }]
+          },
+          legend:{ enabled:false },
+          plotOptions: {
+              scatter: {
+                  marker: {
+                      radius: 5,
+                      states: {
+                          hover: {
+                              enabled: true,
+                              lineColor: 'rgb(100,100,100)'
+                          }
+                      }
+                  },
+                  states: {
+                      hover: {
+                          marker: {
+                              enabled: false
+                          }
+                      }
+                  },
+              }
+          },
+          tooltip: {
+            enabled: true,
+            shared : true,
+            useHTML: true,
+            formatter: function(){
+              var chart = this.series.chart,
+                hoveredPoint = this,
+                result = [];
+
+              chart.series.forEach(function(serie) {
+                serie.data.forEach(function(point) {
+                  if (point.x === hoveredPoint.x && point.y === hoveredPoint.y) {
+                    result.push(point)
+                  }
+                })
+              })
+              var str="";
+              if (result.length > 1) { 
+                result.forEach(element => str = str.concat('<span style="color:orange;">'+element['name'] + '</span><br>'));
+                str = str.concat('-log<sub>10</sub>(Corrected P-value): ' +this.y + '<br>' +'Fold Enrichment: '+this.x+'<br>')
+                return str;
+              }else{
+                return '<span style="color:orange;">'+this.point.name + '</span><br>' + '-log<sub>10</sub>(Corrected P-value): ' +this.y + '<br>' +'Fold Enrichment: '+this.x;        
+                                    
+              }
+            }
+          },
+          series: [{
+              name: data['feature'],
+              color: 'rgba(223, 83, 83, .5)',
+              data: JSON.parse(data['volcano_data']),
+            }]
+      });
+      let datatable =$('#list_table_content').DataTable({
+        "order": [[ 1, "desc" ],[ 2, "desc" ]],
+        'bDestroy': true,
+        searching: false, 
+        paging: false, 
+        info: false,
+        dom: 'Bflrtip',
+        buttons: [
+        ],
+      });
+      $('[id^=data_]').click(function(event) {
+        let id = event.target.id;
+        $.ajax({
+          url: '/YMLA/show_quant_data',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            'input_index': id.substring(id.indexOf("-")+1),
+            'feature_index':String(data['feature_index']),
+            'feature': data['feature'],
+            'no_type': id.substring(5,id.indexOf("_")+2),
+            'socket_key':data['socket_key'],
+          },
+          success: function(data) {
+            $('#myModal2').modal('show');
+            $('#unknown_title').html(`${data['title']}`);
+            let table_col = ""
+            // data['raw_data_col'].forEach(element => table_col += '<th>'+element+'</th>')
+            $('#unknown_table').html(data['table_data']);
+
+            // $('#unknown_table')
+            // .html(
+            //     '<table class=\'table table-bordered table-hover\' id="unknown_datatable">' +
+            //     '<thead>' +
+            //     '<tr bgcolor=\'#EDEDED\'>' +
+            //     // "<th >Characteristic</th>"+
+            //     //'<th >Domain name</th>' +
+            //     //'<th >Domain description</th>' +
+            //     //'<th >Source</th>' +
+            //     //'<th >InterPro Entry</th>' +
+            //     table_col+
+            //     // '<th style=\'min-width:120px;\'>Systematic Name</th>' +
+            //     // '<th style=\'min-width:120px;\'>Standard Name</th>' +
+            //     // '<th style=\'min-width:120px;\'>'+data['feature']+'</th>' +
+            //     '</tr>' +
+            //     '</thead >' +
+            //     '<tbody id=\'unknown_list_row\'>' +
+            //     '</tbody>' +
+            //     '</table>');
+            //     $.each(JSON.parse(data['input_data']), function(key, val) {
+            //       let row_content = ""
+            //       for(let i =0 ;i<data['raw_data_col'].length;i++){
+            //         let k = data['raw_data_col'][i];
+            //         row_content += '<td>'+val[k]+'</td>'
+            //       } 
+            //       $('#unknown_list_row')
+            //           .append(
+            //               '<tr >' +
+            //               row_content+ 
+            //               '</tr>');  // append
+            //     })
+            let datatable =$('#unknown_datatable').DataTable({
+              'order': [],
+              'bDestroy': true,
+              dom: 'Bflrtip',
+              buttons: [
+                {
+                extend: 'csvHtml5',
+                title: data['title'].replace(/<[^>]*>/g, ''),
+                text: '<i class="fa fa-download"></i> Download',
+                className:'btn btn-secondary',
+              }],
+            });
+            $('#btn_d2').empty();
+            datatable.buttons().container()
+                  .appendTo( '#btn_d2' );
+            // $.each(JSON.parse(data['input_filter']), function(key, val) {
+            //   console.log(key)
+            //   console.log(val)
+            //   $('#unknown_list_row')
+            //       .append(
+            //           // '<tr style=\'background-color:#FFFFBF\'>' +
+            //           '<tr>' +
+            //           '<td style=\'text-align:left;\'>' + key +
+            //           '</td>' +
+            //           '<td style=\'text-align:left;\'>' + val +
+            //           '</td>' +
+            //           '</tr>');  // row append
+            //   })
+          }
+        })
+
+        
+      });
+          })
+        })
+    
+    
+
+})
+</script>
+</html>
+{% endblock %}
