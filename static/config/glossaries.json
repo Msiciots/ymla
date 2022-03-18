@@ -1,0 +1,125 @@
+{
+    "gene_ontology":{
+        "title":"Gene Ontology (GO)"
+    },
+    "molecular_function":{
+        "title":"Molecular Function (MF)"
+    },
+    "biological_process":{
+        "title":"Biological Process"
+    },
+    "cellular_component":{
+        "title":"Cellular Component (CC)"
+    },
+    "disease_ontology":{
+        "title":"Disease Ontology (DO)"
+    },
+    "mutant_phenotype":{
+        "title":"Mutant Phenotype"
+    },
+    "biochemical_pathway":{
+        "title":"Biochemical Pathway"
+    },
+    "protein_domain":{
+        "title":"Protein Domain"
+    },
+    "physical_interactor":{
+        "title":"Physical interactor"
+    },
+    "genetic_interactor":{
+        "title":"Genetic Interactor"
+    },
+    "transcriptional_regular_targets":{
+        "title":"Transcriptional Regulator's Targets"
+    },
+    "tf_encoding":{
+        "title":"293 TF-encoding Genes"
+    },
+    "genes_with_introns":{
+        "title":"285 Genes with introns"
+    },
+    "tata_box_containing_genes":{
+        "title":"1084 TATA Box-containing Genes"
+    },
+    "induced_environmental_strss_response":{
+        "title":"278 induced Environmental Stress Response (iESR) Genes"
+    },
+    "represseses_environmental_stress_response":{
+        "title":"584 repressesed Environmental Stress Response (iESR) Genes"
+    },
+    "occupies_proximial":{
+        "title":"544 Occupied Proximal Nucleosome (iESR) Genes"
+    },
+    "depletes_proximal":{
+        "title":"494 Depleted Proximal Nucleosome (iESR) Genes"
+    },
+    "arsenic_realted_genes":{
+        "title":"535 Arsenic-related Genes"
+    },
+    "phosphoinositide_binding_proteins":{
+        "title":"673 Phosphoinositide-binding Proteins"
+    },
+    "3utr_length":{
+        "title":"3'UTR Length"
+    },
+    "5utr_length":{
+        "title":"5'UTR Length"
+    },
+    "cds_length":{
+        "title":"CDS Length"
+    },
+    "protein_length_gene":{
+        "title":"Protein Length"
+    },
+    "mrna_isoform_number":{
+        "title":"mRNA Isoform Number"
+    },
+    "protein_length_physical":{
+        "title":"Protein Length"
+    },
+    "molecular_weight":{
+        "title":"Molecular Weight"
+    },
+    "isoeletric_point":{
+        "title":"Isoeletric Point"
+    },
+    "aliphatic":{
+        "title":"Aliphatic Index"
+    },
+    "instability_index":{
+        "title":"Instability Index"
+    },
+    "codon_bias":{
+        "title":"Codon Bias"
+    },
+    "codon_adaptation":{
+        "title":"Codon Adaptation Index"
+    },
+    "frequency_of_optional":{
+        "title":"Frequency of Optional Codon"
+    },
+    "hydropathicity_of_protein":{
+        "title":"Hydropathicity of Protein"
+    },
+    "armaticity_score":{
+        "title":"Aromaticity Score"
+    },
+    "mrna_half_life":{
+        "title":"mRNA Half-life"
+    },
+    "protein_half_life":{
+        "title":"Protein Half-life"
+    },
+    "mrna_level":{
+        "title":"mRNA Level"
+    },
+    "protein_abundance":{
+        "title":"Protein Abundance"
+    },
+    "translational_efficiency":{
+        "title":"Translational Efficiency"
+    },
+    "transcriptional_plasticity":{
+        "title":"Transcriptional Plasticity"
+    }
+}

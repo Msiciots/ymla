@@ -21,6 +21,8 @@ urlpatterns = [
     path('YMLA/admin/', admin.site.urls),
     path('YMLA/', views.index, name = "index"),
     path('YMLA/tool', views.tool, name = "tool"),
+    path('YMLA/glossaries', views.show_glossaries, name = "glossaries"),
+    path('YMLA/glossaries_detail', views.show_glossaries_detail, name = "glossaries_detail"),
     path('YMLA/download', views.download, name = "download"),
     path('YMLA/help', views.help, name = "help"),
     path('YMLA/contact', views.contact, name = "contact"),

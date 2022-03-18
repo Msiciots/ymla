@@ -194,7 +194,26 @@ def show_column_detail(request):
     # session = request.session[socket_key]
 
     data = session[feature].column_detail(column_name, socket_key)
-    return render(request, 'column_page.html',{'data':json.dumps(data)})   
+    return render(request, 'column_page.html',{'data':json.dumps(data)}) 
+
+
+@csrf_exempt
+def show_glossaries(request):
+    return render(request, 'glossaries.html')  
+
+@csrf_exempt
+def show_glossaries_detail(request):
+    page_name  = request.GET['query_page']
+    print(page_name)
+    # feature  = request.GET['feature']
+    # socket_key  = request.GET['socket_key']
+
+    # session = share_session[socket_key]
+    # # session = request.session[socket_key]
+    with open("./static/config/glossaries.json", 'r') as f:
+        data = json.loads(f.read())
+
+    return render(request, 'glossaries_detail.html', {'title':data[page_name]["title"]})  
 
 
 @csrf_exempt

@@ -1,0 +1,87 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 100%}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      {% comment %}background-color: #f1f1f1;{% endcomment %}
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    {% comment %}footer {{% endcomment %}
+      {% comment %}background-color: #555;{% endcomment %}
+      {% comment %}color: white;{% endcomment %}
+      {% comment %}padding: 15px;{% endcomment %}
+    {% comment %}}{% endcomment %}
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div class="col-sm-11 mx-auto mt-5">
+  <div class="row mb-3 block_href">
+    <div class="col-12 mx-auto">
+        <div class="card-deck">
+            <div class="card" style="border-color:#424246;border-width: 3px">
+                <div class="card-header" style="background-color:#424246;"><font color="white"><h4>{{title}}</h4></font></div>
+                    <div class="card-body">
+                        <!-- <ul class="mb-0">
+                            <li><a href="/YMLA/show_glossaries_detail" id="motivation_js">Gene Ontology (GO)</a></li>
+                            <li><a href="#" id="motivation_js">Molecular Function (MF)</a></li>
+                            <li><a href="#" id="motivation_js">Biological Process</a></li>
+                            <li><a href="#" id="motivation_js">Cellular Component (CC)</a></li>
+                            <li><a href="#" id="motivation_js">Disease Ontology (DO)</a></li>
+                            <li><a href="#" id="motivation_js">Mutant Phenotype</a></li>
+                            <li><a href="#" id="whatisyqfc_js">Biochemical Pathway</a></li>
+                            <li><a href="#" id="whatisyqfc_js">Protein Domain</a></li>
+                            <li><a href="#" id="whatisyqfc_js">Physical interactor</a></li>
+                            <li><a href="#" id="whatisyqfc_js">Genetic Interactor</a></li>
+                            <li><a href="#" id="whatisyqfc_js">Transcriptional Regulator's Targets</a></li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+    
+
+
+<hr class="col-12 mx-auto mb-3" style="border-width:.15rem">
+
+</body>
+</html>
+{% endblock %}
