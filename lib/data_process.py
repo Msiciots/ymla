@@ -632,19 +632,19 @@ class DataProcess:
 
                 table_data[dict_index]["P-value"] = self.dfs_pvalue[column_index][self.corr][term_index]
      
-                volcano_data.append(
-                    dict(
-                        zip(
-                            ["x", "y", "name","index"],
-                            [
-                                fold_change,
-                                self.dfs_pvalue[column_index][self.corr][term_index],
-                                self.df_feature_map_id[self.feature][term_index],
-                                dict_index,
-                            ],
-                        )
-                    )
-                )
+                # volcano_data.append(
+                #     dict(
+                #         zip(
+                #             ["x", "y", "name","index"],
+                #             [
+                #                 fold_change,
+                #                 self.dfs_pvalue[column_index][self.corr][term_index],
+                #                 self.df_feature_map_id[self.feature][term_index],
+                #                 dict_index,
+                #             ],
+                #         )
+                #     )
+                # )
 
                 dict_index += 1
         data = {
@@ -655,7 +655,7 @@ class DataProcess:
             "corr": self.corr,
             "cut-off": self.cut_off,
             "table_data": json.dumps(table_data),
-            "volcano_data": json.dumps(volcano_data),
+            # "volcano_data": json.dumps(volcano_data),
             "socket_key":socket_key,
             "quant_terms": ", ".join(self.quant_feature[self.feature]) if self.feature in self.quant_feature else "",
             "bottom_percent": str(self.bottom_percent)+"%",
@@ -712,19 +712,19 @@ class DataProcess:
             }
             dict_index += 1
 
-            volcano_data.append(
-                dict(
-                    zip(
-                        ["x", "y", "name","color"],
-                        [
-                            fold_change,
-                            self.dfs_pvalue[input_index][self.corr][term_index],
-                            self.df_input.columns[input_index],
-                            "#C0C0C0" if self.dfs_pvalue[input_index][self.corr][term_index] < self.cut_off else "",
-                        ],
-                    )
-                )
-            )
+            # volcano_data.append(
+            #     dict(
+            #         zip(
+            #             ["x", "y", "name","color"],
+            #             [
+            #                 fold_change,
+            #                 self.dfs_pvalue[input_index][self.corr][term_index],
+            #                 self.df_input.columns[input_index],
+            #                 "#C0C0C0" if self.dfs_pvalue[input_index][self.corr][term_index] < self.cut_off else "",
+            #             ],
+            #         )
+            #     )
+            # )
 
 
         input_list_no = []
@@ -756,7 +756,7 @@ class DataProcess:
             "input_list_no": json.dumps(input_list_no),
             "corr": self.corr, 
             "cut-off": self.cut_off,
-            "volcano_data": json.dumps(volcano_data),
+            # "volcano_data": json.dumps(volcano_data),
             "socket_key":socket_key,
         }
         return data

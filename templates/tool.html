@@ -136,7 +136,7 @@ input[type=number] {
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                        <b>Widely Used Features</b>
+                        <b>Ontology and Annotation Features</b>
                       </button>
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
@@ -151,11 +151,7 @@ input[type=number] {
                           <label style="padding-left:40px;font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_p' id='go_p' style="zoom: 1.2;" > Biological Process (BP)</label>
 
                           <label style="padding-left:40px;font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_c' id='go_c' style="zoom: 1.2;" > Cellular Component (CC)</label>
-
-                          <!-- <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='complex' id='complex' style="zoom: 1.2;" > Protein Complex </a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_complex" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
-                          <p></p>    -->
-                          
+                         
                           <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='disease' id='disease' style="zoom: 1.2;" > Disease Ontology (DO)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_disease" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
                           <p></p>
                           <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='phenotype' id='phenotype' style="zoom: 1.2;"> Mutant Phenotype</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_phenotype" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
@@ -179,7 +175,7 @@ input[type=number] {
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                        <b>Interesting Gene Groups Collected by YMLA</b>
+                        <b>Functional Gene Group Features</b>
                       </button>
                     </h2>
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
@@ -228,7 +224,7 @@ input[type=number] {
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                        <b>Novel Features Defined by YMLA</b>
+                        <b>Gene/protein Property Features</b>
                       </button>
                     </h2>
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
@@ -244,30 +240,10 @@ input[type=number] {
                           <label style="padding-left:40px;font-size: 14px">▪ CDS Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_cds" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
 
                           <label style="padding-left:40px;font-size: 14px">▪ Protein Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_length" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
-              
-                          <p></p>
 
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='half_life'  style="zoom: 1.2;" > <b>Half-life</b></label>                          <p>
-                          <label style="padding-left:40px;font-size: 14px">▪ mRNA Half-life</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_half" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
-
-                          <label style="padding-left:40px;font-size: 14px">▪ Protein Half-life</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_half" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
                           <p></p>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='isoform' style="zoom: 1.2;" > <b>mRNA Isoform Number</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_isoform" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
                           
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='gene_expression_nc'  style="zoom: 1.2;" > <b>Gene Expression (Normal Condition)</b></label>                          <p>
-                          <label style="padding-left:40px;font-size: 14px">▪ mRNA Level (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2, D3">3 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_level" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
-
-                          <label style="padding-left:40px;font-size: 14px">▪ Protein Abundance (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2">2 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_abun" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
-
-                          <p></p>
-
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='codon' style="zoom: 1.2;" > <b>Coding Region Translation Property</b></label>                          <p>
-                          <label style="padding-left:40px;font-size: 14px">▪ Translational Efficiency (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2, D3, D4">4 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_te" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
-
-                          <label style="padding-left:40px;font-size: 14px">▪ Codon Bias <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_bias" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
-                          <label style="padding-left:40px;font-size: 14px">▪ Codon Adaptation Index <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_ai" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label> 
-                          <label style="padding-left:40px;font-size: 14px">▪ Frequency of Optimal Codon <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_of" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>    
-                          <label style="padding-left:40px;font-size: 14px">▪ Hydropathicity of Protein <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_hp" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
-                          <label style="padding-left:40px;font-size: 14px">▪ Aromaticity Score <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_as" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
                           <p></p>
                           <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='protein_physical' style="zoom: 1.2;" > <b>Protein Physical Property</b></label>                          <p>
                           <label style="padding-left:40px;font-size: 14px">▪ Protein Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_length" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
@@ -279,19 +255,45 @@ input[type=number] {
                           <label style="padding-left:40px;font-size: 14px">▪ Aliphatic Index</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_aliphatic" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
               
                           <label style="padding-left:40px;font-size: 14px">▪ Instability Index</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_instability" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
-            
+
                           <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='plasticity' style="zoom: 1.2;" > <b>Transcriptional Plasticity</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_plasticity" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='codon' style="zoom: 1.2;" > <b>Coding Region Translation Property</b></label><p>
+                          <label style="padding-left:40px;font-size: 14px">▪ Codon Bias <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_bias" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
+                          <label style="padding-left:40px;font-size: 14px">▪ Codon Adaptation Index <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_ai" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label> 
+                          <label style="padding-left:40px;font-size: 14px">▪ Frequency of Optimal Codon <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_of" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>    
+                          <label style="padding-left:40px;font-size: 14px">▪ Hydropathicity of Protein <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_hp" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
+                          <label style="padding-left:40px;font-size: 14px">▪ Aromaticity Score <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_as" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                        <b>High-throughput probing Features</b>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                      <div class="accordion-body">
+                        <label><input type="checkbox" name="selectAllht" id="selectAllht" style="zoom: 1.2;"><b> Select All </b></label><br>
                           <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='isoform' style="zoom: 1.2;" > <b>mRNA Isoform Number</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_isoform" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
-                          <!-- <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='test' style="zoom: 1.2;"> <b>Test</b></label>
+                          
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='half_life'  style="zoom: 1.2;" > <b>Half-life</b></label>                          <p>
+                          <label style="padding-left:40px;font-size: 14px">▪ mRNA Half-life</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_half" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Half-life</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_half" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
                           <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='test2' style="zoom: 1.2;"> <b>Test2</b></label>
+                          
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='gene_expression_nc'  style="zoom: 1.2;" > <b>Gene Expression (Normal Condition)</b></label>                          <p>
+                          <label style="padding-left:40px;font-size: 14px">▪ mRNA Level (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2, D3">3 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_level" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Abundance (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2">2 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_abun" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+                          
                           <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='test3' style="zoom: 1.2;"> <b>Test3</b></label>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='translational_efficiency' style="zoom: 1.2;" > <b>Translational Efficiency<sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_te" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></b></label>
+
                           <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='verify' style="zoom: 1.2;"> <b>verify</b></label> -->
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='plasticity' style="zoom: 1.2;" > <b>Transcriptional Plasticity</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_plasticity" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>
+  
                       </div>
                     </div>
                   </div>
@@ -338,21 +340,27 @@ input[type=number] {
                 </tr>
    
                 <tr id="tr_fc" style="display: none;">
-                  <td colspan="1" style="background-color:#E9ECEF;"><b>Widely Used Features</b></td>
+                  <td colspan="1" style="background-color:#E9ECEF;"><b>Ontology and Annotation Features</b></td>
                   <td colspan="100%" style="border-bottom: 5px">  
                     <ul class="nav nav-pills mb-3 target" id="pills-tab_fc" role="tablist"></ul>
                   </td>
                 </tr>
                 <tr id="tr_fgp" style="display: none;">
-                  <td colspan="1" style="background-color:#E9ECEF;"><b>Interesting Gene Groups Collected by YMLA</b></td>
+                  <td colspan="1" style="background-color:#E9ECEF;"><b>Functional Gene Group Features</b></td>
                   <td colspan="100%" id="f_gp">
                     <ul class="nav nav-pills mb-3 target" id="pills-tab_fgp" role="tablist"></ul>
                   </td>
                 </tr>
                 <tr id="tr_fnv" style="display: none;">
-                  <td colspan="1" style="background-color:#E9ECEF;"><b>Novel Features Defined by YMLA</b></td>
+                  <td colspan="1" style="background-color:#E9ECEF;"><b>Gene/protein Property Features</b></td>
                   <td colspan="100%" id="f_nv">
                     <ul class="nav nav-pills mb-3 target" id="pills-tab_fnv" role="tablist"></ul>
+                  </td>
+                </tr>
+                <tr id="tr_fht" style="display: none;">
+                  <td colspan="1" style="background-color:#E9ECEF;"><b>High-throughput probing Features</b></td>
+                  <td colspan="100%" id="f_ht">
+                    <ul class="nav nav-pills mb-3 target" id="pills-tab_fht" role="tablist"></ul>
                   </td>
                 </tr>
                 <tr id="tr_fcust" style="display: none;">
@@ -362,7 +370,7 @@ input[type=number] {
                       <div class="accordion-item" style="display: none;" id="custom_accordion_gene_group">
                         <h2 class="accordion-header" id="panelsStayOpen-headingOne2">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne2" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne2">
-                            Interesting Gene Groups Collected by YMLA
+                            Functional Gene Group Features
                           </button>
                         </h2>
                         <div id="panelsStayOpen-collapseOne2" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne2">

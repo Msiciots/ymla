@@ -140,6 +140,22 @@ $("#selectAllnv").click(function() {
   }
 });
 
+// High-throughput probing Features
+$("#selectAllht").click(function() {
+  if($("#selectAllht").prop("checked"))
+  {
+   $("input[name='features_highthroughput']").each(function() {
+       $(this).prop("checked", true);
+   });
+  }
+  else
+  {
+   $("input[name='features_highthroughput']").each(function() {
+       $(this).prop("checked", false);
+   });           
+  }
+});
+
 $(document).ajaxStart(function ()
 {
     $('body').addClass('wait');

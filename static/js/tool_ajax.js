@@ -157,6 +157,8 @@ $('#run_analysis').click(function() {
       $('#tr_fgp').hide()
       $('#pills-tab_fnv').empty();
       $('#tr_fnv').hide()
+      $('#pills-tab_fht').empty();
+      $('#tr_fht').hide()
       $('#pills-tab_fcust').empty();
       $('#tr_fcust').hide()
 
@@ -167,9 +169,15 @@ $('#run_analysis').click(function() {
         if (act == "active")
           $('#result_title').html('<i class="fa fa-check"></i> Results of the analyzed feature: <b>'+name_map[key]+'</b>')  
         
-        if(quant_feature[key] !== undefined){
+        if(quant_feature["gene_property"].includes(key)){
           $('#tr_fnv').show()
           $('#pills-tab_fnv').append('<li class="nav-item" role="presentation" style="padding:.2rem .5rem;"><button style="'+bg+'" name="'+key+'" class="nav-link '+act+' border border-dark '+tc+'" id="pills-'+key+'-tab" data-bs-toggle="pill" data-bs-target="#pills-'+key+'" type="button" role="tab" aria-controls="pills-'+key+'" aria-selected="'+select+'">'+name_map[key]+'</button></li>')
+          quant_feature_exist = true;
+          customized_feature.push(key);
+        }
+        else if(quant_feature["high_throughput"].includes(key)){
+          $('#tr_fht').show()
+          $('#pills-tab_fht').append('<li class="nav-item" role="presentation" style="padding:.2rem .5rem;"><button style="'+bg+'" name="'+key+'" class="nav-link '+act+' border border-dark '+tc+'" id="pills-'+key+'-tab" data-bs-toggle="pill" data-bs-target="#pills-'+key+'" type="button" role="tab" aria-controls="pills-'+key+'" aria-selected="'+select+'">'+name_map[key]+'</button></li>')
           quant_feature_exist = true;
           customized_feature.push(key);
         }

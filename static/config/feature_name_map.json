@@ -23,6 +23,7 @@
     "protein_physical":"Protein Physical Property",
     "plasticity":"Transcriptional Plasticity",
     "isoform":"mRNA Isoform Number",
+    "translational_efficiency":"Translational Efficiency",
 
     "custom":"Customized Feature"
 }
