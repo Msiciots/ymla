@@ -95,12 +95,14 @@ def run_analysis(request):
 
     data['socket_key'] = socket_key
     for feature in session["select_features"]:
-        if feature in quant_feature or feature == "gene_group":
-            correction = 'FDR'
-            cut_off = '0.01'
-        else:
-            correction = 'Bonferroni'
-            cut_off = '0.001'
+        correction = 'FDR'
+        cut_off = '0.000001'
+        # if feature in quant_feature or feature == "gene_group":
+        #     correction = 'FDR'
+        #     cut_off = '0.01'
+        # else:
+        #     correction = 'Bonferroni'
+        #     cut_off = '0.001'
         session[feature], data[feature] = session[feature].result(float(cut_off), correction, socket_key)
   
     data['input_list'] = json.dumps(list(df_input.columns))
@@ -254,7 +256,7 @@ def show_custom_result(request):
     # session = request.session[socket_key]
 
     dp = DataProcess("custom",session["df_input"],socket_key)
-    dp = dp.custom_feature_preprocess(feature_term, 30, 30)
+    dp = dp.custom_feature_preprocess(feature_term, 15, 15)
     dp = dp.enrichment_parallelize()
     dp, data = dp.result(0.01, "FDR", socket_key) 
     session['custom'] = dp

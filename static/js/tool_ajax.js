@@ -218,7 +218,8 @@ $('#run_analysis').click(function() {
                   <div class="form-group ">
                     <label for="inputState"><b>Corrected p-value cutoff:</b></label>
                     <select  style="width:150px" name="pValue" id="cut_off_${key}" class="form-select" aria-label="Default select example">
-                      <option value="0.001" selected>0.001</option>
+                    <option value="0.001" selected>0.000001</option>
+                      <option value="0.001">0.001</option>
                       <option value="0.01" >0.01</option>    
                       <option value="0.05">0.05</option>
                     </select>
@@ -309,8 +310,9 @@ $('#run_analysis').click(function() {
                   <div class="form-group ">
                     <label for="inputState"><b>Corrected p-value cutoff:</b></label>
                     <select  style="width:150px" name="pValue" id="cut_off_${key}" class="form-select" aria-label="Default select example">
+                      <option value="0.01" selected>0.000001</option>   
                       <option value="0.001" >0.001</option>
-                      <option value="0.01" selected>0.01</option>    
+                      <option value="0.01">0.01</option>    
                       <option value="0.05">0.05</option>
                     </select>
                   </div>          
@@ -428,8 +430,9 @@ $('#run_analysis').click(function() {
                             <div class="form-group ">
                               <label for="inputState"><b>Corrected p-value cutoff:</b></label>
                               <select  style="width:150px;" name="pValue" id="cut_off_${key}" class="form-select" aria-label="Default select example">
+                                <option value="0.01" selected>0.000001</option>   
                                 <option value="0.001" >0.001</option>
-                                <option value="0.01" selected>0.01</option>    
+                                <option value="0.01">0.01</option>    
                                 <option value="0.05">0.05</option>
                               </select>
                             </div>     
@@ -447,9 +450,9 @@ $('#run_analysis').click(function() {
                     <div class="card-body">
                     <b><i>Feature Name</i></b> : ${quant_feature_list}
                     <br>
-                    <b><i>Feature Name</i> (B)</b>: A list containing genes whose feature values belong to the <spin class="text-danger">BOTTOM <input class="text-danger" type="number" value="30" id="number1_${key}" min="0" max="100" step="1" /> %</spin> in the genome.
+                    <b><i>Feature Name</i> (B)</b>: A list containing genes whose feature values belong to the <spin class="text-danger">BOTTOM <input class="text-danger" type="number" value="15" id="number1_${key}" min="0" max="100" step="1" /> %</spin> in the genome.
                     <br>
-                      <b><i>Feature Name</i> (T)</b>: A list containing genes whose feature values belong to the <spin class="text-danger">TOP <input  class="text-danger" type="number" value="30" id="number2_${key}" min="0" max="100" step="1" /> %</spin> in the genome.
+                      <b><i>Feature Name</i> (T)</b>: A list containing genes whose feature values belong to the <spin class="text-danger">TOP <input  class="text-danger" type="number" value="15" id="number2_${key}" min="0" max="100" step="1" /> %</spin> in the genome.
                     </div>
                   </div>
                 </div>
@@ -557,7 +560,8 @@ $('#run_analysis').click(function() {
         $('#tr_fcust').show()
         $('#customized_term').html("")
         $('#customized_term_gene_group').html("");
-        $('#customized_term_quant').html("")
+        $('#customized_term_quant').html("");
+        $('#customized_term_high_throughput').html("");
         customized_feature.forEach(function(f) {
           if (f =="gene_group"){
             $('#custom_accordion_gene_group').show()
@@ -565,7 +569,7 @@ $('#run_analysis').click(function() {
               $('#customized_term_gene_group').append(`<label><input type='checkbox' name='customized_term' value="${g}">${" "+g}</label><br>`);
             });
           }
-          else{
+          else if(quant_feature["gene_property"].includes(f)){
             $('#custom_accordion_quant').show()
             $('#customized_term_quant').append(`<label><b>${name_map[f]}</b>&nbsp;&nbsp;<a onclick="return false;" href="#"><span class="badge bg-secondary" id="selectAll_${f}">Select All</span></a>&nbsp;&nbsp;<a onclick="return false;" href="#"><span class="badge bg-secondary" id="selectNone_${f}">Select None</span></a></label><p>`);          
             quant_feature[f].forEach(function(term) {
@@ -584,6 +588,26 @@ $('#run_analysis').click(function() {
             });
             $('#customized_term_quant').append(`<p></p>`);
           }
+          else if(quant_feature["high_throughput"].includes(f)){
+            $('#custom_accordion_high_throughput').show()
+            $('#customized_term_high_throughput').append(`<label><b>${name_map[f]}</b>&nbsp;&nbsp;<a onclick="return false;" href="#"><span class="badge bg-secondary" id="selectAll_${f}">Select All</span></a>&nbsp;&nbsp;<a onclick="return false;" href="#"><span class="badge bg-secondary" id="selectNone_${f}">Select None</span></a></label><p>`);          
+            quant_feature[f].forEach(function(term) {
+              $('#customized_term_high_throughput').append(`<label style="padding-left:20px;"><input type='checkbox' name='customized_term_${f}' value="${term+" (B)"}">${" "+term+" (B)"}</label> `);
+              $('#customized_term_high_throughput').append(`<label style="padding-left:20px;"><input type='checkbox' name='customized_term_${f}' value="${term+" (T)"}">${" "+term+" (T)"}</label> `);
+            });
+            $("#selectAll_"+f).click(function() {
+              $(`input[name='customized_term_${f}']`).each(function() {
+                  $(this).prop("checked", true);
+              });
+            });
+            $("#selectNone_"+f).click(function() {
+              $(`input[name='customized_term_${f}']`).each(function() {
+                $(this).prop("checked", false);
+              }); 
+            });
+            $('#customized_term_high_throughput').append(`<p></p>`);
+          }
+  
         });
         $('#pills-tab_fcust').html('<li class="nav-item" role="presentation" style="padding:.2rem .5rem;"><button style="background-color:#C6C8CA;" name="custom" class="nav-link border border-dark text-dark" id="pills-custom-tab" data-bs-toggle="pill" data-bs-target="#pills-custom" type="button" role="tab" aria-controls="pills-custom" aria-selected="false"><i class="fas fa-hammer"></i> Generate Custom Summary</button></li>')
 
@@ -594,9 +618,9 @@ $('#run_analysis').click(function() {
                 <h6><i class="fas fa-cog"></i> Define terms of the feature</h6>
               </div>
               <div class="card-body">
-              <b><i>Feature Name</i> (B)</b>: A list containing genes whose feature values belong to the <spin class="text-danger">BOTTOM <input class="text-danger" type="number" value="30" id="number1_custom" min="0" max="100" step="1" /> %</spin> in the genome.
+              <b><i>Feature Name</i> (B)</b>: A list containing genes whose feature values belong to the <spin class="text-danger">BOTTOM <input class="text-danger" type="number" value="15" id="number1_custom" min="0" max="100" step="1" /> %</spin> in the genome.
                 <p>
-                <b><i>Feature Name</i> (T)</b>: A list containing genes whose feature values belong to the <spin class="text-danger">TOP <input  class="text-danger" type="number" value="30" id="number2_custom" min="0" max="100" step="1" /> %</spin> in the genome.
+                <b><i>Feature Name</i> (T)</b>: A list containing genes whose feature values belong to the <spin class="text-danger">TOP <input  class="text-danger" type="number" value="15" id="number2_custom" min="0" max="100" step="1" /> %</spin> in the genome.
               </div>
             </div>
           </div>
@@ -627,8 +651,9 @@ $('#run_analysis').click(function() {
                           <div class="form-group ">
                             <label for="inputState"><b>Corrected p-value cutoff:</b></label>
                             <select  style="width:150px;" name="pValue" id="cut_off_custom" class="form-select" aria-label="Default select example">
+                            <option value="0.01" selected>0.000001</option>    
                               <option value="0.001" >0.001</option>
-                              <option value="0.01" selected>0.01</option>    
+                              <option value="0.01">0.01</option>    
                               <option value="0.05">0.05</option>
                             </select>
                           </div>     
@@ -750,8 +775,8 @@ $('#run_analysis').click(function() {
               let val = JSON.parse(data)
               if (val['yAxis_count'] != 0){
                 render_result("Customized Feature","custom",val);
-                $('#number1_custom').val(30);
-                $('#number2_custom').val(30);
+                $('#number1_custom').val(15);
+                $('#number2_custom').val(15);
               }
               else{
                 $(`#pills-tab_custom`).hide();
@@ -793,10 +818,10 @@ $('#run_analysis').click(function() {
           let number2 = document.getElementById('number2_custom').value;
           if ( number1 < 0 || number1 > 100 || number2 < 0 || number2 > 100){
             alert("Illegal quantile value");
-            $('#number1_custom').val(30);
-            $('#number2_custom').val(30);
-            number1 = 30;
-            number2 = 30;
+            $('#number1_custom').val(15);
+            $('#number2_custom').val(15);
+            number1 = 15;
+            number2 = 15;
           }
           
           formdata.append('number1', number1);
@@ -875,10 +900,10 @@ $('#run_analysis').click(function() {
             let number2 = document.getElementById('number2_'+key).value;
             if ( number1 < 0 || number1 > 100 || number2 < 0 || number2 > 100){
               alert("Illegal quantile value");
-              $('#number1_'+key).val(30);
-              $('#number2_'+key).val(30);
-              number1 = 30;
-              number2 = 30;
+              $('#number1_'+key).val(15);
+              $('#number2_'+key).val(15);
+              number1 = 15;
+              number2 = 15;
             }
             
             formdata.append('number1', number1);

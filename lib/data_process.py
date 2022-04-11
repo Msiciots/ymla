@@ -123,7 +123,7 @@ class DataProcess:
         self.df_input = df_input_file  # user input file
         self.dfs_pvalue = []  # store pvalue processed, dataframe in list.
         self.corr = "FDR"
-        self.cut_off = 0.01
+        self.cut_off = 0.000001
         self.bottom_percent = 0
         self.top_percent = 0
         self.yAxis_id = []  # heatmap and table y Axis
@@ -138,7 +138,7 @@ class DataProcess:
         self.quant_feature = json.load(f)
 
         if feature in self.quant_feature:
-            self.quant_feature_preprocess(30,30)
+            self.quant_feature_preprocess(15,15)
         elif feature == "gene_group":
             self.df_feature_map_id = pd.read_csv("./static/data/gene_group_feature/"+feature+"_map_id.csv")
         elif feature == "custom":
