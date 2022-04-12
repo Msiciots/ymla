@@ -208,8 +208,8 @@ $('#run_analysis').click(function() {
                   <div class="form-group ">
                     <label for="inputState"><b>Correction method:</b></label>
                     <select style="width:150px" name="errorCorrection" id="errorCorrection_${key}" class="form-select" aria-label="Default select example">
-                      <option value="Bonferroni" selected>Bonferroni</option>
-                      <option value="FDR" >FDR</option>    
+                      <option value="FDR" selected>FDR</option>    
+                      <option value="Bonferroni" >Bonferroni</option>
                       <option value="pvalue" >None</option>
                     </select>
                   </div>
@@ -218,7 +218,7 @@ $('#run_analysis').click(function() {
                   <div class="form-group ">
                     <label for="inputState"><b>Corrected p-value cutoff:</b></label>
                     <select  style="width:150px" name="pValue" id="cut_off_${key}" class="form-select" aria-label="Default select example">
-                    <option value="0.001" selected>0.000001</option>
+                    <option value="0.000001" selected>0.000001</option>
                       <option value="0.001">0.001</option>
                       <option value="0.01" >0.01</option>    
                       <option value="0.05">0.05</option>
@@ -300,8 +300,8 @@ $('#run_analysis').click(function() {
                   <div class="form-group ">
                     <label for="inputState"><b>Correction method:</b></label>
                     <select style="width:150px" name="errorCorrection" id="errorCorrection_${key}" class="form-select" aria-label="Default select example">
-                      <option value="Bonferroni" >Bonferroni</option>
                       <option value="FDR" selected>FDR</option>    
+                      <option value="Bonferroni" >Bonferroni</option>
                       <option value="pvalue" >None</option>
                     </select>
                   </div>
@@ -310,7 +310,7 @@ $('#run_analysis').click(function() {
                   <div class="form-group ">
                     <label for="inputState"><b>Corrected p-value cutoff:</b></label>
                     <select  style="width:150px" name="pValue" id="cut_off_${key}" class="form-select" aria-label="Default select example">
-                      <option value="0.01" selected>0.000001</option>   
+                      <option value="0.000001" selected>0.000001</option>   
                       <option value="0.001" >0.001</option>
                       <option value="0.01">0.01</option>    
                       <option value="0.05">0.05</option>
@@ -420,8 +420,8 @@ $('#run_analysis').click(function() {
                             <div class="form-group ">
                               <label for="inputState"><b>Correction method:</b></label>
                               <select style="width:150px;" name="errorCorrection" id="errorCorrection_${key}" class="form-select" aria-label="Default select example">
-                                <option value="Bonferroni" >Bonferroni</option>
                                 <option value="FDR" selected>FDR</option>    
+                                <option value="Bonferroni" >Bonferroni</option>
                                 <option value="pvalue" >None</option>
                               </select>
                             </div>
@@ -430,7 +430,7 @@ $('#run_analysis').click(function() {
                             <div class="form-group ">
                               <label for="inputState"><b>Corrected p-value cutoff:</b></label>
                               <select  style="width:150px;" name="pValue" id="cut_off_${key}" class="form-select" aria-label="Default select example">
-                                <option value="0.01" selected>0.000001</option>   
+                                <option value="0.000001" selected>0.000001</option>   
                                 <option value="0.001" >0.001</option>
                                 <option value="0.01">0.01</option>    
                                 <option value="0.05">0.05</option>
@@ -641,8 +641,8 @@ $('#run_analysis').click(function() {
                           <div class="form-group ">
                             <label for="inputState"><b>Correction method:</b></label>
                             <select style="width:150px;" name="errorCorrection" id="errorCorrection_custom" class="form-select" aria-label="Default select example">
-                              <option value="Bonferroni" >Bonferroni</option>
                               <option value="FDR" selected>FDR</option>    
+                              <option value="Bonferroni" >Bonferroni</option>
                               <option value="pvalue" >None</option>
                             </select>
                           </div>
@@ -651,7 +651,7 @@ $('#run_analysis').click(function() {
                           <div class="form-group ">
                             <label for="inputState"><b>Corrected p-value cutoff:</b></label>
                             <select  style="width:150px;" name="pValue" id="cut_off_custom" class="form-select" aria-label="Default select example">
-                            <option value="0.01" selected>0.000001</option>    
+                            <option value="0.000001" selected>0.000001</option>    
                               <option value="0.001" >0.001</option>
                               <option value="0.01">0.01</option>    
                               <option value="0.05">0.05</option>

@@ -258,7 +258,7 @@ def show_custom_result(request):
     dp = DataProcess("custom",session["df_input"],socket_key)
     dp = dp.custom_feature_preprocess(feature_term, 15, 15)
     dp = dp.enrichment_parallelize()
-    dp, data = dp.result(0.01, "FDR", socket_key) 
+    dp, data = dp.result(0.000001, "FDR", socket_key) 
     session['custom'] = dp
     return JsonResponse(json.dumps(data), safe=False)
  

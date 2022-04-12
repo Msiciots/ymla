@@ -48,7 +48,7 @@
     }
   </style>
 </head>
-<body>
+<body onload="glossaries_focus()">
 
 <div class="col-sm-11 mx-auto mt-5">
   <div class="row mb-3 block_href">
@@ -58,17 +58,37 @@
                 <div class="card-header" style="background-color:#424246;"><font color="white"><h4>Ontology and Annotation Features</h4></font></div>
                     <div class="card-body">
                         <ul class="mb-0">
-                            <li><a href="/YMLA/glossaries_detail?query_page=gene_ontology" id="motivation_js">Gene Ontology (GO)</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=molecular_function" id="motivation_js">Molecular Function (MF)</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=biological_process" id="motivation_js">Biological Process</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=cellular_component" id="motivation_js">Cellular Component (CC)</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=disease_ontology" id="motivation_js">Disease Ontology (DO)</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=mutant_phenotype" id="motivation_js">Mutant Phenotype</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=biochemical_pathway" id="whatisyqfc_js">Biochemical Pathway</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=protein_domain" id="whatisyqfc_js">Protein Domain</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=physical_interactor" id="whatisyqfc_js">Physical interactor</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=genetic_interactor" id="whatisyqfc_js">Genetic Interactor</a></li>
-                            <li><a href="/YMLA/glossaries_detail?query_page=transcriptional_regular_targets" id="whatisyqfc_js">Transcriptional Regulator's Targets</a></li>
+                            <li id="GeneOntology"">Gene Ontology (GO)</li>
+                            <p>test</p>
+                            <li id="MF">Molecular Function (MF)</li>
+                            <p>test</p>
+                            <li id="BiologicalProcess">Biological Process</li>
+                            <p>test</p>
+
+                            <li id="CellularComponent">Cellular Component (CC)</li>
+                            <p>test</p>
+
+                            <li id="DiseaseOntology">Disease Ontology (DO)</li>
+                            <p>test</p>
+
+                            <li id="MutantPhtenotype">Mutant Phenotype</li>
+                            <p>test</p>
+
+                            <li id="BiochemicalPathway">Biochemical Pathway</li>
+                            <p>test</p>
+
+                            <li id="ProteinDomain">Protein Domain</li>
+                            <p>test</p>
+
+                            <li id="PhtsicalInteractor">Physical interactor</li>
+                            <p>test</p>
+
+                            <li id="GeneticInteractor">Genetic Interactor</li>
+                            <p>test</p>
+
+                            <li id="TranscriptionalRegulatorsTargets">Transcriptional Regulator's Targets</li>
+                            <p>test</p>
+
                         </ul>
                     </div>
                 </div>
@@ -82,15 +102,33 @@
                     <div class="card-header" style="background-color:#424246;"><font color="white"><h4>Functional Gene Group Features</h4></font></div>
                         <div class="card-body">
                             <ul class="mb-0">
-                                <li><a href="/YMLA/glossaries_detail?query_page=tf_encoding" id="motivation_js">293 TF-encoding Genes</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=genes_with_introns" id="motivation_js">285 Genes with introns</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=tata_box_containing_genes" id="motivation_js">1084 TATA Box-containing Genes</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=induced_environmental_strss_response" id="motivation_js">278 induced Environmental Stress Response (iESR) Genes</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=represseses_environmental_stress_response" id="motivation_js">584 repressesed Environmental Stress Response (iESR) Genes</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=occupies_proximial" id="motivation_js">544 Occupied Proximal Nucleosome (iESR) Genes</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=depletes_proximal" id="motivation_js">494 Depleted Proximal Nucleosome (iESR) Genes</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=arsenic_realted_genes" id="motivation_js">535 Arsenic-related Genes</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=phosphoinositide_binding_proteins" id="whatisyqfc_js">673 Phosphoinositide-binding Proteins</a></li>
+                                <li id="293">293 TF-encoding Genes</li>
+                                <p>test</p>
+
+                                <li id="285">285 Genes with introns</li>
+                                <p>test</p>
+
+                                <li id="1084">1084 TATA Box-containing Genes</li>
+                                <p>test</p>
+
+                                <li id="278">278 induced Environmental Stress Response (iESR) Genes</li>
+                                <p>test</p>
+
+                                <li id="584">584 repressesed Environmental Stress Response (iESR) Genes</li>
+                                <p>test</p>
+
+                                <li id="544">544 Occupied Proximal Nucleosome (iESR) Genes</li>
+                                <p>test</p>
+
+                                <li id="494">494 Depleted Proximal Nucleosome (iESR) Genes</li>
+                                <p>test</p>
+
+                                <li id="535">535 Arsenic-related Genes</li>
+                                <p>test</p>
+
+                                <li id="673">673 Phosphoinositide-binding Proteins</li>
+                                <p>test</p>
+
                             </ul>
                         </div>
                     </div>
@@ -105,33 +143,61 @@
                         <div class="card-body">
                             <h6>Gene Length</h6>
                             <ul class="mb-0">
-                                <li><a href="/YMLA/glossaries_detail?query_page=3utr_length" id="motivation_js">3'UTR Length</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=5utr_length" id="whatisyqfc_js">5'UTR Length</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=cds_length" id="whatisyqfc_js">CDS Length</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=protein_length_gene" id="whatisyqfc_js">Protein Length</a></li>
+                                <li id="3UTR">3'UTR Length</li>
+                                <p>test</p>
+
+                                <li id="5UTR">5'UTR Length</li>
+                                <p>test</p>
+
+                                <li id="CDSL">CDS Length</li>
+                                <p>test</p>
+
+                                <li id="ProteinL">Protein Length</li>
+                                <p>test</p>
+
                             </ul> 
                             <br>
                             <h6>mRNA Isoform Number</h6>
                             <ul class="mb-0">
-                                <li><a href="/YMLA/glossaries_detail?query_page=mrna_isoform_number" id="whatisyqfc_js">mRNA Isoform Number</a></li>
+                                <li id="mRNAIsoformNumber">mRNA Isoform Number</li>
                             </ul>
                             <br>
                             <h6>Protein Physical Property</h6>
                             <ul class="mb-0">
-                                <li><a href="/YMLA/glossaries_detail?query_page=protein_length_physical" id="whatisyqfc_js">Protein Length</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=molecular_weight" id="whatisyqfc_js">Molecular Weight</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=isoeletric_point" id="whatisyqfc_js">Isoeletric Point</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=aliphatic" id="whatisyqfc_js">Aliphatic Index</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=instability_index" id="whatisyqfc_js">Instability Index</a></li>
+                                <li id="ProteinLength">Protein Length</li>
+                                <p>test</p>
+
+                                <li id="MolecularWeight">Molecular Weight</li>
+                                <p>test</p>
+
+                                <li id="IsoeletricPoint">Isoeletric Point</li>
+                                <p>test</p>
+
+                                <li id="AliphaticIndex">Aliphatic Index</li>
+                                <p>test</p>
+
+                                <li id="InstabilityIndex">Instability Index</li>
+                                <p>test</p>
+
                             </ul>
                             <br>
                             <h6>Coding Region Translation Property</h6>
                             <ul class="mb-0">
-                                <li><a href="/YMLA/glossaries_detail?query_page=codon_bias" id="whatisyqfc_js">Codon Bias</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=codon_adaptation" id="whatisyqfc_js">Codon Adaptation Index</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=frequency_of_optional" id="whatisyqfc_js">Frequency of Optional Codon</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=hydropathicity_of_protein" id="whatisyqfc_js">Hydropathicity of Protein</a></li>
-                                <li><a href="/YMLA/glossaries_detail?query_page=armaticity_score" id="whatisyqfc_js">Aromaticity Score</a></li>
+                                <li id="CodonBias">Codon Bias</li>
+                                <p>test</p>
+
+                                <li id="CodonAdaptationIndex">Codon Adaptation Index</li>
+                                <p>test</p>
+
+                                <li id="FrequencyOfOptionalCodon">Frequency of Optional Codon</li>
+                                <p>test</p>
+
+                                <li id="Hydropathicity">Hydropathicity of Protein</li>
+                                <p>test</p>
+
+                                <li id="AromaticityScore">Aromaticity Score</li>
+                                <p>test</p>
+
                             </ul>
                         </div>
                     </div>
@@ -145,24 +211,36 @@
       <div class="card-body">
         <h6>Half-life</h6>
         <ul class="mb-0">
-          <li><a href="/YMLA/glossaries_detail?query_page=mrna_half_life" id="collect_chipchip_js">mRNA Half-life</a></li>
-          <li><a href="/YMLA/glossaries_detail?query_page=protein_half_life" id="collect_chipchip_js">Protein Half-life</a></li>
+          <li id="mRNAHalfLife">mRNA Half-life</li>
+          <p>test</p>
+
+          <li id="ProteinHalfLife">Protein Half-life</li>
+          <p>test</p>
+
         </ul>
         <br>
         <h6>Gene Expression (Normal Condition)</h6>
         <ul class="mb-0">
-          <li><a href="/YMLA/glossaries_detail?query_page=mrna_level" id="collect_chipchip_js">mRNA Level</a></li>
-          <li><a href="/YMLA/glossaries_detail?query_page=protein_abundance" id="collect_chipchip_js">Protein Abundance</a></li>
+          <li id="mRNALevel">mRNA Level</li>
+          <p>test</p>
+
+          <li id="ProteinAbundance">Protein Abundance</li>
+          <p>test</p>
+
         </ul>
         <br>
         <h6>Translational Efficiency</h6>
         <ul class="mb-0">
-          <li><a href="/YMLA/glossaries_detail?query_page=translational_efficiency" id="collect_chipchip_js">Translational Efficiency</a></li>
+          <li id="TranslationalE">Translational Efficiency</li>
+          <p>test</p>
+
         </ul>
         <br>
         <h6>Transcriptional Plasticity</h6>
         <ul class="mb-0">
-          <li><a href="/YMLA/glossaries_detail?query_page=transcriptional_plasticity" id="collect_chipchip_js">Transcriptional Plasticity</a></li>
+          <li id="TranscriptionalP">Transcriptional Plasticity</li>
+          <p>test</p>
+
         </ul>
       </div>
     </div>
@@ -172,5 +250,7 @@
 <hr class="col-12 mx-auto mb-3" style="border-width:.15rem">
 
 </body>
+<script type="text/javascript" charset="utf8" src="{% static 'js/tool_action.js' %}"></script>  
+
 </html>
 {% endblock %}

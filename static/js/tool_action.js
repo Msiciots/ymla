@@ -166,4 +166,10 @@ $(document).ajaxStart(function ()
 
 });
 
-
+function glossaries_focus(){
+  let urlParams = new URLSearchParams(window.location.search);
+  query = urlParams.get('page');
+  if (query != null){
+    $('html,body').animate({scrollTop:$(query).offset().top},800);
+  }
+}
