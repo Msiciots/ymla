@@ -192,8 +192,12 @@ function block_detail(data,name_map, quant_feature) {  // when pvalue is clicked
     
     table_data.buttons().container()
           .appendTo( '#btn_d' );
-    if(!(data['feature_type'] in quant_feature) && data['feature_type']!='gene_group')
-      $('#btn_gene_names_only').append('<button class="btn btn-secondary" id="download_genes"><i class="fa fa-download"></i> Download (Gene Names only)</button>')
+
+    // if(!(data['feature_type'] in quant_feature) && data['feature_type']!='gene_group'){
+    //   $('#btn_gene_names_only').html("")
+    //   $('#btn_gene_names_only').append('<button class="btn btn-secondary" id="download_genes"><i class="fa fa-download"></i> Download (Gene Names only)</button>')
+
+    // }
 
     $('#card_data').show();
   
