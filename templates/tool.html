@@ -144,13 +144,14 @@ input[type=number] {
                         <label><input type="checkbox" name="selectAllcom" id="selectAllcom" ><b> Select All </b></label><br>
                           <p></p>
 
-                          <label style="padding-left:20px;"><b>Gene Ontology (GO)</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_go" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
-                          <p>
-                          <label style="padding-left:40px; font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_f' id='go_f' style="zoom: 1.2;" ><a href="glossaries?page=#MF" target="_blank"> Molecular Function (MF)</a></label>     
+                          <label style="padding-left:20px;"><b><a href="glossaries?page=#GeneOntology" target="_blank"> Gene Ontology (GO)</a></b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_go" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <p></p>
+                          <label style="padding-left:40px; "><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_f' id='go_f' style="zoom: 1.2;" > Molecular Function (MF)</label>     
                           
-                          <label style="padding-left:40px;font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_p' id='go_p' style="zoom: 1.2;" ><a href="glossaries?page=#BiologicalProcess" target="_blank"> Biological Process (BP)</a></label>
+                          <label style="padding-left:40px;font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_p' id='go_p' style="zoom: 1.2;" > Biological Process (BP)</label>
 
-                          <label style="padding-left:40px;font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_c' id='go_c' style="zoom: 1.2;" ><a href="glossaries?page=#CellularComponent" target="_blank"> Cellular Component (CC)</a></label>
+                          <label style="padding-left:40px;font-size: 14px;"><input style="font-size: 14px;" type='checkbox' name='features_common' value='go_c' id='go_c' style="zoom: 1.2;" > Cellular Component (CC)</label>
+                          <p></p>
                          
                           <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='disease' id='disease' style="zoom: 1.2;" ><a href="glossaries?page=#DiseaseOntology" target="_blank"> Disease Ontology (DO)</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_disease" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
                           <p></p>
@@ -160,9 +161,11 @@ input[type=number] {
                           <p></p>
                           <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='protein_domain' id='protein_domain' style="zoom: 1.2;" ><a href="glossaries?page=#ProteinDomain" target="_blank"> Protein Domain</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_domain" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info">--></i></a></sup>
                           <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='physical_interaction' id='physical_interaction' style="zoom: 1.2;" ><a href="glossaries?page=#PhtsicalInteractor" target="_blank"> Physical Interactor</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_physical" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:20px;"><b> Protein interaction targets</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_go" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
                           <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='genetic_interaction' id='genetic_interaction' style="zoom: 1.2;" ><a href="glossaries?page=#GeneticInteractor" target="_blank"> Genetic Interactor</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_genetic" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          
+                          <label style="padding-left:40px; font-size: 14px;"><input type='checkbox' name='features_common' value='physical_interaction' id='physical_interaction' style="zoom: 1.2;" ><a href="glossaries?page=#PhtsicalInteractor" target="_blank"> Physical Interactor</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_physical" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px; font-size: 14px;"><input type='checkbox' name='features_common' value='genetic_interaction' id='genetic_interaction' style="zoom: 1.2;" ><a href="glossaries?page=#GeneticInteractor" target="_blank"> Genetic Interactor</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_genetic" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
                           <p></p>
 
                           <label style="padding-left:20px;"><input type='checkbox' name='features_common' value='regulator' id='regulator' style="zoom: 1.2;" ><a href="glossaries?page=#TranscriptionalRegulatorsTargets" target="_blank"> Transcriptional Regulator's Targets </a><sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_tf" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>
@@ -199,15 +202,15 @@ input[type=number] {
 
                         <br>
                         <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='rESR Genes' id='ncRNA_gene' style="zoom: 1.2;" > 585 rESR Genes</label> -->
-                        <label style="padding-left:20px;font-size: 14px"><a href="glossaries?page=#584" target="_blank">▪ 584 repressesed Environmental Stress Response (iESR) Genes</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_resr" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                        <label style="padding-left:20px;font-size: 14px"><a href="glossaries?page=#584" target="_blank">▪ 584 repressesed Environmental Stress Response (rESR) Genes</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_resr" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
                         <br>
                         <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='OPN Genes' id='ncRNA_gene' style="zoom: 1.2;" > 544 OPN Genes</label> -->
-                        <label style="padding-left:20px;font-size: 14px"><a href="glossaries?page=#544" target="_blank">▪ 544 Occupied Proximal Nucleosome (iESR) Genes</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_opn" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                        <label style="padding-left:20px;font-size: 14px"><a href="glossaries?page=#544" target="_blank">▪ 544 Occupied Proximal Nucleosome (OPN) Genes</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_opn" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
                         <br>
                         <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='DPN Genes' id='ncRNA_gene' style="zoom: 1.2;" > 494 DPN Genes</label> -->
-                        <label style="padding-left:20px;font-size: 14px"><a href="glossaries?page=#494" target="_blank">▪ 494 Depleted Proximal Nucleosome (iESR) Genes</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_dpn" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                        <label style="padding-left:20px;font-size: 14px"><a href="glossaries?page=#494" target="_blank">▪ 494 Depleted Proximal Nucleosome (DPN) Genes</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_dpn" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
                         <br>
                         <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_gene' value='Arsenic-Related Genes' id='ncRNA_gene' style="zoom: 1.2;" > 3396 Arsenic-Related Genes</label> -->
@@ -233,36 +236,35 @@ input[type=number] {
                           <p></p>
 
                           <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='gene_length' style="zoom: 1.2;"> <b>Gene Length</b></label>                          <p>
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#3UTR" target="_blank">▪ 3'UTR Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_3utr" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#UTR" target="_blank">▪ 3'UTR Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_3utr" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#5UTR" target="_blank">▪ 5'UTR Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_5utr" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#UTR" target="_blank">▪ 5'UTR Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_5utr" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#CDSL" target="_blank">▪ CDS Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_cds" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#CPL" target="_blank">▪ CDS Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_cds" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#ProteinL" target="_blank">▪ Protein Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_length" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#CPL" target="_blank">▪ Protein Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_length" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
                           <p></p>
                           <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='isoform' style="zoom: 1.2;" > <b>mRNA Isoform Number</b></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_isoform" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
                           
                           <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='protein_physical' style="zoom: 1.2;" > <b>Protein Physical Property</b></label>                          <p>
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#ProteinLength" target="_blank">▪ Protein Length</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_length" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='protein_physical-chemical_features' style="zoom: 1.2;" > <b><a href="glossaries?page=#Protein_physico_chemical_features" target="_blank">Protein Physical-Chemical Features</a></b></label><p>
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Length</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_length" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#MolecularWeight" target="_blank">▪ Molecular Weight</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_molecular" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px">▪ Molecular Weight</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_molecular" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#IsoeletricPoint" target="_blank">▪ Isoelectric Point</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_isoelectric" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px">▪ Isoelectric Point</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_isoelectric" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#AliphaticIndex" target="_blank">▪ Aliphatic Index</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_aliphatic" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px">▪ Aliphatic Index</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_aliphatic" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
               
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#InstabilityIndex" target="_blank">▪ Instability Index</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_instability" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px">▪ Instability Index</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_instability" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
-                          <p></p>
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='codon' style="zoom: 1.2;" > <b>Coding Region Translation Property</b></label><p>
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#CodonBias" target="_blank">▪ Codon Bias </a><sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_bias" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#CodonAdaptationIndex" target="_blank">▪ Codon Adaptation Index </a><sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_ai" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label> 
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#FrequencyOfOptionalCodon" target="_blank">▪ Frequency of Optimal Codon </a><sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_of" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>    
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#Hydropathicity" target="_blank">▪ Hydropathicity of Protein </a><sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_hp" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#AromaticityScore" target="_blank">▪ Aromaticity Score </a><sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_as" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>
+                          <!-- <label style="padding-left:20px;"><input type='checkbox' name='features_novel' value='codon' style="zoom: 1.2;" > <b>Coding Region Translation Property</b></label><p> -->
+                          <label style="padding-left:40px;font-size: 14px">▪ Codon Bias <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_bias" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>
+                          <label style="padding-left:40px;font-size: 14px">▪ Codon Adaptation Index <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_ai" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label> 
+                          <label style="padding-left:40px;font-size: 14px">▪ Frequency of Optimal Codon <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_of" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>    
+                          <label style="padding-left:40px;font-size: 14px">▪ Hydropathicity of Protein <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_hp" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>
+                          <label style="padding-left:40px;font-size: 14px">▪ Aromaticity Score <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_codon_as" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></label>
                       </div>
                     </div>
                   </div>
@@ -277,16 +279,17 @@ input[type=number] {
                         <label><input type="checkbox" name="selectAllht" id="selectAllht" style="zoom: 1.2;"><b> Select All </b></label><br>
                           <p></p>
                           
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='half_life'  style="zoom: 1.2;" > <b>Half-life</b></label>                          <p>
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#mRNAHalfLife" target="_blank">▪ mRNA Half-life</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_half" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
-
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#ProteinHalfLife" target="_blank">▪ Protein Half-life</a></label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_half" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='half_life'  style="zoom: 1.2;" ><b><a href="glossaries?page=#HalfLife" target="_blank">mRNA and protein half-life</a></b></label>                          <p>
+                          <p></p>
+                          <label style="padding-left:40px;font-size: 14px">▪ mRNA Half-life</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_half" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Half-life</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_half" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
                           <p></p>
                           
-                          <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='gene_expression_nc'  style="zoom: 1.2;" > <b>Gene Expression (Normal Condition)</b></label>                          <p>
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#mRNALevel" target="_blank">▪ mRNA Level </a>(<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2, D3">3 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_level" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='gene_expression_nc'  style="zoom: 1.2;" > <b><a href="glossaries?page=#GEAPA" target="_blank">Gene Expression and Protein Abundance</a></b></label>                          <p>
+                          <p></p>
+                          <label style="padding-left:40px;font-size: 14px">▪ mRNA Level (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2, D3">2 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_mRNA_level" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
 
-                          <label style="padding-left:40px;font-size: 14px"><a href="glossaries?page=#ProteinAbundance" target="_blank">▪ Protein Abundance </a>(<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2">2 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_abun" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
+                          <label style="padding-left:40px;font-size: 14px">▪ Protein Abundance (<a onclick="return false;" href="#" data-bs-toggle="tooltip" data-placement="top" title="D1, D2">1 datasets</a>)</label> <sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_protein_abun" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup>
                           
                           <p></p>
                           <label style="padding-left:20px;"><input type='checkbox' name='features_highthroughput' value='translational_efficiency' style="zoom: 1.2;" > <b><a href="glossaries?page=#TranslationalE" target="_blank">Translational Efficiency</a><sup><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal_te" style="color:black;"><!--<i class="fa fa-info-circle" aria-hidden="true" title="Info"></i>--></a></sup></b></label>

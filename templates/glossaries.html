@@ -58,36 +58,32 @@
                 <div class="card-header" style="background-color:#424246;"><font color="white"><h4>Ontology and Annotation Features</h4></font></div>
                     <div class="card-body">
                         <ul class="mb-0">
-                            <li id="GeneOntology"">Gene Ontology (GO)</li>
-                            <p>test</p>
-                            <li id="MF">Molecular Function (MF)</li>
-                            <p>test</p>
-                            <li id="BiologicalProcess">Biological Process</li>
-                            <p>test</p>
-
-                            <li id="CellularComponent">Cellular Component (CC)</li>
-                            <p>test</p>
-
+                            <li id="GeneOntology">Gene Ontology (GO)</li>
+                            <p>Gene ontology terms of Molecular Function (MF), Biological Process (BP), and Cellular Component (CC) are collected for understanding functional enrichment with known annotations for the gene lists in YMLA.</p>
+                            <!-- <li id="MF">Molecular Function (MF)</li> -->
+                            <!-- <li id="BiologicalProcess">Biological Process</li> -->
+                            
+                            <!-- <li id="CellularComponent">Cellular Component (CC)</li> -->
+                            
                             <li id="DiseaseOntology">Disease Ontology (DO)</li>
-                            <p>test</p>
-
+                            <p>Disease ontology (DO) terms describe the relationships between genes and human diseases using standardized clinical vocabulary. In YMLA, 351 DO terms related to yeast genes were gathered.</p>
+                            
                             <li id="MutantPhtenotype">Mutant Phenotype</li>
-                            <p>test</p>
-
+                            <p>Errors in amino acid compositions of a protein can lead to mutant phenotypes that can help explain the functional roles of different gene products. 635 yeast mutant phenotype annotations were collected in YMLA. </p>
+                            
                             <li id="BiochemicalPathway">Biochemical Pathway</li>
-                            <p>test</p>
+                            <p>Biochemical network/pathway gene annotations support identifying the mechanisms in which the genes are involved. 164 yeast biochemical pathway annotations are deposited in YMLA to help this pathway enrichment analysis.</p>
 
                             <li id="ProteinDomain">Protein Domain</li>
-                            <p>test</p>
+                            <p>The protein domain enrichment for the protein products of a gene list provides hints for the units required to handle the cellular conditions of interest. 14,752 protein domains are available in YMLA.</p>
+                            <li id="protein_interaction_targets">Protein Interaction Targets</li>
+                            <p>The enrichment of interaction targets of the protein products of gene lists can identify the essential biological processes in which these genes participate. 5,866 genes with genetic interactors and 5,591 genes with physical interactors are organized in YMLA. </p>
+                            <!-- <li id="PhtsicalInteractor">Physical interactor</li> -->
 
-                            <li id="PhtsicalInteractor">Physical interactor</li>
-                            <p>test</p>
-
-                            <li id="GeneticInteractor">Genetic Interactor</li>
-                            <p>test</p>
+                            <!-- <li id="GeneticInteractor">Genetic Interactor</li> -->
 
                             <li id="TranscriptionalRegulatorsTargets">Transcriptional Regulator's Targets</li>
-                            <p>test</p>
+                            <p>The targets of different transcription regulators can help recognize if the genes in the given list are involved in some critical cellular responses. The targets of 194 transcriptional regulators are stored in YMLA.</p>
 
                         </ul>
                     </div>
@@ -103,31 +99,31 @@
                         <div class="card-body">
                             <ul class="mb-0">
                                 <li id="293">293 TF-encoding Genes</li>
-                                <p>test</p>
+                                <p>Transcription factors (TFs) are proteins that facilitate the transcription process and can provide insights into transcription medication. 293 yeast TFs were obtained in YMLA.</p>
 
                                 <li id="285">285 Genes with introns</li>
-                                <p>test</p>
+                                <p>Genes involved in the stress responses are usually intron-poor in yeast. 285 genes with introns were queried in YMLA to estimate the level of enrichment of intron-containing genes.</p>
 
                                 <li id="1084">1084 TATA Box-containing Genes</li>
-                                <p>test</p>
+                                <p>TATA box-containing genes are mainly associated with cellular stress responses. YMLA includes 1,084 yeast TATA box-containing genes to estimate this enrichment feature.</p>
 
                                 <li id="278">278 induced Environmental Stress Response (iESR) Genes</li>
-                                <p>test</p>
+                                <p>Genes involved in autonomous stress reactions are called environmental stress response (ESR) genes. iESR enriched gene lists are more prone to contain stress defense-related genes. 278 iESR genes are deposited in YMLA.</p>
 
                                 <li id="584">584 repressesed Environmental Stress Response (iESR) Genes</li>
-                                <p>test</p>
+                                <p>Genes involved in autonomous stress reactions are called environmental stress response (ESR) genes. rESR enriched gene lists are more prone to contain housekeeping genes. 584 rESR genes are deposited in YMLA.</p>
 
                                 <li id="544">544 Occupied Proximal Nucleosome (iESR) Genes</li>
-                                <p>test</p>
+                                <p>Nucleosomes control promoter accessibility. OPN genes have relatively higher nucleosome occupancy near the TSS regions. 544 OPN genes are collected in YMLA. </p>
 
                                 <li id="494">494 Depleted Proximal Nucleosome (iESR) Genes</li>
-                                <p>test</p>
+                                <p>Nucleosomes control promoter accessibility. OPN genes have relatively higher nucleosome occupancy near the TSS regions. DPN genes are more nucleosome-free close to the TSS regions. 494 OPN genes are collected in YMLA.</p>
 
                                 <li id="535">535 Arsenic-related Genes</li>
-                                <p>test</p>
+                                <p>Arsenic triggers damage to organ functionalities. And the responses to arsenic can provide clues for cellular toxicity modulation. 535 yeast arsenic-related genes with both phenotypic screening and transcriptional profiling evidence are collected in YMLA. </p>
 
                                 <li id="673">673 Phosphoinositide-binding Proteins</li>
-                                <p>test</p>
+                                <p>Proteins that bind phosphoinositides control lipid signaling and membrane trafficking. 673 phosphoinositide binding proteins were gathered in YMLA to evaluate this functional enrichment.</p>
 
                             </ul>
                         </div>
@@ -143,61 +139,23 @@
                         <div class="card-body">
                             <h6>Gene Length</h6>
                             <ul class="mb-0">
-                                <li id="3UTR">3'UTR Length</li>
-                                <p>test</p>
+                                <li id="UTR">5'UTR/3'UTR Length</li>
+                                <p>There are regulation elements found in the gene untranslated regions (UTRs). These features can help users determine if the given gene lists are enriched with genes with top/bottom long UTRs, suggesting the potential of being controlled in post-transcriptional and translational regulation.</p>
 
-                                <li id="5UTR">5'UTR Length</li>
-                                <p>test</p>
-
-                                <li id="CDSL">CDS Length</li>
-                                <p>test</p>
-
-                                <li id="ProteinL">Protein Length</li>
-                                <p>test</p>
+                                <li id="CPL">CDS/Protein Length</li>
+                                <p>The lengths of coding region sequences (CDSs) and proteins are determined by the types and complexity of their cellular functions. The CDS lengths of 6,714 genes and the protein lengths of 6,712 genes in yeast are collected in YMLA. Users can calculate the enrichment of genes with top/bottom CDS/protein lengths for gene lists to understand their functional conservation.</p>
 
                             </ul> 
                             <br>
                             <h6>mRNA Isoform Number</h6>
                             <ul class="mb-0">
                                 <li id="mRNAIsoformNumber">mRNA Isoform Number</li>
+                                <p>The variations of mRNA transcript templates for genes can help understand RNA stability, localization, and translated protein domain. In YMLA, the genome-wide isoform profiling for 5,208 yeast ORF genes was collected. Users can calculate dominant low/high transcript variation trends for the given gene lists.</p>
                             </ul>
                             <br>
-                            <h6>Protein Physical Property</h6>
-                            <ul class="mb-0">
-                                <li id="ProteinLength">Protein Length</li>
-                                <p>test</p>
-
-                                <li id="MolecularWeight">Molecular Weight</li>
-                                <p>test</p>
-
-                                <li id="IsoeletricPoint">Isoeletric Point</li>
-                                <p>test</p>
-
-                                <li id="AliphaticIndex">Aliphatic Index</li>
-                                <p>test</p>
-
-                                <li id="InstabilityIndex">Instability Index</li>
-                                <p>test</p>
-
-                            </ul>
-                            <br>
-                            <h6>Coding Region Translation Property</h6>
-                            <ul class="mb-0">
-                                <li id="CodonBias">Codon Bias</li>
-                                <p>test</p>
-
-                                <li id="CodonAdaptationIndex">Codon Adaptation Index</li>
-                                <p>test</p>
-
-                                <li id="FrequencyOfOptionalCodon">Frequency of Optional Codon</li>
-                                <p>test</p>
-
-                                <li id="Hydropathicity">Hydropathicity of Protein</li>
-                                <p>test</p>
-
-                                <li id="AromaticityScore">Aromaticity Score</li>
-                                <p>test</p>
-
+                            <h6 id="Protein_physico_chemical_features">Protein Physical-Chemical Features</h6>
+                            <ul>
+                            <p>Amino acids within proteins shape their physical and chemical properties and determine their cellular functions. YMLA downloaded the datasets of protein length, molecular weight, isoelectric point, aliphatic index, instability index, codon bias, codon adaptation index, frequency of optimal codon, hydropathicity, and aromaticity for yeast genomes. Users can use these datasets to unravel the prevalent low/high protein physico-chemical properties within the given gene lists.</p>
                             </ul>
                         </div>
                     </div>
@@ -209,37 +167,28 @@
     <div class="card mb-3" style="border-color:#424246;border-width: 3px">
       <div class="card-header" style="background-color:#424246;"><font color="white"><h4>High-throughput probing Features</h4></font></div>
       <div class="card-body">
-        <h6>Half-life</h6>
+        <h6 id="HalfLife">mRNA and protein half-lives</h6>
         <ul class="mb-0">
-          <li id="mRNAHalfLife">mRNA Half-life</li>
-          <p>test</p>
-
-          <li id="ProteinHalfLife">Protein Half-life</li>
-          <p>test</p>
-
+          <p>Steady-state mRNA half-lives and protein turnover rates control the cellular protein levels that lead to phenotypes. It is indicative of the functional roles of the gene lists if the enrichment of genes with top/bottom mRNA or protein half-lives indicates.</p>
         </ul>
         <br>
-        <h6>Gene Expression (Normal Condition)</h6>
+        <h6 id="GEAPA">Gene Expression and Protein Abundance</h6>
         <ul class="mb-0">
-          <li id="mRNALevel">mRNA Level</li>
-          <p>test</p>
-
-          <li id="ProteinAbundance">Protein Abundance</li>
-          <p>test</p>
+          <p>Enrichment with highly or lowly expressed genes under normal conditions hints if the gene lists contain mainly housekeeping or rapidly regulated genes. And cellular protein top/bottom abundance levels can show the high/low rates of enzymatic reactions related to the gene lists. Two mRNA expression datasets (D1: PMID 18451266; D2: PMID 9845373) and 1 protein abundance level dataset (D2: PMID 29361465) were adopted in YMLA.</p>
 
         </ul>
         <br>
         <h6>Translational Efficiency</h6>
         <ul class="mb-0">
           <li id="TranslationalE">Translational Efficiency</li>
-          <p>test</p>
+          <p>The top/bottom correlations between steady-state mRNA and protein levels quantify the high/low ratio of post-transcriptional regulation and translational regulation effects for the gene lists. Translational efficiency in YMLA is computed as the ratio of median ribosome density over the median of normalized mRNA levels using collected datasets. </p>
 
         </ul>
         <br>
         <h6>Transcriptional Plasticity</h6>
         <ul class="mb-0">
           <li id="TranscriptionalP">Transcriptional Plasticity</li>
-          <p>test</p>
+          <p>Transcriptional plasticity is defined as the ability of a gene to alter its transcription levels. Top/bottom transcriptional plasticity suggests the high/low TFBS distribution tendency of the gene lists.</p>
 
         </ul>
       </div>

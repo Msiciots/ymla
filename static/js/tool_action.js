@@ -173,3 +173,5 @@ function glossaries_focus(){
     $('html,body').animate({scrollTop:$(query).offset().top},800);
   }
 }
+
+

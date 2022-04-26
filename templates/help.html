@@ -89,186 +89,58 @@
 
 <div class="col-sm-11 mx-auto mt-5">
   <div class="row mb-3 block_href">
-  <div class="col-12 mx-auto">
-    <div class="card-deck">
-      <div class="card" style="border-color:#424246;border-width: 3px">
-        <div class="card-header" style="background-color:#424246;"><font color="white"><h4>About YQFC</h4></font></div>
-        <div class="card-body">
-          <ul class="mb-0">
-            <li><a href="#" id="motivation_js">Motivation of YQFC</a></li>
-            <li><a href="#" id="whatisyqfc_js">What is YQFC?</a></li>
-          </ul>
+    <div class="col-12 mx-auto">
+      <div class="card-deck">
+        <div class="card" style="border-color:#424246;border-width: 3px">
+          <div class="card-header" style="background-color:#424246;"><font color="white"><h4>YMLA Tutorial</h4></font></div>
+            <div class="card-body">
+              
+                <p>1. <a href="#"  onclick="tutorial_focus('#figure1')">Input page</a></p>
+                <p>2. <a href="#" onclick="tutorial_focus('#figure2')">Result Tables</a></p>
+                <p>3. <a href="#" onclick="tutorial_focus('#figure3')">Heatmaps, and Network Views</a></p>
+                <p>4. <a href="#" onclick="tutorial_focus('#figure4')">Customize feature analysis</a></p>
+                <p>5. <a href="#" onclick="tutorial_focus('#figure5')">Detail page</a></p>
+             
+              <div id="figure1"><br><img src="{% static 'img/web_figures-1.jpg' %}" class="img-fluid" alt="Responsive image"></div>
+              <p></p>
+              <p>(a) Users can provide the gene lists of interest either via the text area or a .csv file.</p>
+              <p>(b) Users also need to choose the features to be included in the analysis.</p>
+              <p>(c) Click the ”Run Enrichment Analysis” button to begin the evaluation.</p>
+              <div id="figure2"><br><img src="{% static 'img/web_figures-2.jpg' %}" class="img-fluid" alt="Responsive image"></div>
+              <p></p>
+              <p>(a) The gene item summary for the input multiple gene lists.</p>
+              <p>(b) Users can select the feature of interest to investigate the enrichment analysis results.</p>
+              <p>(c) Users can reset the multiple hypotheses correction methods and the significance thresholds.</p>
+              <p>(d) The tabular view of the enrichment analysis results. Users can click the hyperlinks to navigate the detailed results.</p>
+              <div id="figure3"><br><img src="{% static 'img/web_figures-3.jpg' %}" class="img-fluid" alt="Responsive image"></div>
+              <p></p>
+              <p>(a)/(b) Users can click the tab to switch to the heatmap/network view of the analysis results.</p>
+              <p>(c) The heat map view of the analysis results.</p>
+              <p>(d) The network view of the enrichment analysis results. </p>
+              <div id="figure4"><br><img src="{% static 'img/web_figures-4.jpg' %}" class="img-fluid" alt="Responsive image"></div> 
+              <p></p>
+              <p>(a) Users can pick the features related to some mechanisms hypotheses to form a new enrichment analysis.</p>
+              <p>(b) Click the ”Generate Custom summary” button to re-perform the enrichment analysis using the customized feature set.</p>
+              <div id="figure5"><br><img src="{% static 'img/web_figures-5.jpg' %}" class="img-fluid" alt="Responsive image"></div> 
+              <p></p>
+              <p>When the hyperlinks in the analysis result tables are clicked, the detailed page that supports the analysis will be shown.</p>
+              <p>(a) The item summary reminder of this detail page for users.</p>
+              <p>(b) Indication of how the enrichment scores are calculated in YMLA.</p>
+              <p>(c) The detailed enrichment results that support the presented enrichment analysis. </p>
+            </div>
+          </div>   
         </div>
-      </div>
-      <div class="card" style="border-color:#424246;border-width: 3px">
-        <div class="card-header" style="background-color:#424246;"><font color="white"><h4>Usage of YQFC</h4></font></div>
-        <div class="card-body">
-          <ul class="mb-0">
-            <li><a href="#" id="usage_of_yqfc_js">The usage of YQFC</a></li> <!-- href="#usage_of_yqfc" id="usage_of_yqfc_js" onclick="myFunction()"-->
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row block_href">
-  <div class="col-12 mx-auto">
-    <div class="card mb-3" style="border-color:#424246;border-width: 3px">
-      <div class="card-header" style="background-color:#424246;"><font color="white"><h4>Construction of YQFC</h4></font></div>
-      <div class="card-body">
-        <ul class="mb-0">
-          <li><a href="#" id="collect_chipchip_js">Collection of 85 quantitative features from seven yeast publications and six yeast databases</a></li>
-          <li><a href="#" id="difine_histone_js">Three statistical tests (t-test, U test, and KS test) used to compare a quantitative feature between two yeast gene lists</a></li>
-          <li><a href="#" id="difine_regulator_js">Implementation of the web interface of YQFC</a></li>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="col-12 mx-auto mb-3" style="border-width:.15rem">
-<div class="col-12 mx-auto mb-2"><h2><i class="fa fa-check-circle"></i> About YQFC</h2></div>
-
-<div class="row text-justify">
-  <div class="col-12 mx-auto mb-3">
-    <div class="card border-dark" id="motivation" style="border-color:#0080FF;border-width: 3px">
-      <div class="card-header border-dark"><h4><b>Motivation of YQFC</b></h4></div>
-      <div class="card-body border-dark">
-        <p>Nowadays omics technologies have been routinely used in the biological research. From the omics data, researchers can easily get two gene lists (e.g. stress-induced genes vs. stress-repressed genes) related to their biological question. The next step is to apply enrichment analysis tools to identify distinct functional/regulatory features between these two gene lists for further investigation. Although various enrichment analysis tools are already available, two challenges remain to be addressed.</p>
-        <ol>
-          <li>Most existing tools are designed to analyze one gene list, so they cannot directly compare two gene lists.</li>
-          <li>Almost all existing tools focus on identifying the enriched qualitative features (e.g. GO terms, pathways, domains, etc.).</li>
-        </ol>
-        <p><b>Many quantitative features</b> (e.g. # of mRNA isoforms of a gene, mRNA half-life, protein half-life, transcriptional plasticity, translational efficiency, etc.) <b>are available in the yeast</b>, but no existing tools provide analyses on these quantitative features. To address these two challenges, here we develop <b>YQFC</b> (Yeast Quantitative Features Comparator) to <b>directly compare quantitative features between two yeast gene lists.</b></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 mx-auto mb-3">
-    <div class="card border-dark" id="whatisyqfc" style="border-color:#0080FF;border-width: 3px">
-      <div class="card-header border-dark"><h4><b>What is YQFC?</b></h4></div>
-      <div class="card-body border-dark">
-        <p>YQFC <b>(Yeast Quantitative Features Comparator)</b> is a webtool to <b>directly compare quantitative features between two yeast gene lists</b>. We comprehensively collected and processed <b>85 quantitative features</b> from the yeast literature and yeast databases. For each quantitative feature, YQFC provides three statistical tests (<a href="https://en.wikipedia.org/wiki/Student%27s_t-test" target="_blank">t-test</a>, <a href="https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test" target="_blank">U test</a>, and <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">KS test</a>) to test whether this quantitative feature is statistically different between the two input yeast gene lists. The distinct quantitative features identified by YQFC may help researchers to study the underlying molecular mechanisms that differentiate the two input yeast gene lists. We believe that YQFC is a useful tool to expedite the biological research that uses the omics technologies.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="col-12 mx-auto mb-3" style="border-width:.15rem">
-<div class="col-12 mx-auto mb-2"><h2><i class="fa fa-check-circle"></i> Construction of YQFC</h2></div>
-
-<div class="row text-justify">
-  <div class="col-12 mx-auto mb-3">
-    <div class="card border-dark" id="collect_chipchip" style="border-color:#0080FF;border-width: 3px">
-      <div class="card-header border-dark"><h4><b>Collection of 85 quantitative features from seven yeast publications and six yeast databases</b></h4></div>
-      <div class="card-body border-dark">
-        <p>We comprehensive collected and processed 85 quantitative features from <b>seven yeast publications</b> (<a href="https://www.ncbi.nlm.nih.gov/pubmed/9845373" target="_blank">Holstege 1998</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/18451266" target="_blank">Nagalakshmi 2008</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/20958978" target="_blank">Lin 2010</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/23615609" target="_blank">Pelechano 2013</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/25466257" target="_blank">Christiano 2014</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/25950722" target="_blank">Csárdi 2015</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/29361465" target="_blank">Ho 2018</a>) and <b>six yeast databases</b> (<a href="https://yeastmine.yeastgenome.org/yeastmine/" target="_blank">YeastMine</a>, <a href="https://www.inetbio.org/yeastnet/" target="_blank">YeastNet</a>, <a href="http://cosbi3.ee.ncku.edu.tw/yagm/" target="_blank">YAGM</a>, <a href="https://www.yeastgenome.org/" target="_blank">SGD</a>, <a href="https://thebiogrid.org/" target="_blank">BioGRID</a>, <a href="https://spell.yeastgenome.org/" target="_blank">SPELL</a>).</p>
-        <br>
-        <p>We classified these 85 quantitative features into four categories: 12 gene features, 4 mRNA features, 52 protein features, and 17 network features.</p>
-        <!-- <p><span class="font-weight-bold">Table 1. </span></p> -->
-        <table class="table table-hover" style="border-color:black;">
-                <tbody><tr>
-                  <td style="width:15%;">12 Gene Features</td>
-                  <td style="width:85%;"><a id="GeneL1" href="#" data-original-title="" title="">CDS</a> length, 5’<a id="GeneL2" href="#" data-original-title="" title="">UTR</a> length, 3’<a id="GeneL3" href="#" data-original-title="" title="">UTR</a> length, 
-                  # of publications, # of <a id="GeneL5" href="#" data-original-title="" title="">GO</a> terms, # of <a id="GeneL6" href="#" data-original-title="" title="">GO</a> slim terms, # of pathways, # of mutant phenotypes, # of mRNA isoforms, # of transcriptional regulators, # of fungal homologs, # of non-fungal and S. cerevisiae homologs
-                  </td>
-                </tr>
-                <tr>
-                  <td>4 mRNA Features</td>
-                  <td>mRNA level (3 datasets), mRNA half-life, transcriptional plasticity <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#m3_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, translational efficiency (5 datasets) <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#m4_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup></td>
-                </tr>
-                <tr>
-                  <td>52 Protein Features</td>
-                  <td># of domains, # of <a id="ProteinL2" href="#" data-original-title="" title="">PTM</a>s, amino acid composition (20 kinds), atomic composition (5 kinds), protein half-life, protein abundance (in the normal growth condition, 23 datasets), protein abundance (in various stress conditions, 11 kinds), extinction coefficient at 280nm (2 kinds) <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#EC280_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>,<br>
-                  <b>protein physical details</b> (protein length, molecular weight, Isoelectric point <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#PPD3_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, aliphatic index <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#PPD4_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, instability index <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#PPD5_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>),<br>
-                  <b>coding region translation calculation</b> (codon bias <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#CRTC1_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, codon adaptation index <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#CRTC2_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, frequency of optimal codons <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#CRTC3_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, hydropathicity of protein <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#CRTC4_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, aromaticity score <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#CRTC5_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>),<br>
-                  <!-- extinction coefficients at 280nm (2 kinds) <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#EC280_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>  -->
-                  </td>
-                </tr>
-                <tr>
-                  <td>17 Network Features</td>
-                  <td># of interactors in the [<a id="L1" href="#" data-original-title="" title="">GI</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL1_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="L0" href="#" data-original-title="" title="">PI</a> (3 datasets) <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL0_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="L2" href="#" data-original-title="" title="">CC</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL2_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="L3" href="#" data-original-title="" title="">CX</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL3_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="L4" href="#" data-original-title="" title="">DC</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL4_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="L5" href="#" data-original-title="" title="">GN</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL5_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="L6" href="#" data-original-title="" title="">GT</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL6_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="L7" href="#" data-original-title="" title="">PG</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL7_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="L8" href="#" data-original-title="" title="">TS</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YL8_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="R5" href="#" data-original-title="" title="">EPA</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YR5_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="R6" href="#" data-original-title="" title="">FAA</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YR6_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="R2" href="#" data-original-title="" title="">GIA</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YR2_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="R7" href="#" data-original-title="" title="">LEA</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YR7_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="R8" href="#" data-original-title="" title="">MPA</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YR8_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="R1" href="#" data-original-title="" title="">PIA</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YR1_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="R3" href="#" data-original-title="" title="">TFBA</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YR3_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>, <a id="R4" href="#" data-original-title="" title="">TFRA</a> <sup><a href="javascript:void(0);" data-toggle="modal" data-target="#YR4_modal" style="color:black;"><i class="fa fa-info-circle" aria-hidden="true" title="Info"></i></a></sup>] network</td>
-                </tr>
-                
-                <!-- <tr>
-                  <td>83 histone/chromatin regulators (in 25℃ and 37℃)</td>
-                  <td><span id="83TF">Ada2, Brn1, Esa1, Gcn5, Rsc4, Rxt2, Snf1, Swc1, Yaf9, ... </span><a href="#" data-action="1" id="TFseemore">See more.</a></td>
-                </tr> -->
-              </tbody></table>
-              <p>The detailed source information of each individual feature is given in <a href="/alphabet7431_static/assets/img/Supplementary-Table-1.pdf" rel="external nofollow" target="_blank">Supplementary Table 1</a>.</p>
-
-        
-      </div>
-    </div>
-  </div>
-  <div class="col-12 mx-auto mb-3">
-    <div class="card border-dark" id="difine_histone" style="border-color:#0080FF;border-width: 3px">
-      <div class="card-header border-dark"><h4><b>Three statistical tests (t-test, U test, and KS test) used to compare a quantitative feature between two yeast gene lists</b></h4></div>
-      <div class="card-body border-dark">
-        <p>For each quantitative feature, YQFC provides three statistical tests (t-test, U test, and KS test) to test whether this quantitative feature is statistically different between the two given yeast gene lists (denoted as L1 and L2). For example, assume that a user wants to compare the 5’UTR length between L1 and L2. YQFC provides the following three statistical tests to do this task.</p>
-        <ol>
-          <li> The <a href="https://en.wikipedia.org/wiki/Student%27s_t-test" target="_blank">t-test</a> (or called Student’s t-test) is used to determine if the mean 5’UTR length of the genes in L1 is statistically longer/shorter than the mean 5’UTR length of the genes in L2. Note that the t-test is a parametric test based on the assumption that the observed data come from normal distributions.</li>
-          <li> The <a href="https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test" target="_blank">U test</a> (or called Mann-Whitney U test) is used to determine if the median 5’UTR length of the genes in L1 is statistically longer/shorter than the median 5’UTR length of the genes in L2 under the location shift assumption. Note that the U test is a non-parametric test which does not assume anything about the distribution of the underlying populations.</li>
-          <li> The <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">KS test</a> (or called Kolmogorov-Smirnov test) is used to determine if the cumulative distribution of the 5’UTR length of the genes in L1 is statistically larger/smaller than the cumulative distribution of the 5’UTR length of the genes in L2. Note that the KS test is a non-parametric test which does not assume anything about the distribution of the underlying populations.</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 mx-auto mb-3">
-    <div class="card border-dark" id="difine_regulator" style="border-color:#0080FF;border-width: 3px">
-      <div class="card-header border-dark"><h4><b>Implementation of the web interface of YQFC</b></h4></div>
-      <div class="card-body border-dark">
-        <p>The following figure illustrates the configuration of YQFC. </p>
-        <div class="text-center"><br><img src="/alphabet7431_static/assets/img/YQFC1.png" style="max-width:90%;"></div><br>
-        <p>The web interface of YQFC was developed in Python using the Django MTV framework. The 85 processed quantitative feature data were deposited in MySQL. All tables, box plots, and cumulative distribution function (CDF) plots were produced by the JavaSscript and feature-rich JavaScript libraries (jQuery, DataTables and Plotly.js) to visualize data on the webpage. Except for the main website (<a href="http://cosbi2.ee.ncku.edu.tw/YQFC/" target="_blank">http://cosbi2.ee.ncku.edu.tw/YQFC/</a>), we also have two backup sites (<a href="http://cosbi4.ee.ncku.edu.tw/YQFC/" target="_blank">http://cosbi4.ee.ncku.edu.tw/YQFC/</a>) and (<a href="http://cosbi6.ee.ncku.edu.tw/YQFC/" target="_blank">http://cosbi6.ee.ncku.edu.tw/YQFC/</a>).</p>
-      </div>
-    </div>
-  </div>
-  
-</div>
-
-<hr class="col-12 mx-auto mb-3" style="border-width:.15rem">
-<div class="col-12 mx-auto mb-2"><h2><i class="fa fa-check-circle"></i> Usage of YQFC</h2></div>
-
-<div class="row text-justify" id="a0518">
-  <div class="col-12 mx-auto mb-3">
-    <div class="card border-dark" id="usage_of_yqfc" style="border-color:#0080FF;border-width: 3px;"> <!-- id="usage_of_yhmi" -->
-      <div class="card-header border-dark"><h4><b>The usage of YQFC</b></h4></div>
-      <div class="card-body border-dark">
-        <p>YQFC is a web tool for identifying the distinct quantitative features between two input yeast gene lists.</p>
-        <!-- <div class="text-center"><img src="/alphabet7431_static/assets/img/Figure2.PNG" style="max-width:90%;"></div><br> -->
-        <p>To use YQFC, users have to go through a three-step process.</p>
-        <ol>
-          <li> Users need to input two gene lists to be compared. Standard names, systematic names, or aliases are all acceptable. If users only have one input gene list, they can use our pre-complied gene lists (e.g. 6604 ORF genes, 299 tRNA genes, 27 rRNA genes, etc.) to serve as the second input gene list.</li>
-          <li> Users need to select the quantitative features to be analyzed. </li>
-          <li> Since YQFC tests many quantitative features (i.e. multiple hypotheses testing), users have to select a statistical method (Bonferroni correction or FDR) for multiple hypotheses correction and set the p-value threshold. The p-value threshold determines the statistical significance of how different of a quantitative feature is between the two input gene lists. The more stringent the p-value threshold, the higher the statistical significance of the identified distinct quantitative feature.</li>
-        </ol>
-        <div class="text-center"><img src="/alphabet7431_static/assets/img/Figure2.PNG" style="max-width:90%;"></div><br><br><br>
-        <p>After submission, YQFC will perform three statistical tests (t-test, U test, and KS test) to test whether a selected quantitative feature is statistically different between the two input gene lists (denoted as L1 and L2). This process will go through all the selected quantitative features. Once the analysis process is complete, YQFC will return the results with two parts.</p>
-        <ol>
-          <li> The first part contains the information of the user’s settings (i.e. the number of genes in L1, the number of genes in L2, the selected quantitative features, the selected multiple hypotheses correction method, and the selected p-value threshold).<div class=" m-3"><div class="text-center"><img src="/alphabet7431_static/assets/img/Figure3.PNG" style="max-width:90%;"></div><br><br><br></div></li>
-          <li> The second part contains the result of each selected quantitative feature shown as two sections: (i) Summary and (ii) Statistical testing results. <!-- <div class=" m-3"><div class="text-center"><img src="/alphabet7431_static/assets/img/Figure3.PNG" style="max-width:90%;"></div><br> -->
-            <ol type="i">
-              <p>In the “Summary” section, users can choose [Table View] or [Figure View].</p>
-              <li>
-              <b>[Table View]</b> provides a table containing two kinds of information. First, the numbers of genes (in L1 and L2, respectively) which have the feature values are given. If users click on the number, they will see the names and the feature values of these genes. By clicking on a feature value, users will see the original sources of the feature value. Second, the mean and median feature values of the genes (having feature values) in L1 and L2, respectively, are given.
-              <div class="text-center"><img src="/alphabet7431_static/assets/img/Figure_4_a.png" style="max-width:90%;"></div><br><br><br>
-              </li>
-              <li><b>[Figure View]</b> provides two kinds of plots for visualization. Box plots are used to display variation in the feature values in L1 and L2, respectively. Cumulative distribution function (CDF) plots are used to show the probability that the feature value 𝙓 is less than or equal to a specific value 𝓧 (i.e. Prob(𝙓≤𝓧)).
-              <div class="text-center"><img src="/alphabet7431_static/assets/img/Figure_b.PNG" style="max-width:90%;"></div><br><br><br>
-              </li>
-              <li>
-              In the “<b>Statistical testing results</b>” section, users can see a table with six p-values. Three p-values (calculated by t-test, U test, and KS test) represent the statistical significance of claiming the quantitative feature in L1 is larger than that in L2 (denoted as QF(L1 )&gt;QF(L2 )). The other three p-values (calculated by t-test, U test, and KS test) represent the statistical significance of claiming the quantitative feature in L1 is smaller than that in L2 (denoted as QF(L1)<front>&lt;</front>QF(L2)). To draw the users’ attention, the p-values which are less than the p-value threshold are highlighted with the <span style="background-color:#FFE66F;">yellow background</span>.
-              <div class="text-center"><br><img src="/alphabet7431_static/assets/img/Figure_c.PNG" style="max-width:90%;"></div><br>
-              </li>
-            </ol>
-        </li></ol>
-        <!-- <p></p>
-        <div class="text-center mt-3"><img src="/alphabet7431_static/image/enriched_regulators.jpg" style="max-width:80%; border:1px solid black;"></div> -->
       </div>
     </div>
   </div>
 </div>
 </body>
+<script>
+  function tutorial_focus(focus){
+  // let urlParams = new URLSearchParams(window.location.search);
+  // query = urlParams.get('focus');
+  $('html,body').animate({scrollTop:$(focus).offset().top},800);
+}
+</script>
 </html>
 {% endblock %}
