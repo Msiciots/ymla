@@ -21,7 +21,7 @@ function block_detail(data,name_map, quant_feature) {  // when pvalue is clicked
 
     if (data['feature_type'] == "gene_group"){
       title = "Enriched Gene Group";
-      evidence_title = `The evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">belong to the gene group</spin> [<spin style="color: blue">${data['term']}</spin>]`;
+      evidence_title = `<spin style="color:red;">${data['evidence_no']}</spin> evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">belong to the gene group</spin> [<spin style="color: blue">${data['term']}</spin>]`;
     }
     else if(data['feature_type'] in quant_feature){
       let term = data['term'];
@@ -33,22 +33,22 @@ function block_detail(data,name_map, quant_feature) {  // when pvalue is clicked
       evidence_title = `<spin style="color:red;">${data['intersection_number']}</spin> input genes <spin style="color: red;">belong to the protein complex</spin> [<spin style="color: blue">${data['term']}</spin>]`;
     }
     else if(data['feature_type'] == "phenotype"){
-      evidence_title = `The evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">have the mutant phenotype [<spin style="color: blue">${data['term']}</spin>]`;
+      evidence_title = `<spin style="color:red;">${data['evidence_no']}</spin>  evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">have the mutant phenotype [<spin style="color: blue">${data['term']}</spin>]`;
     }
     else if(data['feature_type'] == "protein_domain"){
-      evidence_title = `The evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">have the protein domain [<spin style="color: blue">${data['term']}</spin>]`;
+      evidence_title = `<spin style="color:red;">${data['evidence_no']}</spin>  evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">have the protein domain [<spin style="color: blue">${data['term']}</spin>]`;
     }
     else if(data['feature_type'] == "physical_interaction"){
-      evidence_title = `The evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">have physical interaction with [<spin style="color: blue">${data['term']}</spin>]`;
+      evidence_title = `<spin style="color:red;">${data['evidence_no']}</spin>  evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">have physical interaction with [<spin style="color: blue">${data['term']}</spin>]`;
     }
     else if(data['feature_type'] == "genetic_interaction"){
-      evidence_title = `The evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">have genetic interaction with [<spin style="color: blue">${data['term']}</spin>]`;
+      evidence_title = `<spin style="color:red;">${data['evidence_no']}</spin>  evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">have genetic interaction with [<spin style="color: blue">${data['term']}</spin>]`;
     }
     else if(data['feature_type'] == "regulator"){
-      evidence_title = `The evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">are targets of the transcriptional regulator [<spin style="color: blue">${data['term']}</spin>]`;
+      evidence_title = `<spin style="color:red;">${data['evidence_no']}</spin>  evidence of <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">are targets of the transcriptional regulator [<spin style="color: blue">${data['term']}</spin>]`;
     }
     else{
-      evidence_title = `Evidence of the <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">are associated with the ${name_map[data['feature_type']]} term</spin> [<spin style="color: blue">${data['term']}</spin>]`;
+      evidence_title = `<spin style="color:red;">${data['evidence_no']}</spin> evidence of the <spin style="color:red;">${data['intersection_number']}</spin> input genes that <spin style="color: red;">are associated with the ${name_map[data['feature_type']]} term</spin> [<spin style="color: blue">${data['term']}</spin>]`;
     }
 
     $('#evidence_data').html(`<b>${evidence_title}</b>`);

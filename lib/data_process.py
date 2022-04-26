@@ -565,6 +565,7 @@ class DataProcess:
             "intersection_number": str(self.dfs_pvalue[input_index]["intersec_no"][term_index]),
             "raw_data_col": raw_data_col,
             "evidence_data": json.dumps(evidence_data),
+            "evidence_no":len(df),
             "intersection_genes_data": json.dumps(intersection_genes_data),
         }
         return self, data
