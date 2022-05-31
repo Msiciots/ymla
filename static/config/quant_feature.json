@@ -1,7 +1,7 @@
 {
     "gene_property": ["gene_length","isoform","protein_physical-chemical_features"],
     "high_throughput": ["half_life","gene_expression_nc","translational_efficiency","plasticity"],
-    "gene_length": ["CDS Length","5'UTR Length","3'UTR Length","Protein Length"],
+    "gene_length": ["CDS Length","5'UTR Length","3'UTR Length"],
     "half_life":["mRNA Half-life","Protein Half-life"],
     "gene_expression_nc":["mRNA Level_D1","mRNA Level_D2","Protein Abundance_D2"],
     "plasticity":["Transcriptional Plasticity"],

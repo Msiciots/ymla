@@ -138,7 +138,7 @@ class DataProcess:
         self.quant_feature = json.load(f)
 
         if feature in self.quant_feature:
-            self.quant_feature_preprocess(15,15)
+            self.quant_feature_preprocess(30,30)
         elif feature == "gene_group":
             self.df_feature_map_id = pd.read_csv("./static/data/gene_group_feature/"+feature+"_map_id.csv")
         elif feature == "custom":

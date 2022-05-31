@@ -96,7 +96,9 @@ def run_analysis(request):
     data['socket_key'] = socket_key
     for feature in session["select_features"]:
         correction = 'FDR'
-        cut_off = '0.000001'
+        cut_off = '0.01'
+
+        
         # if feature in quant_feature or feature == "gene_group":
         #     correction = 'FDR'
         #     cut_off = '0.01'
@@ -228,6 +230,7 @@ def show_row_detail(request):
     session = share_session[socket_key]
     # session = request.session[socket_key]
     data = session[feature].row_detail(term, socket_key)
+    
 
     return render(request, 'row_page.html',{'data':json.dumps(data)})   
 
@@ -256,9 +259,9 @@ def show_custom_result(request):
     # session = request.session[socket_key]
 
     dp = DataProcess("custom",session["df_input"],socket_key)
-    dp = dp.custom_feature_preprocess(feature_term, 15, 15)
+    dp = dp.custom_feature_preprocess(feature_term, 30, 30)
     dp = dp.enrichment_parallelize()
-    dp, data = dp.result(0.000001, "FDR", socket_key) 
+    dp, data = dp.result(0.01, "FDR", socket_key) 
     session['custom'] = dp
     return JsonResponse(json.dumps(data), safe=False)
  
