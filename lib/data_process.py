@@ -1,4 +1,5 @@
-from collections import Counter
+from collections import Counter, defaultdict
+from email.policy import default
 import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
@@ -10,6 +11,7 @@ import scipy.stats
 from statsmodels.stats.multitest import multipletests
 from math import log10
 import gc
+from collections import defaultdict
 import os, sys, time
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, as_completed, wait
 # from channels.layers import get_channel_layer
@@ -582,6 +584,7 @@ class DataProcess:
         table_data = {}
         dict_index = 0
         volcano_data = []
+        bubble_data = defaultdict(list)
         input_total_gene_no = len(self.df_input[column_name].dropna().tolist())
         # Create every row in Table View
         for term_index in self.yAxis_id:
@@ -632,21 +635,27 @@ class DataProcess:
                     table_data[dict_index]["term"] = self.df_feature_data["term_link"][self.df_feature_data[self.feature] == term].tolist()[0]
 
                 table_data[dict_index]["P-value"] = self.dfs_pvalue[column_index][self.corr][term_index]
-     
-                # volcano_data.append(
-                #     dict(
-                #         zip(
-                #             ["x", "y", "name","index"],
-                #             [
-                #                 fold_change,
-                #                 self.dfs_pvalue[column_index][self.corr][term_index],
-                #                 self.df_feature_map_id[self.feature][term_index],
-                #                 dict_index,
-                #             ],
-                #         )
-                #     )
-                # )
 
+                bubble_data['category'].append(self.df_feature_map_id[self.feature][term_index])
+                bubble_data['series'].append({
+                    'x': self.dfs_pvalue[column_index][self.corr][term_index],
+                    'y': dict_index,
+                    'z': fold_change,
+                    'name' : self.df_feature_map_id[self.feature][term_index]
+                })
+                volcano_data.append(
+                    dict(
+                        zip(
+                            ["x", "y", "name","index"],
+                            [
+                                fold_change,
+                                self.dfs_pvalue[column_index][self.corr][term_index],
+                                self.df_feature_map_id[self.feature][term_index],
+                                dict_index,
+                            ],
+                        )
+                    )
+                )
                 dict_index += 1
         data = {
             "click_column_name": column_name,
@@ -656,7 +665,8 @@ class DataProcess:
             "corr": self.corr,
             "cut-off": self.cut_off,
             "table_data": json.dumps(table_data),
-            # "volcano_data": json.dumps(volcano_data),
+            "volcano_data": json.dumps(volcano_data),
+            "bubble_data": json.dumps(bubble_data),
             "socket_key":socket_key,
             "quant_terms": ", ".join(self.quant_feature[self.feature]) if self.feature in self.quant_feature else "",
             "bottom_percent": str(self.bottom_percent)+"%",
@@ -673,6 +683,7 @@ class DataProcess:
         ].tolist()[0]
         term_gene_no = self.df_feature_map_id["count"][term_index]
         volcano_data = []
+        bubble_data = defaultdict(list)
 
         GENES_No = self.GENES_No
 
@@ -712,20 +723,20 @@ class DataProcess:
                 "cut_off": self.cut_off,
             }
             dict_index += 1
-
-            # volcano_data.append(
-            #     dict(
-            #         zip(
-            #             ["x", "y", "name","color"],
-            #             [
-            #                 fold_change,
-            #                 self.dfs_pvalue[input_index][self.corr][term_index],
-            #                 self.df_input.columns[input_index],
-            #                 "#C0C0C0" if self.dfs_pvalue[input_index][self.corr][term_index] < self.cut_off else "",
-            #             ],
-            #         )
-            #     )
-            # )
+            
+            volcano_data.append(
+                dict(
+                    zip(
+                        ["x", "y", "name","color"],
+                        [
+                            fold_change,
+                            self.dfs_pvalue[input_index][self.corr][term_index],
+                            self.df_input.columns[input_index],
+                            "#C0C0C0" if self.dfs_pvalue[input_index][self.corr][term_index] < self.cut_off else "",
+                        ],
+                    )
+                )
+            )
 
 
         input_list_no = []
@@ -757,7 +768,7 @@ class DataProcess:
             "input_list_no": json.dumps(input_list_no),
             "corr": self.corr, 
             "cut-off": self.cut_off,
-            # "volcano_data": json.dumps(volcano_data),
+            "volcano_data": json.dumps(volcano_data),
             "socket_key":socket_key,
         }
         return data

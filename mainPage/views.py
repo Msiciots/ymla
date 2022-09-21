@@ -70,6 +70,7 @@ def run_analysis(request):
 
     if gene_lists:
         df_input = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in gene_lists.items() ]))
+    
     else:
         df_input = pd.read_csv(input_file.temporary_file_path())
 
@@ -112,7 +113,10 @@ def run_analysis(request):
     for col in df_input.columns:
         input_list_no.append(len(df_input[col].dropna().tolist()))
     data['input_list_no'] = json.dumps(input_list_no)
-
+    # data['upset'] = 1
+    data['upset'] = {key: df_input[key].dropna().to_list() for key in list(df_input.columns)}
+    
+    # print({key: df_input[key].dropna().to_list() for key in list(df_input.columns)})
     return JsonResponse(json.dumps(data), safe=False)
 
 @csrf_exempt

@@ -94,7 +94,7 @@ $('#run_analysis').click(function() {
   $('#run_analysis').attr('disabled', true);
                       
   var sdf = new FormData();
-
+  // upset_gene_list = gene_lists;
   sdf.append('upload_excel', upload_excel);
   sdf.append('gene_lists', JSON.stringify(gene_lists));
   sdf.append('select_features', features);
@@ -119,6 +119,13 @@ $('#run_analysis').click(function() {
     contentType: false,
     success: function(data) {
       let tmp = JSON.parse(data)
+      // console.log(tmp['upset'])
+      console.log(tmp);
+      render_upset_plot(tmp['upset'])
+
+      // delete key value pair upset
+
+
       if (tmp['Error_log']['isError'])
         input_warning(tmp['Error_log']);
       
@@ -163,7 +170,7 @@ $('#run_analysis').click(function() {
       $('#tr_fcust').hide()
 
       $.each(JSON.parse(data), function(key, val) {
-        if (key == 'input_list' || key == 'input_list_no' || key == 'socket_key' || key=='Error_log')
+        if (key == 'upset' || key == 'input_list' || key == 'input_list_no' || key == 'socket_key' || key=='Error_log')
           return;
 
         if (act == "active")
@@ -931,14 +938,13 @@ $('#run_analysis').click(function() {
                 $(`#pills-tab_${key}`).hide();
                 $(`#no_terms_${key}`).show();
               }
-              
-              
+
             }             // ajax sucess
           })              // ajax of /refresh heatmap
         })                //#refresh_heatmap click
       })
       $.each(JSON.parse(data), function(key, val) {
-        if (key == 'input_list' || key == 'input_list_no' || key == 'socket_key' || key =='Error_log')
+        if (key == 'upset' || key == 'input_list' || key == 'input_list_no' || key == 'socket_key' || key =='Error_log')
           return;
         if (val['yAxis_count'] != 0)
           render_result(name_map[key],key,val);     
@@ -959,3 +965,32 @@ $('#run_analysis').click(function() {
   })   // File_upload ajax_
 })     // run_analysis click function
 
+
+function render_upset_plot(upset_data){
+  console.log(upset_data)
+  let data = [];
+  for (const key in upset_data){
+    data.push({ name: key, elems: upset_data[key]});
+  }
+  const sets = UpSetJS.asSets(data);
+  
+  const props = {
+    sets: sets,
+    width: 600,
+    height: 400,
+    combinations: {
+      type: 'intersection',
+      min: 1,
+      limit: 100,
+      order: 'cardinality',
+    },
+    selection: null,
+    setName: 'Custom Set Name',
+    combinationName: 'Custom Intersection Name'
+  }
+  props.onHover = (set) => {
+    props.selection = set;
+    UpSetJS.render(document.querySelector("#container-upset"), props);
+  };
+  UpSetJS.render(document.querySelector("#container-upset"), props);
+}

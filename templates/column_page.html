@@ -20,6 +20,7 @@
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
 
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <!-- <script src="https://code.highcharts.com/modules/networkgraph.js"></script> -->
@@ -76,15 +77,16 @@
                 </table>
               </div>
             </div>
-            <!-- <p></p>
+            <p></p>
             <div class="card" id = "block_2_2">
               <div class="card-header">
               <h4 id="block_2_2_title"><b><i class="fas fa-chart-bar"></i>  Graphic View</b></h4>
               </div>
               <div class="card-body">
                   <div  id="container"></div>
+                  <div  id="container-bubble"></div>
               </div>
-            </div> -->
+            </div>
             <p></p>
             <div class="card" id = "block_2_1">
               <div class="card-header">
@@ -409,7 +411,10 @@
           paging: false, 
           info: false,
           dom: 'Bflrtip',
-          buttons: [
+          buttons: [{
+                extend: 'csvHtml5',
+                title: 'Table view'
+            }
           ],
         });
 
@@ -522,102 +527,183 @@
         //     text: 'Download',
         //   }],
         // })
-        // var name = {};
-        // s = JSON.parse(data['volcano_data'])
+        var name = {};
+        console.log(JSON.parse(data['volcano_data']));
+        s = JSON.parse(data['volcano_data']);
 
-        // s.forEach(element => name[element[0]] = element[2]);
+        s.forEach(element => name[element[0]] = element[2]);
         
-        //   Highcharts.chart('container', {
-        //     chart: {
-        //         type: 'scatter',
-        //         zoomType: 'xy'
-        //     },
-        //     title: {
-        //         text: 'Volcano Plot'
-        //     },
-        //     // subtitle: {
-        //     //     text: 'Source: Heinz  2003'
-        //     // },
-        //     xAxis: {
-        //         title: {
-        //             enabled: true,
-        //             text: '<b>Fold Enrichment</b>'
-        //         },
-        //         startOnTick: true,
-        //         endOnTick: true,
-        //         showLastLabel: true
-        //     },
-        //     yAxis: {
-        //         title: {
-        //           useHTML: true,
-        //           text: '<b>-log<sub>10</sub> (Corrected P-value)</b>'
-        //         },
-        //         plotLines: [{
-        //               value: data['cut-off'],
-        //               color: 'red',
-        //               dashStyle: 'shortdash',
-        //               width: 2,
-        //               label: {
-        //                   text: 'Cutoff'
-        //               }
-        //           }]
-        //     },
-        //     legend:{ enabled:false },
-        //     plotOptions: {
-        //         scatter: {
-        //             marker: {
-        //                 radius: 5,
-        //                 states: {
-        //                     hover: {
-        //                         enabled: true,
-        //                         lineColor: 'rgb(100,100,100)'
-        //                     }
-        //                 }
-        //             },
-        //             states: {
-        //                 hover: {
-        //                     marker: {
-        //                         enabled: false
-        //                     }
-        //                 }
-        //             },
-        //         }
-        //     },
-        //     tooltip: {
-        //       enabled: true,
-        //       shared : true,
-        //       useHTML: true,
-        //       formatter: function(){
-        //         var chart = this.series.chart,
-        //           hoveredPoint = this,
-        //           result = [];
+          Highcharts.chart('container', {
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Volcano Plot'
+            },
+            // subtitle: {
+            //     text: 'Source: Heinz  2003'
+            // },
+            xAxis: {
+                title: {
+                    enabled: true,
+                    text: '<b>Fold Enrichment</b>'
+                },
+                startOnTick: true,
+                endOnTick: true,
+                showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                  useHTML: true,
+                  text: '<b>-log<sub>10</sub> (Corrected P-value)</b>'
+                },
+                plotLines: [{
+                      value: data['cut-off'],
+                      color: 'red',
+                      dashStyle: 'shortdash',
+                      width: 2,
+                      label: {
+                          text: 'Cutoff'
+                      }
+                  }]
+            },
+            legend:{ enabled:false },
+            plotOptions: {
+                scatter: {
+                    marker: {
+                        radius: 5,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                }
+            },
+            tooltip: {
+              enabled: true,
+              shared : true,
+              useHTML: true,
+              formatter: function(){
+                var chart = this.series.chart,
+                  hoveredPoint = this,
+                  result = [];
 
-        //         chart.series.forEach(function(serie) {
-        //           serie.data.forEach(function(point) {
-        //             if (point.x === hoveredPoint.x && point.y === hoveredPoint.y) {
-        //               result.push(point)
-        //             }
-        //           })
-        //         })
+                chart.series.forEach(function(serie) {
+                  serie.data.forEach(function(point) {
+                    if (point.x === hoveredPoint.x && point.y === hoveredPoint.y) {
+                      result.push(point)
+                    }
+                  })
+                })
                   
 
-        //         var str="";
-        //         if (result.length > 1) {
-        //           result.forEach(element => str = str.concat('<span style="color:orange;">'+element['name'] + '</span><br>'));
-        //           str = str.concat('-log<sub>10</sub>(Corrected P-value): ' +this.y + '<br>' +'Fold Enrichment: '+this.x+'<br>')
-        //           return str;
-        //         }else{
-        //           return '<span style="color:orange;">'+this.point.name + '</span><br>' + '-log<sub>10</sub>(Corrected P-value): ' +this.y + '<br>' +'Fold Enrichment: '+this.x;        
+                var str="";
+                if (result.length > 1) {
+                  result.forEach(element => str = str.concat('<span style="color:orange;">'+element['name'] + '</span><br>'));
+                  str = str.concat('-log<sub>10</sub>(Corrected P-value): ' +this.y + '<br>' +'Fold Enrichment: '+this.x+'<br>')
+                  return str;
+                }else{
+                  return '<span style="color:orange;">'+this.point.name + '</span><br>' + '-log<sub>10</sub>(Corrected P-value): ' +this.y + '<br>' +'Fold Enrichment: '+this.x;        
                                       
-        //         }
-        //       }
-        //     },
-        //     series: [{
-        //         name: data['feature'],
-        //         color: 'rgba(223, 83, 83, .5)',
-        //         data: JSON.parse(data['volcano_data']),
-        //       }]
-        // });
+                }
+              }
+            },
+            series: [{
+                name: data['feature'],
+                color: 'rgba(223, 83, 83, .5)',
+                data: JSON.parse(data['volcano_data']),
+              }]
+        });
+        bubData = JSON.parse(data['bubble_data']),
+        Highcharts.chart('container-bubble', {
+
+          chart: {
+            type: 'bubble',
+            plotBorderWidth: 1,
+            zoomType: 'xy'
+          },
+        
+          legend: {
+            enabled: false
+          },
+        
+          title: {
+            text: 'Bubble Plot'
+          },
+        
+          /* subtitle: {
+            text: 'Source: <a href="http://www.euromonitor.com/">Euromonitor</a> and <a href="https://data.oecd.org/">OECD</a>'
+          }, */
+        
+          accessibility: {
+            point: {
+              valueDescriptionFormat: '{index}. {point.name}, fat: {point.x}g, sugar: {point.y}g, obesity: {point.z}%.'
+            }
+          },
+        
+          xAxis: {
+            gridLineWidth: 1,
+            title: {
+              text: '-log<sub>10</sub>(Corrected p-value)'
+            },
+            labels: {
+              format: '{value}'
+            },
+            accessibility: {
+              rangeDescription: 'Range: 0.05 to 0.5 grams.'
+            }
+          },
+        
+          yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+              text: 'Enriched Term'
+            },
+            labels: {
+              format: '{value}'
+            },
+            categories: bubData['category'],
+            maxPadding: 0.2,
+            
+          },
+        
+          tooltip: {
+            useHTML: true,
+            headerFormat: '<table>',
+            pointFormat:
+              '<span style="color:orange;">{point.name}</span><br>' +  
+              '<span>p-value:{point.x}</span><br>' +  
+              '<span>Fold change:{point.z}</span>',
+            footerFormat: '</table>',
+            followPointer: true
+          },
+        
+          plotOptions: {
+            series: {
+              dataLabels: {
+                enabled: true,
+                // format: '{point.name}'
+              }
+            }
+          },
+        
+          series: [{
+            data: bubData['series']
+          }]
+        
+        });
+
       });
     })
   }); // document
