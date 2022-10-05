@@ -78,16 +78,7 @@
               </div>
             </div>
             <p></p>
-            <div class="card" id = "block_2_2">
-              <div class="card-header">
-              <h4 id="block_2_2_title"><b><i class="fas fa-chart-bar"></i>  Graphic View</b></h4>
-              </div>
-              <div class="card-body">
-                  <div  id="container"></div>
-                  <div  id="container-bubble"></div>
-              </div>
-            </div>
-            <p></p>
+            
             <div class="card" id = "block_2_1">
               <div class="card-header">
               <h4 id="block_2_1_title"><b><i class="fa fa-table" aria-hidden="true"></i>  Table View</b></h4>
@@ -99,6 +90,17 @@
                 <b><i>D</i></b>: <spin id="D"></spin><br>
                 </p><p><b>Fold Enrichment</b>: <span class="math inline">\(\frac{Observed \ \ Ratio}{Expected\ \ Ratio}\)</span>
                 <div  id="term_table"></div>
+              </div>
+            </div>
+            <p></p>
+
+            <div class="card" id = "block_2_2">
+              <div class="card-header">
+              <h4 id="block_2_2_title"><b><i class="fas fa-chart-bar"></i>  Graphic View</b></h4>
+              </div>
+              <div class="card-body">
+                  <div  id="container"></div>
+                  <div  id="container-bubble"></div>
               </div>
             </div>
             <!-- <p></p>
@@ -413,6 +415,7 @@
           dom: 'Bflrtip',
           buttons: [{
                 extend: 'csvHtml5',
+                text: 'Download as .csv file',
                 title: 'Table view'
             }
           ],
@@ -683,7 +686,7 @@
             headerFormat: '<table>',
             pointFormat:
               '<span style="color:orange;">{point.name}</span><br>' +  
-              '<span>p-value:{point.x}</span><br>' +  
+              '<span>-log<sub>10</sub>(Corrected P-value):{point.x}</span><br>' +  
               '<span>Fold change:{point.z}</span>',
             footerFormat: '</table>',
             followPointer: true

@@ -722,6 +722,14 @@ class DataProcess:
                 "input_index": str(input_index),
                 "cut_off": self.cut_off,
             }
+
+            bubble_data['category'].append(self.df_input.columns[input_index])
+            bubble_data['series'].append({
+                'x': self.dfs_pvalue[input_index][self.corr][term_index],
+                'y': dict_index,
+                'z': fold_change,
+                'name' : self.df_input.columns[input_index]
+            })
             dict_index += 1
             
             volcano_data.append(
@@ -737,6 +745,8 @@ class DataProcess:
                     )
                 )
             )
+
+            
 
 
         input_list_no = []
@@ -769,6 +779,7 @@ class DataProcess:
             "corr": self.corr, 
             "cut-off": self.cut_off,
             "volcano_data": json.dumps(volcano_data),
+            "bubble_data": json.dumps(bubble_data),
             "socket_key":socket_key,
         }
         return data

@@ -85,6 +85,11 @@ input[type=number] {
         </div>
 
         <div class="col-sm-11 mx-auto">
+          <div class="text-center"><br><img src="{% static 'img/Steps.jpg' %}" style="margin:10px" class="img-fluid" alt="Responsive image"></div>
+        </div>
+        
+
+        <div class="col-sm-11 mx-auto">
           <div class="row">
             <div class="col-sm-5 mx-auto">
               <div class="card">
@@ -123,6 +128,7 @@ input[type=number] {
                       </div>
                     <a href="{% static 'download/Translational_efficiency.csv' %}" rel="external nofollow" ><i class="fa fa-cloud-download"></i>Example file</a>
                     </div>
+                    <div class="text-center"><br><img src="{% static 'img/format.jpg' %}" class="img-fluid" alt="Responsive image"></div>
                 </div>
               </div>
             </div>
@@ -328,7 +334,19 @@ input[type=number] {
           <h1><b><i class="fas fa-chart-bar"></i> Enrichment Analysis Results</b></h1>
           <hr class="page-title-under">
         </div>
-        <div id="container-upset" align="center"></div>
+
+        <!-- upset plot -->
+        <div class="col-11 mx-auto">
+          <div class="card" style="margin:0px auto;margin-top:2%;" >
+            <div class="card-header">
+              <h4 class="d-inline"><b><i class="fas fa-user-cog"></i>  Gene List Upset Plot</b></h4>
+            </div>  
+            <div class="card-body">
+              <div class="tab-content"></div> 
+              <div id="container-upset" align="center"></div>
+            </div>
+          </div>
+        </div>
         <div  class="col-11 mx-auto">
           <div class="card">
             <div class="card-header text-left">

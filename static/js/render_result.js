@@ -52,8 +52,12 @@ let datatable =$('#table_content_'+key).DataTable({
   paging: false, 
   info: false,
   dom: 'Bflrtip',
-  buttons: [
-  ],
+  buttons: [{
+    extend: 'csvHtml5',
+    text: 'Download as .csv file',
+    title: 'Table view'
+}
+],
 });
 $('th[class^="sorting"]').on('click', 'a', function(event) {
   event.stopPropagation();

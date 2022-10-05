@@ -18,6 +18,7 @@
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
 
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <!-- <script src="https://code.highcharts.com/modules/networkgraph.js"></script> -->
@@ -62,16 +63,7 @@
               </div>
             </div>
             <p></p>
-            <div class="card">
-              <div class="card-header text-left">
-                <h4><b><i class="fas fa-chart-bar"></i>  Graphic View</b></h4>
-              </div>
-              <div class="card-body p-3">
-                <div  id="container"></div>
-              </div>
-            </div> 
-
-            <p></p>
+            
             
             <div class="card" id = "block_2_1">
               <div class="card-header">
@@ -85,7 +77,20 @@
                 </p><p><b>Fold Enrichment</b>: <span class="math inline">\(\frac{Observed \ \ Ratio}{Expected\ \ Ratio}\)</span>
                   <div  id="list_table"></div>
               </div>
-            </div> <!-- Table view card -->
+            </div>
+            <p></p>
+            
+            <div class="card">
+              <div class="card-header text-left">
+                <h4><b><i class="fas fa-chart-bar"></i>  Graphic View</b></h4>
+              </div>
+              <div class="card-body p-3">
+                <div  id="container"></div>
+                <div  id="container-bubble"></div>
+              </div>
+            </div> 
+
+            <!-- Table view card -->
             <!-- <p></p>
             <div class="card" >
               <div class="card-header">
@@ -467,6 +472,88 @@
               data: JSON.parse(data['volcano_data']),
             }]
       });
+
+      // bubble chart
+      bubData = JSON.parse(data['bubble_data']),
+        Highcharts.chart('container-bubble', {
+
+          chart: {
+            type: 'bubble',
+            plotBorderWidth: 1,
+            zoomType: 'xy'
+          },
+        
+          legend: {
+            enabled: false
+          },
+        
+          title: {
+            text: 'Bubble Plot'
+          },
+        
+          /* subtitle: {
+            text: 'Source: <a href="http://www.euromonitor.com/">Euromonitor</a> and <a href="https://data.oecd.org/">OECD</a>'
+          }, */
+        
+          accessibility: {
+            point: {
+              valueDescriptionFormat: '{index}. {point.name}, fat: {point.x}g, sugar: {point.y}g, obesity: {point.z}%.'
+            }
+          },
+        
+          xAxis: {
+            gridLineWidth: 1,
+            title: {
+              text: '-log<sub>10</sub>(Corrected p-value)'
+            },
+            labels: {
+              format: '{value}'
+            },
+            accessibility: {
+              rangeDescription: 'Range: 0.05 to 0.5 grams.'
+            }
+          },
+        
+          yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+              text: 'Enriched Term'
+            },
+            labels: {
+              format: '{value}'
+            },
+            categories: bubData['category'],
+            maxPadding: 0.2,
+            
+          },
+        
+          tooltip: {
+            useHTML: true,
+            headerFormat: '<table>',
+            pointFormat:
+              '<span style="color:orange;">{point.name}</span><br>' +  
+              '<span>-log<sub>10</sub>(Corrected P-value):{point.x}</span><br>' +  
+              '<span>Fold change:{point.z}</span>',
+            footerFormat: '</table>',
+            followPointer: true
+          },
+        
+          plotOptions: {
+            series: {
+              dataLabels: {
+                enabled: true,
+                // format: '{point.name}'
+              }
+            }
+          },
+        
+          series: [{
+            data: bubData['series']
+          }]
+        
+        });
+
       let datatable =$('#list_table_content').DataTable({
         "order": [[ 1, "desc" ],[ 2, "desc" ]],
         'bDestroy': true,
@@ -476,6 +563,7 @@
         dom: 'Bflrtip',
         buttons: [ {
                 extend: 'csvHtml5',
+                text: 'Download as .csv file',
                 title: 'Table view'
             },
         ],

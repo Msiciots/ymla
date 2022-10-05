@@ -967,7 +967,6 @@ $('#run_analysis').click(function() {
 
 
 function render_upset_plot(upset_data){
-  console.log(upset_data)
   let data = [];
   for (const key in upset_data){
     data.push({ name: key, elems: upset_data[key]});
@@ -976,7 +975,7 @@ function render_upset_plot(upset_data){
   
   const props = {
     sets: sets,
-    width: 600,
+    width: 1600,
     height: 400,
     combinations: {
       type: 'intersection',
@@ -985,8 +984,8 @@ function render_upset_plot(upset_data){
       order: 'cardinality',
     },
     selection: null,
-    setName: 'Custom Set Name',
-    combinationName: 'Custom Intersection Name'
+    setName: 'Input Gene Lists',
+    combinationName: 'Number of Genes'
   }
   props.onHover = (set) => {
     props.selection = set;
