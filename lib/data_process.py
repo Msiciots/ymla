@@ -597,7 +597,8 @@ class DataProcess:
                 term_gene_no = self.df_feature_map_id["count"][term_index]      
                 input_term_gene_no = self.dfs_pvalue[column_index]["intersec_no"][term_index]
 
-                if term[-1] == ")":
+                if term[-1] == ")" and self.feature not in self.name_map_data_col:
+                    # bug example : maturation of SSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)
                     term_name = term[:term.find("(")-1]
                     df = pd.read_csv("./static/data/quant_feature/"+term_name+"_data.csv")
                     GENES_No = len(df)
@@ -607,6 +608,7 @@ class DataProcess:
                     table_data[dict_index]["input_no"] = "<a onclick=\"return false;\" href='#' id='data_"+str(term_index)+"_A'>"+str(input_total_gene_no)+"</a>"
                     table_data[dict_index]["term_no"] = "<a onclick=\"return false;\" href='#' id='data_"+str(term_index)+"_D'>"+str(term_gene_no)+"</a>"
                     table_data[dict_index]["data_no"] = "<a onclick=\"return false;\" href='#' id='data_"+str(term_index)+"_C'>"+str(GENES_No)+"</a>"
+                
                 else:
                     table_data[dict_index]["input_no"] = str(input_total_gene_no)
                     table_data[dict_index]["term_no"] = str(term_gene_no)
@@ -618,7 +620,7 @@ class DataProcess:
                 fold_change = round((input_term_gene_no / input_total_gene_no)/(term_gene_no / GENES_No),2)
                 table_data[dict_index]["Fold_change"] = fold_change
 
-                if term[-1] == ")":
+                if term[-1] == ")" and self.feature not in self.name_map_data_col:
                     table_data[dict_index]["term"] = self.df_feature_map_id[self.feature][term_index]
                 elif self.feature == "gene_group" or self.feature == "custom":
                     table_data[dict_index]["term"] = self.df_feature_map_id["term_link"][term_index]
@@ -690,7 +692,7 @@ class DataProcess:
         for input_index in range(len(self.df_input.columns)):
             input_term_gene_no = self.dfs_pvalue[input_index]["intersec_no"][term_index]
             input_total_gene_no = len(self.df_input[self.df_input.columns[input_index]].dropna().tolist())
-            if term[-1] == ")":
+            if term[-1] == ")" and self.feature not in self.name_map_data_col:
                 term_name = term[:term.find("(")-1]
                 df = pd.read_csv("./static/data/quant_feature/"+term_name+"_data.csv")
                 GENES_No = len(df)

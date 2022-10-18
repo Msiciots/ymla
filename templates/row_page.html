@@ -221,6 +221,10 @@
 
   var data ={{ data | safe }};
   $(document).ready(function() {
+    if (!data){
+      alert("Session time out. Please re-sumit your gene lists.");
+      return
+    }
     var name_map, quant_feature;
     $.getJSON("/YMLA/static/config/feature_name_map.json", function(d){
         name_map = d;

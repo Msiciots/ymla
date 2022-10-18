@@ -164,8 +164,12 @@ def show_block_detail(request):
     click_block_id = request.GET["click_block_id"]
     feature =request.GET["feature"]
     socket_key = request.GET["socket_key"]
-
-    session = share_session[socket_key]
+    try:
+        session = share_session[socket_key]
+    except:
+        data = None
+        return render(request, 'block_page.html',{'data':json.dumps(data)}) 
+        
     # session = request.session[socket_key]
     session[feature] ,data = session[feature].block_detail(click_block_id)
     # return JsonResponse(data, safe=False)
@@ -198,7 +202,13 @@ def show_column_detail(request):
     feature  = request.GET['feature']
     socket_key  = request.GET['socket_key']
 
-    session = share_session[socket_key]
+    try:
+        session = share_session[socket_key]
+
+    except:
+        data = None    
+        return render(request, 'column_page.html',{'data':json.dumps(data)}) 
+
     # session = request.session[socket_key]
 
     data = session[feature].column_detail(column_name, socket_key)
@@ -231,7 +241,13 @@ def show_row_detail(request):
     feature =request.GET['feature']
     socket_key  = request.GET['socket_key']
 
-    session = share_session[socket_key]
+    try:
+        session = share_session[socket_key]
+    
+    except:
+        data = None
+        return render(request, 'row_page.html',{'data':json.dumps(data)})   
+        
     # session = request.session[socket_key]
     data = session[feature].row_detail(term, socket_key)
     
