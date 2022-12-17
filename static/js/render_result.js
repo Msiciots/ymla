@@ -54,7 +54,7 @@ let datatable =$('#table_content_'+key).DataTable({
   dom: 'Bflrtip',
   buttons: [{
     extend: 'csvHtml5',
-    text: 'Download as .csv file',
+    text: 'Download as a .csv file',
     title: 'Table view'
 }
 ],

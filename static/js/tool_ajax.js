@@ -616,7 +616,7 @@ $('#run_analysis').click(function() {
           }
   
         });
-        $('#pills-tab_fcust').html('<li class="nav-item" role="presentation" style="padding:.2rem .5rem;"><button style="background-color:#C6C8CA;" name="custom" class="nav-link border border-dark text-dark" id="pills-custom-tab" data-bs-toggle="pill" data-bs-target="#pills-custom" type="button" role="tab" aria-controls="pills-custom" aria-selected="false"><i class="fas fa-hammer"></i> Generate Custom Summary</button></li>')
+        $('#pills-tab_fcust').html('<li class="nav-item" role="presentation" style="padding:.2rem .5rem;"><button style="background-color:#C6C8CA;" name="custom" class="nav-link border border-dark text-dark" id="pills-custom-tab" data-bs-toggle="pill" data-bs-target="#pills-custom" type="button" role="tab" aria-controls="pills-custom" aria-selected="false"><i class="fas fa-hammer"></i> Generate the Customized Summary</button></li>')
 
         quant_setting = `
           <div class="col-8 mx-auto">
